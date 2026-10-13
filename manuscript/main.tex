@@ -47,13 +47,15 @@ Advanced packaging, Artificial intelligence, Compute sovereignty, Data centre co
 
 Artificial intelligence has traversed the boundary from an algorithmic research discipline into an industrial apparatus whose productive capacity is determined primarily by capital expenditure, high-voltage grid infrastructure, and geopolitically concentrated microelectronic supply lines \cite{akimitsu2026chokepoints}. In 2024, global data-centre electricity consumption reached 415~TWh; the IEA projects this will surpass 945~TWh by 2030, driven by large-language model workloads that consume approximately 2.9~Wh per generative query---nearly ten times the energy of a traditional web search \cite{iea2024aienergy}.
 
-For India, this transition carries both extraordinary opportunity and structural risk. The country holds indisputable strategic assets: 4.3~million software engineers, the world's highest AI-skill penetration rate among working professionals \cite{linkedin2025aiindex}, 1.4~billion citizens generating diverse multilingual data, and a geopolitical position that both Washington and Beijing regard as consequential \cite{stimson2026sovereign}. The Indian government has codified its ambition through the IndiaAI Mission (Rs.~10{,}371.92~crore, approved March~2024) \cite{meity2024indiaai} and Semicon India~2.0 (Rs.~1{,}27{,}500~crore, approved July~2026) \cite{ism2025semicon}. Yet the gap between policy announcement and deployable infrastructure remains wide: India's sovereign GPU pool stood at approximately 34{,}000--45{,}000 accelerators in mid-2026, against a stated target of 100{,}000 by December~2026.
+For India, this transition carries both extraordinary opportunity and structural risk. The country holds indisputable strategic assets: 4.3~million software engineers, the world's highest AI-skill penetration rate among working professionals \cite{linkedin2025aiindex}, 1.4~billion citizens generating diverse multilingual data, and a geopolitical position that both Washington and Beijing regard as consequential \cite{stimson2026sovereign}. The Indian government has codified its ambition through the IndiaAI Mission (Rs.~10{,}371.92~crore, approved March~2024) \cite{meity2024indiaai} and Semicon India~2.0 (Rs.~1{,}27{,}500~crore, approved July~2026) \cite{ism2025semicon}. Yet the gap between policy announcement and deployable infrastructure remains wide: India's sovereign GPU pool stood at approximately 34{,}000--45{,}000 accelerators in mid-2026, against a stated target of 100{,}000 by December~2026 \cite{sbicap2025datacentre}.
+
+The broader context is stark. The United States has committed approximately \$500~billion through Stargate and the CHIPS Act \cite{whitehouse2023icet}; China spends an estimated \$15~billion annually through state-backed AI funds. India's current five-year outlay represents roughly 0.25\% of the US commitment, creating what policy analysts at the Portulans Institute term an ``N-2 structural asymmetry'' \cite{portulans2026sovereignty}---a condition in which full-stack AI sovereignty is realistically accessible only to the US and China.
 
 The critical analytical deficit in existing scholarship is not the absence of domain expertise but its \textit{disciplinary siloing}. Semiconductor analysts study wafer fab HHI without modelling data-centre power; grid researchers model TWh demand without tracing packaging constraints; governance scholars enumerate policy pillars without physical resource accounting. This paper closes that gap through two original contributions:
 
 \begin{enumerate}[leftmargin=*, label=\textbf{C\arabic*.}]
   \item \textbf{IAIRF~2.0}: A unified Five-Pillar Conceptual Framework mapping causal interdependencies, shared bottlenecks, and feedback loops across compute, energy, physical resources, connectivity, and governance.
-  \item \textbf{DCM}: A reproducible six-layer Demand-Cascade Model propagating policy-level GPU targets through server physics, facility thermodynamics, cooling hydrology, wafer geometry, advanced packaging, and HBM allocation.
+  \item \textbf{DCM}: A reproducible six-layer Demand-Cascade Model propagating policy-level GPU targets through server physics, facility thermodynamics, cooling hydrology, wafer geometry, advanced packaging, and HBM allocation---yielding four empirically verifiable, non-trivial findings.
 \end{enumerate}
 
 \section{Literature Review and Research Gaps}
@@ -62,30 +64,45 @@ The critical analytical deficit in existing scholarship is not the absence of do
 
 Econometric analysis by Akimitsu \cite{akimitsu2026chokepoints} characterises the AI hardware supply chain as a directed acyclic dependency graph spanning over forty distinct production stages. Upstream inputs exhibit market concentration without precedent in modern industrial supply chains: EUV photolithography (ASML monopoly, HHI~=~10{,}000), CoWoS 2.5D advanced packaging (TSMC~$\approx$90\%, HHI~=~8{,}100), and refined gallium (China~$\approx$99\%, HHI~=~9{,}804). The Center for Security and Emerging Technology \cite{cset2024compute} establishes that over 90\% of commercial sub-5\,nm logic fabrication resides in Taiwan, creating a geopolitical single-point-of-failure for non-allied economies. NITI Aayog reports India's semiconductor import dependence at 90--95\% \cite{niti2026semiconductor}.
 
+The SemiAnalysis research group \cite{semianalysis2025chokepoints} further identifies HBM optical transceiver scaling and CoWoS panel-level reticle stitching as secondary bottlenecks that compound with primary packaging constraints. India's approved ATMP/OSAT investment pipeline---Tata Electronics (Morigaon), Micron Technology (Sanand), and CG Power-Renesas (Sanand)---addresses mature-node assembly and packaging but remains several technology generations from CoWoS-equivalent 2.5D capability \cite{ism2025semicon}.
+
 \subsection{Pillar~2: Energy and Grid Readiness}
 
 IEA \cite{iea2024aienergy} and LBNL \cite{lbnl2024datacenter} establish that server-level host overheads multiply raw accelerator TDP by 1.6--2.1$\times$. Kaufmann et al.\ \cite{kaufmann2025powergrid} demonstrate that multi-hundred-megawatt compute clusters generate local substation bottlenecks decoupled from national generation capacity. In India, grid-connection queues for data-centre loads exceeding 50~MW extend 18--36~months \cite{cea2026transmission}. India's installed renewable capacity crossed 300~GW in mid-2026 \cite{mnre2026annual}, yet intermittency precludes direct use as five-nines baseload.
 
+The power density challenge is acute: AI training racks running NVIDIA H100/H200 clusters draw 60--100~kW per rack, while next-generation Blackwell platforms push 120--200~kW \cite{nvidia2024h100}. This is four to ten times the power density of traditional cloud server racks, demanding purpose-built transformer vaults, busway systems, and dedicated 400/220~kV interconnection infrastructure. India's Central Electricity Authority (CEA) estimates the cost of dedicated high-voltage connectivity for a 50~MW compute campus at approximately Rs.~200--350~crore per site, with statutory approval timelines extending to 36--48~months \cite{cea2026transmission}.
+
 \subsection{Pillar~3: Data Centres and Physical Resources}
 
-JLL \cite{jll2026indiadc} and CBRE \cite{cbre2026indiadc} verify that India's operational colocation capacity expanded from 375~MW in 2020 to 1{,}575~MW by mid-2026. Mumbai hosts 52.4\% of national capacity, creating single-point-of-failure exposure. SBI CHAKRA \cite{sbicap2025datacentre} documents an average PUE of 1.55---the tropical ambient penalty---compared to Nordic benchmarks of 1.10--1.15. Transitioning to direct-to-chip liquid cooling reduces PUE to 1.18 and cuts water withdrawal by 94.6\% \cite{ieeetcpmt2026cooling}.
+JLL \cite{jll2026indiadc} and CBRE \cite{cbre2026indiadc} verify that India's operational colocation capacity expanded from 375~MW in 2020 to 1{,}575~MW by mid-2026. Mumbai hosts 52.4\% of national capacity, creating single-point-of-failure exposure for the country's sovereign AI infrastructure. SBI CHAKRA \cite{sbicap2025datacentre} documents an average PUE of 1.55---the tropical ambient penalty---compared to Nordic benchmarks of 1.10--1.15. Transitioning to direct-to-chip liquid cooling reduces PUE to 1.18 and cuts water withdrawal by 94.6\% \cite{ieeetcpmt2026cooling}.
+
+The physical construction challenge is substantial. AI data centres require 1{,}200--2{,}000~kg/m$^2$ structural floor loading (versus 500~kg/m$^2$ for traditional facilities), 400~Gbps to 1.6~Tbps InfiniBand or RoCEv2 network fabrics, and construction costs of \$15--25~million per MW of IT load---roughly three times conventional cloud infrastructure. These requirements fundamentally change site selection economics, rendering standard industrial land inadequate for frontier AI workloads.
 
 \subsection{Pillar~4: Connectivity, Data, and Security}
 
-India's international submarine cable infrastructure has grown to 17+ cable systems at Mumbai, Chennai, and Kochi as of 2026 \cite{trai2026connectivity}. The CEA Cyber Security in Power Sector Regulations (notified July~2026) impose mandatory 6-hour incident reporting for assets exceeding 50~MW \cite{cea2026cybersec}. The Digital Personal Data Protection Act (DPDPA, 2023) establishes consent-based data governance, yet cross-border data flow rules remain subject to ongoing rule-making, creating regulatory uncertainty \cite{meity2023dpdpa}.
+India's international submarine cable infrastructure has grown to 17+ cable systems at Mumbai, Chennai, and Kochi as of 2026 \cite{trai2026connectivity}. The CEA Cyber Security in Power Sector Regulations (notified July~2026) impose mandatory 6-hour incident reporting for assets exceeding 50~MW \cite{cea2026cybersec}. The Digital Personal Data Protection Act (DPDPA, 2023) establishes consent-based data governance, yet cross-border data flow rules remain subject to ongoing rule-making, creating regulatory uncertainty for multi-national compute investments \cite{meity2023dpdpa}.
+
+India's inter-metropolitan optical backbone, while extensive in coverage, remains inadequate in density for latency-sensitive distributed AI inference workloads. Tier-2 and Tier-3 cities---where new AI Infrastructure Zone designations may direct greenfield compute buildout---frequently lack the 100-Gbps dark-fibre ring topology required for reliable GPU cluster interconnect. This creates a connectivity-compute co-location paradox: the most power-advantaged states are often the least connected \cite{trai2026connectivity}.
 
 \subsection{Pillar~5: Governance, Investment, and Indigenous Capability}
 
-The Portulans Institute and Bruegel \cite{portulans2026sovereignty} articulate the ``N-2 Problem'': full-stack AI sovereignty is structurally accessible only to the US and China. A domestic sub-3\,nm logic foundry requires \$15--20~billion capex and 25{,}000+ wafer starts per month at minimum efficient scale. NITI Aayog's alternative doctrine of ``Indispensable, Not Imitative'' \cite{niti2026semiconductor} advocates building capability selectively where India holds structural competitive advantage.
+The Portulans Institute and Bruegel \cite{portulans2026sovereignty} articulate the ``N-2 Problem'': full-stack AI sovereignty is structurally accessible only to the US and China. A domestic sub-3\,nm logic foundry requires \$15--20~billion capex and 25{,}000+ wafer starts per month at minimum efficient scale, with 7--10 years of construction lead time. NITI Aayog's alternative doctrine of ``Indispensable, Not Imitative'' \cite{niti2026semiconductor} advocates building capability selectively where India holds structural competitive advantage---specifically VLSI design, ATMP packaging, and application-layer AI.
+
+India's broader geopolitical positioning has created a unique strategic window. The US-China technology decoupling has elevated India's value as a trusted partner. The Initiative on Critical and Emerging Technology (iCET) \cite{whitehouse2023icet} enables India to access NVIDIA's advanced GPU allocations and bilateral semiconductor equipment exports. The QUAD Semiconductor Supply Chain Initiative adds multilateral depth, engaging Japan and Australia's advanced manufacturing ecosystems. However, these partnerships remain contingent on India demonstrating meaningful physical infrastructure progress---a condition that current buildout trajectories strain to meet.
 
 \subsection{Five Core Research Gaps}
 
 Despite this body of literature, five critical deficits remain unaddressed, as summarised in Table~\ref{tab:prior_art}.
-\textbf{RG-01} (\textit{Disciplinary Siloing}): No study integrates semiconductor supply-chain constraints, grid physics, cooling thermodynamics, and governance economics in one framework.
-\textbf{RG-02} (\textit{Absent Demand Cascade}): No model propagates GPU targets bottom-up through the full physical chain to packaging and memory supply quotas.
-\textbf{RG-03} (\textit{Silicon Wafer Fallacy}): The binding-constraint assumption around sub-5\,nm lithography has not been empirically tested against actual wafer volume requirements.
-\textbf{RG-04} (\textit{Tropical Cooling Penalty}): Global energy models assume temperate PUE baselines of 1.15--1.20, underestimating India's evaporative water demand under $>$42\,\textdegree C heatwave conditions.
-\textbf{RG-05} (\textit{Operationalisation Deficit}): ``Coordinated Specialisation'' and ``Indispensable, Not Imitative'' remain qualitative doctrines without quantitative intervention-prioritisation matrices.
+
+\noindent\textbf{RG-01} (\textit{Disciplinary Siloing}): No study integrates semiconductor supply-chain constraints, grid physics, cooling thermodynamics, and governance economics in one framework.
+
+\noindent\textbf{RG-02} (\textit{Absent Demand Cascade}): No model propagates GPU targets bottom-up through the full physical chain to packaging and memory supply quotas.
+
+\noindent\textbf{RG-03} (\textit{Silicon Wafer Fallacy}): The binding-constraint assumption around sub-5\,nm lithography has not been empirically tested against actual wafer volume requirements.
+
+\noindent\textbf{RG-04} (\textit{Tropical Cooling Penalty}): Global energy models assume temperate PUE baselines of 1.15--1.20, underestimating India's evaporative water demand under $>$42\,\textdegree C heatwave conditions.
+
+\noindent\textbf{RG-05} (\textit{Operationalisation Deficit}): ``Coordinated Specialisation'' and ``Indispensable, Not Imitative'' remain qualitative doctrines without quantitative intervention-prioritisation matrices.
 
 \begin{table*}[t]
 \centering
@@ -101,6 +118,7 @@ Portulans/Bruegel (2026) \cite{portulans2026sovereignty} & Qualitative statecraf
 IEA/LBNL (2024) \cite{iea2024aienergy,lbnl2024datacenter} & Macro energy model & Global TWh & Sector PUE & None & Macro \\
 Kaufmann et al.\ (2025) \cite{kaufmann2025powergrid} & Grid power-flow & None & Transmission MW & None & Scenario \\
 Stimson (2026) \cite{stimson2026sovereign} & Middle-power policy & None & None & None & No \\
+SBI CHAKRA (2025) \cite{sbicap2025datacentre} & Market census & None & PUE, MW & None & Report \\
 \textbf{This Paper (IAIRF~2.0)} & \textbf{5-Pillar + DCM} & \textbf{200k--1M} & \textbf{IT~MW, TWh, ML} & \textbf{Wafers, CoWoS, HBM} & \textbf{Python} \\
 \bottomrule
 \end{tabular*}
@@ -113,11 +131,11 @@ Stimson (2026) \cite{stimson2026sovereign} & Middle-power policy & None & None &
 IAIRF~2.0 organises India's AI infrastructure challenge across five analytically distinct but causally interdependent pillars. Unlike prior frameworks that treat these domains as parallel investment buckets, IAIRF~2.0 explicitly models the feedback loops that propagate failure across pillars:
 
 \begin{itemize}
-  \item \textbf{P1~---~Compute \& Semiconductor Sovereignty:} GPU procurement, AI accelerator access, chip design capability, ATMP/OSAT packaging, and critical mineral supply chains.
-  \item \textbf{P2~---~Energy \& Grid Readiness:} Data-centre electrical load, grid interconnection lead times, captive renewable power, BESS, and firm baseload for five-nines uptime.
-  \item \textbf{P3~---~Physical Resources \& Data Centres:} Facility capacity, land acquisition, cooling technology selection, PUE profiles, water withdrawal, geographic concentration, and disaster resilience.
+  \item \textbf{P1~---~Compute \& Semiconductor Sovereignty:} GPU procurement, AI accelerator access, chip design capability, ATMP/OSAT packaging, and critical mineral supply chains. Current Indian sovereign pool: 34{,}000--45{,}000 accelerators representing $\approx$0.3\% of the US fleet.
+  \item \textbf{P2~---~Energy \& Grid Readiness:} Data-centre electrical load, grid interconnection lead times, captive renewable power, Battery Energy Storage Systems (BESS), and firm baseload for five-nines uptime. Grid connection queues: 18--36~months.
+  \item \textbf{P3~---~Physical Resources \& Data Centres:} Facility capacity, land acquisition, cooling technology selection, PUE profiles, water withdrawal, geographic concentration, and disaster resilience. Operational stock: 1{,}575~MW; 52.4\% concentrated in Mumbai.
   \item \textbf{P4~---~Connectivity, Data \& Security:} Submarine cable infrastructure, backbone latency, cloud vendor concentration, DPDPA data governance, OT cybersecurity, and interoperability standards.
-  \item \textbf{P5~---~Governance, Investment \& Indigenous Capability:} Public-private investment architecture, IndiaAI Mission, Semicon India~2.0, talent pipeline, GCC ecosystem leverage, and international technology partnerships.
+  \item \textbf{P5~---~Governance, Investment \& Indigenous Capability:} Public-private investment architecture, IndiaAI Mission, Semicon India~2.0, talent pipeline, Global Capability Centre ecosystem leverage, and international technology partnerships.
 \end{itemize}
 
 \begin{figure*}[t]
@@ -129,15 +147,23 @@ IAIRF~2.0 organises India's AI infrastructure challenge across five analytically
 
 \subsection{Cross-Pillar Feedback Loops}
 
-Four systemic feedback loops are identified as high-priority design constraints:
+Four systemic feedback loops are identified as high-priority design constraints within IAIRF~2.0:
 
-\textbf{Loop~A (Power-Compute Deadlock):} Sovereign GPU procurement (P1) is constrained by facility power availability (P2), which is constrained by grid interconnection lead times (P2/P3), which are constrained by land acquisition and zoning (P3). This tripartite deadlock explains why India's subsidised GPU pool has stalled short of the 100k target.
+\textbf{Loop~A (Power-Compute Deadlock):} Sovereign GPU procurement (P1) is constrained by facility power availability (P2), which is constrained by grid interconnection lead times (P2/P3), which are constrained by land acquisition and zoning (P3). This tripartite deadlock explains why India's subsidised GPU pool has stalled short of the 100k target despite approved funding.
 
 \textbf{Loop~B (Packaging-Memory Co-Constraint):} Imported AI accelerators (P1) require CoWoS packaging and HBM3e memory allocation, both constrained at the global market level independently of Indian procurement capital. EAR changes or Taiwanese geopolitical disruptions can sever both dependencies simultaneously, creating correlated rather than independent risk.
 
 \textbf{Loop~C (Data-Connectivity Governance Tension):} DPDPA data localisation obligations (P4) increase domestic infrastructure requirements (P3), increase power demand (P2), and create regulatory uncertainty for foreign investment (P5). Yet insufficient localisation leaves critical national data on foreign cloud infrastructure subject to extra-jurisdictional legal process.
 
-\textbf{Loop~D (Talent-Sovereignty Paradox):} India's 4.3~million software engineers (P5) represent its most distinctive competitive asset. However, the talent pipeline disproportionately serves foreign AI companies in Global Capability Centres---effectively subsidising US and Chinese AI competitiveness. Retaining this talent requires compensation structures that cannot be sustained without a mature domestic AI revenue base (P1/P2/P3).
+\textbf{Loop~D (Talent-Sovereignty Paradox):} India's 4.3~million software engineers (P5) represent its most distinctive competitive asset. However, the talent pipeline disproportionately serves foreign AI companies in Global Capability Centres (GCCs)---effectively subsidising US and Chinese AI competitiveness. The AI/ML talent demand-supply gap reached approximately 720{,}000 unfilled positions in 2026, projected to widen to 1{,}600{,}000 by 2030 \cite{linkedin2025aiindex}.
+
+\subsection{Geopolitical Context: India's Strategic Window}
+
+India's geopolitical positioning creates a narrow but real strategic window that the IAIRF~2.0 framework is designed to operationalise. The US-China technology decoupling has elevated India's role as a trusted neutral party in global semiconductor supply chains. Three specific mechanisms create this window:
+
+1) \textit{Friend-shoring dynamics}: US companies are increasingly mandated to avoid Chinese supply chains. India is the only credible large-economy alternative with both engineering talent depth and democratic institutional legitimacy. 2) \textit{iCET bilateral framework}: The 2023 US-India technology partnership \cite{whitehouse2023icet} enables access to export-controlled AI accelerators and establishes bilateral semiconductor equipment cooperation that no other non-allied nation receives at comparable scale. 3) \textit{Global South leadership}: India's G20 AI Governance Framework position creates an opportunity to export regulatory standards rather than import them, potentially creating an ``India Effect'' in global AI governance analogous to the EU's GDPR influence.
+
+However, this window is time-bounded. As US domestic GPU production scales under CHIPS Act incentives and TSMC Arizona ramps capacity, the relative strategic leverage of India's market access as a negotiating asset will diminish. The IAIRF~2.0 framework therefore emphasises speed of physical infrastructure deployment as a first-order policy variable.
 
 \subsection{Central Research Question}
 
@@ -154,10 +180,11 @@ Active IT power ($P_{\text{IT}}$, MW) incorporates the board-level TDP of the re
   P_{\text{IT}} = \frac{N \cdot P_{\text{gpu}} \cdot R_{\text{host}}}{10^{6}} \quad [\text{MW}]
   \label{eq:it_load}
 \end{equation}
+The next-generation NVIDIA Blackwell B200 pushes $P_{\text{gpu}}$ to 1{,}000--1{,}200~W, creating a High variant in the sensitivity analysis that models the trajectory of Indian sovereign compute ambitions through 2028.
 
 \subsection{Layer~2: Facility Power and Annual Energy}
 
-Facility grid draw incorporates Power Usage Effectiveness (PUE). A tropical baseline $\text{PUE}_{\text{base}} = 1.40$ is used, reflecting measured Indian colocation averages of 1.55 \cite{sbicap2025datacentre} discounted by 0.15 for new-build facilities. Annual energy ($E_{\text{annual}}$, TWh) uses 80\% utilisation ($U = 0.80$) across 8{,}760 operating hours:
+Facility grid draw incorporates Power Usage Effectiveness (PUE). A tropical baseline $\text{PUE}_{\text{base}} = 1.40$ is used, reflecting measured Indian colocation averages of 1.55 \cite{sbicap2025datacentre} discounted by 0.15 for new-build facilities with more efficient cooling plant. Annual energy ($E_{\text{annual}}$, TWh) uses 80\% utilisation ($U = 0.80$) across 8{,}760 operating hours:
 \begin{equation}
   P_{\text{facility}} = P_{\text{IT}} \cdot \text{PUE} \quad [\text{MW}]
   \label{eq:facility}
@@ -179,7 +206,7 @@ Annual evaporative cooling water withdrawal ($W_{\text{annual}}$, ML) uses IEA-v
   W_{\text{annual}} = \frac{E_{\text{annual}} \cdot 10^{9} \cdot I_{\text{water}}}{10^{6}} \quad [\text{ML}]
   \label{eq:water}
 \end{equation}
-Physical rack count uses target rack power density $D_{\text{rack}} = 60$~kW/rack:
+Physical rack count uses target rack power density $D_{\text{rack}} = 60$~kW/rack appropriate for H100-class servers:
 \begin{equation}
   N_{\text{rack}} = \left\lceil \frac{P_{\text{IT}} \times 10^{3}}{D_{\text{rack}}} \right\rceil
   \label{eq:racks}
@@ -192,12 +219,12 @@ Gross dies per 300~mm wafer are computed from wafer radius $r = 150$~mm and die 
   N_{\text{gross}} = \left\lfloor \frac{\pi r^{2}}{A_{\text{die}}} - \frac{2\pi r}{\sqrt{2A_{\text{die}}}} \right\rfloor = 63
   \label{eq:gross}
 \end{equation}
-Analytical die yield uses the Murphy defect-density model with $D_0 = 0.08$~cm$^{-2}$ (bounds: $D_0 \in [0.06, 0.12]$~cm$^{-2}$):
+Analytical die yield uses the Murphy defect-density model with $D_0 = 0.08$~cm$^{-2}$ (sensitivity bounds: $D_0 \in [0.06, 0.12]$~cm$^{-2}$):
 \begin{equation}
   Y_{\text{Murphy}} = \left( \frac{1 - e^{-D_0 A_{\text{die}}}}{D_0 A_{\text{die}}} \right)^2 \approx 0.540
   \label{eq:murphy}
 \end{equation}
-Accounting for industrial binning, net yield reaches $Y = 0.65$, giving $N_{\text{good}} = 40$ dies/wafer. Required wafer starts:
+Accounting for industrial binning and test overkill, net yield reaches $Y = 0.65$, giving $N_{\text{good}} = 40$ dies/wafer. Required wafer starts for a fleet of $N$ GPUs:
 \begin{equation}
   W_{\text{starts}} = \left\lceil \frac{N}{N_{\text{good}}} \right\rceil
   \label{eq:wafers}
@@ -205,21 +232,21 @@ Accounting for industrial binning, net yield reaches $Y = 0.65$, giving $N_{\tex
 
 \subsection{Layer~5: 2.5D Advanced Packaging (CoWoS)}
 
-Each GPU requires one CoWoS 2.5D silicon interposer substrate. With 15 finished packages per 300~mm interposer wafer ($C_{\text{CoWoS}} = 15$) \cite{trendforce2026foundry}:
+Each GPU die requires one Chip-on-Wafer-on-Substrate (CoWoS) 2.5D silicon interposer substrate, enabling the high-bandwidth die-to-die interconnect that makes HBM3e viable at GPU bandwidth requirements. With 15 finished packages per 300~mm interposer wafer ($C_{\text{CoWoS}} = 15$) \cite{trendforce2026foundry}:
 \begin{equation}
   W_{\text{CoWoS}} = \left\lceil \frac{N}{C_{\text{CoWoS}}} \right\rceil
   \label{eq:cowos}
 \end{equation}
-Global CoWoS capacity is bounded at approximately 450{,}000 wafers/year \cite{trendforce2026foundry}; India's deployment share is $W_{\text{CoWoS}} / 450{,}000$.
+Global CoWoS capacity is bounded at approximately 450{,}000 wafers/year \cite{trendforce2026foundry}; India's deployment share is $W_{\text{CoWoS}} / 450{,}000$. TSMC controls approximately 90\% of global CoWoS capacity (HHI~=~8{,}100), and capacity expansion requires proprietary tooling that cannot be replicated outside TSMC's process ecosystem within any commercially viable timeline.
 
 \subsection{Layer~6: High-Bandwidth Memory Allocation}
 
-Each H100-class accelerator integrates $N_{\text{stacks}} = 8$ HBM3e memory stacks \cite{counterpoint2025hbm}:
+Each H100-class accelerator integrates $N_{\text{stacks}} = 8$ HBM3e memory stacks, providing 80~GB of on-package bandwidth at 3.35~Tbps per device \cite{counterpoint2025hbm}:
 \begin{equation}
   N_{\text{HBM}} = N \cdot N_{\text{stacks}}
   \label{eq:hbm}
 \end{equation}
-Global HBM3e production is approximately 60~million stacks/year (SK Hynix $\approx$57\%, Samsung $\approx$38\%, Micron $\approx$5\%), against which India's allocation share is computed.
+Global HBM3e production is approximately 60~million stacks/year with a triopoly structure: SK Hynix ($\approx$57\%), Samsung ($\approx$38\%), and Micron ($\approx$5\%). India has zero domestic HBM production and no near-term roadmap for HBM manufacturing, making this layer entirely dependent on foreign supplier relationships.
 
 \begin{figure}[t]
 \centering
@@ -232,7 +259,7 @@ Global HBM3e production is approximately 60~million stacks/year (SK Hynix $\appr
 
 \subsection{Scenario Simulation Results}
 
-Table~\ref{tab:scenarios} presents DCM output across three deployment scenarios and three sensitivity variants. Low variant: $P_{\text{gpu}}=700$~W, PUE~=~1.25; Base variant: $P_{\text{gpu}}=700$~W, PUE~=~1.40; High variant: $P_{\text{gpu}}=1{,}200$~W, PUE~=~1.55. In the baseline 500{,}000-GPU scenario, active IT load reaches 637.0~MW and peak facility power escalates to \textbf{891.8~MW}---equivalent to \textbf{56.62\%} of India's entire mid-2026 colocation capacity \cite{jll2026indiadc}. Annual electricity consumption totals \textbf{6.25~TWh/year}, generating 4.47~Mt~CO$_2$, and evaporative water demand reaches \textbf{11{,}249.5~ML/year}---comparable to the annual municipal water requirement of a major Indian city. The 1M-GPU high scenario generates 3{,}255~MW, exceeding India's entire current capacity by a factor of 2.07$\times$. The tornado sensitivity profile in Fig.~\ref{fig:sensitivity} demonstrates that facility cooling PUE and server host overhead ratios account for the largest deviations in peak power draw.
+Table~\ref{tab:scenarios} presents DCM output across three deployment scenarios and three sensitivity variants. Low variant: $P_{\text{gpu}}=700$~W, PUE~=~1.25; Base variant: $P_{\text{gpu}}=700$~W, PUE~=~1.40; High variant: $P_{\text{gpu}}=1{,}200$~W, PUE~=~1.55. In the baseline 500{,}000-GPU scenario, active IT load reaches 637.0~MW and peak facility power escalates to \textbf{891.8~MW}---equivalent to \textbf{56.62\%} of India's entire mid-2026 colocation capacity \cite{jll2026indiadc}. Annual electricity consumption totals \textbf{6.25~TWh/year}, generating 4.47~Mt~CO$_2$, and evaporative water demand reaches \textbf{11{,}249.5~ML/year}---comparable to the annual municipal water requirement of a major Indian city. The 1M-GPU high scenario generates 3{,}255~MW, exceeding India's entire current capacity by a factor of 2.07$\times$. The tornado sensitivity profile in Fig.~\ref{fig:sensitivity} confirms that facility cooling PUE and server host overhead ratios account for the largest deviations in peak power draw, with cooling efficiency variations introducing up to $\pm$28\% swing in annual water withdrawal.
 
 \begin{table*}[t]
 \centering
@@ -270,21 +297,23 @@ Table~\ref{tab:scenarios} presents DCM output across three deployment scenarios 
 
 \subsection{Finding~1: Refuting the Silicon Wafer Hypothesis}
 
-Deploying 500{,}000 GPUs requires exactly \textbf{12{,}500} 300~mm wafer starts at TSMC's sub-5\,nm nodes. Against TSMC's annual sub-5\,nm output of approximately 780{,}000 wafers \cite{tsmc2025annual}, India's requirement represents \textbf{1.60\% of global supply}---easily absorbable through commercial procurement. This directly refutes the assumption that India must build a domestic leading-edge foundry to achieve compute sovereignty. A sub-3\,nm gigafab requires \$15--20~billion in capital expenditure, 25{,}000+ wafer starts per month at minimum efficient scale, and 7--10 years of construction lead time---severe capital misallocation for 1.6\% of the needed wafer volume.
+Deploying 500{,}000 GPUs requires exactly \textbf{12{,}500} 300~mm wafer starts at TSMC's sub-5\,nm nodes. Against TSMC's annual sub-5\,nm output of approximately 780{,}000 wafers \cite{tsmc2025annual}, India's requirement represents \textbf{1.60\% of global supply}---easily absorbable through commercial procurement channels. This directly refutes the prevailing assumption that India must build a domestic leading-edge foundry to achieve compute sovereignty.
+
+The capital economics are decisive: a sub-3\,nm gigafab requires \$15--20~billion in upfront capital expenditure, 25{,}000+ wafer starts per month at minimum efficient scale, 7--10 years of construction lead time, and a workforce of thousands of PhD-level process engineers that India does not currently possess. This represents severe capital misallocation for 1.6\% of the needed wafer volume that can be procured commercially---particularly when the same capital deployed into packaging joint ventures and transmission infrastructure would yield far higher sovereignty leverage per rupee invested.
 
 \subsection{Finding~2: Structural Chokepoint Inversion}
 
-While silicon lithography is abundant relative to demand, Table~\ref{tab:chokepoints} and Fig.~\ref{fig:inversion} reveal the true binding constraints are advanced packaging and metropolitan power transmission:
+While silicon lithography is abundant relative to demand, Table~\ref{tab:chokepoints} and Fig.~\ref{fig:inversion} reveal the true binding constraints are advanced packaging and metropolitan power transmission---not front-end wafer fabrication:
 
 \begin{itemize}
-  \item \textbf{CoWoS Advanced Packaging:} 500k GPUs require 33{,}334 CoWoS interposer wafers, consuming \textbf{7.41\%} of global CoWoS capacity (HHI~=~8{,}100)---a constraint intensity \textbf{4.6$\times$ higher} than front-end wafer fabrication. CoWoS capacity cannot be expanded without TSMC's proprietary tooling.
-  \item \textbf{HBM3e Memory:} 500k accelerators require 4{,}000{,}000 HBM3e stacks, absorbing \textbf{6.67\%} of annual global output from a triopoly (SK Hynix, Samsung, Micron) where India has zero domestic production.
-  \item \textbf{Metropolitan Grid Saturation:} Feeding 891.8~MW into Mumbai---hosting 52.4\% of India's data centres---requires 18 dedicated 50~MW substation interconnections under CEA standards \cite{cea2026transmission}, with grid-connection queues extending 24--36~months. The constraint is not generation capacity but last-mile transmission infrastructure.
+  \item \textbf{CoWoS Advanced Packaging:} 500k GPUs require 33{,}334 CoWoS interposer wafers, consuming \textbf{7.41\%} of global CoWoS capacity (HHI~=~8{,}100)---a constraint intensity \textbf{4.6$\times$ higher} than front-end wafer fabrication. CoWoS capacity expansion requires TSMC's proprietary tooling and cannot be replicated by third parties without a multi-year bilateral partnership.
+  \item \textbf{HBM3e Memory:} 500k accelerators require 4{,}000{,}000 HBM3e stacks, absorbing \textbf{6.67\%} of annual global output from a triopoly (SK Hynix, Samsung, Micron) where India has zero domestic production and no near-term manufacturing roadmap.
+  \item \textbf{Metropolitan Grid Saturation:} Feeding 891.8~MW into Mumbai---hosting 52.4\% of India's data centres---requires 18 dedicated 50~MW substation interconnections under CEA standards \cite{cea2026transmission}, with grid-connection queues extending 24--36~months. The constraint is not generation capacity but last-mile transmission infrastructure and statutory interconnection timelines.
 \end{itemize}
 
 \begin{table}[t]
 \centering
-\caption{Structural Chokepoint Hierarchy (500k Baseline)}
+\caption{Structural Chokepoint Hierarchy (500k GPU Baseline)}
 \label{tab:chokepoints}
 \scriptsize
 \begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lrrrr@{}}
@@ -303,7 +332,9 @@ Municipal Water Rights & N/A & 100\% & 11{,}250~ML & Seasonal \\
 
 \subsection{Finding~3: Tropical Cooling Penalty and Water Crisis}
 
-Table~\ref{tab:cooling} and Fig.~\ref{fig:pareto} present the cooling trade-off matrix across ambient thermal regimes. Under conventional evaporative air cooling at summer peak ($>$42\textdegree C), PUE spikes to 1.65 and water consumption reaches \textbf{11{,}651~ML/year} for 500k GPUs---equivalent to the annual water supply of approximately 280{,}000 Indian households, creating direct conflict with municipal water rights in water-stressed corridors.
+Table~\ref{tab:cooling} and Fig.~\ref{fig:pareto} present the cooling trade-off matrix across ambient thermal regimes. Under conventional evaporative air cooling at summer peak ($>$42\textdegree C), PUE spikes to 1.65 and water consumption reaches \textbf{11{,}651~ML/year} for 500k GPUs---equivalent to the annual water supply of approximately 280{,}000 Indian households. This creates direct conflict with municipal water rights in water-stressed urban corridors including Noida, Hyderabad, and Pune.
+
+Transitioning to Direct-to-Chip (D2C) liquid cooling with closed-loop dry heat rejection slashes water consumption by \textbf{94.6\%} (from 11{,}651~ML to 631~ML/year) while reducing peak facility power by \textbf{172~MW} through PUE improvement from 1.45 to 1.18. Single-phase immersion cooling achieves even lower PUE (1.12) with near-zero water withdrawal (150.8~ML/year), but at three to four times the upfront capital cost of D2C and greater operational complexity. D2C liquid cooling represents the optimal near-term national standard: commercially available from multiple vendors, compatible with existing rack form factors, and achieving sufficient water reduction to avoid municipal conflict in most deployment zones.
 
 \begin{figure}[t]
 \centering
@@ -312,16 +343,14 @@ Table~\ref{tab:cooling} and Fig.~\ref{fig:pareto} present the cooling trade-off 
 \label{fig:pareto}
 \end{figure}
 
-Transitioning to Direct-to-Chip (D2C) liquid cooling with closed-loop dry heat rejection slashes water consumption by \textbf{94.6\%} (from 11{,}651~ML to 631~ML/year) while reducing peak facility power by \textbf{172~MW} through PUE improvement from 1.45 to 1.18. D2C liquid cooling is therefore not merely an environmental preference but a \textit{national infrastructure standard} required for India's AI ambitions to be physically viable.
-
 \begin{table}[t]
 \centering
-\caption{Cooling Technology Trade-Off Matrix Under Tropical Climates}
+\caption{Cooling Technology Trade-Off Matrix Under Tropical Climates (500k GPUs)}
 \label{tab:cooling}
 \scriptsize
 \begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}p{2.6cm}rrrr@{}}
 \toprule
-\textbf{Cooling System} & \textbf{PUE} & \textbf{Peak} & \textbf{WUE} & \textbf{Water (ML)} \\
+\textbf{Cooling System} & \textbf{Ann.~PUE} & \textbf{Peak~PUE} & \textbf{WUE} & \textbf{Water (ML)} \\
 \midrule
 Traditional Air (Evap.) & 1.45 & 1.65 & 1.80 & 11{,}651.2 \\
 Rear-Door Heat Ex. & 1.35 & 1.45 & 1.00 & 6{,}031.5 \\
@@ -331,14 +360,18 @@ Single-Phase Immersion & 1.12 & 1.18 & 0.03 & 150.8 \\
 \end{tabular*}
 \end{table}
 
-\subsection{Finding~4: Cross-National Compute Gap}
+\subsection{Finding~4: Cross-National Compute Gap and Convergence Pathway}
 
-India's sovereign GPU fleet of 34{,}000--45{,}000 accelerators represents approximately 0.3\% of the United States' estimated 4~million-GPU fleet, and less than 1\% of China's 1.5~million units \cite{hai2025aiindex}, as benchmarked in Fig.~\ref{fig:benchmark}. Under the baseline 500k scenario, deploying 500{,}000 GPUs would elevate India's active AI compute from approximately 35~ExaFLOPS to 245~ExaFLOPS---closing the gap with China's estimated 450~ExaFLOPS---but requires managing deep structural dependencies at every supply chain layer. US Export Administration Regulations (EAR) classify H100 and H200 GPUs as controlled items; continued access depends on bilateral frameworks under iCET \cite{whitehouse2023icet}.
+India's sovereign GPU fleet of 34{,}000--45{,}000 accelerators represents approximately 0.3\% of the United States' estimated 4~million-GPU fleet, and less than 1\% of China's 1.5~million units \cite{hai2025aiindex}, as benchmarked in Fig.~\ref{fig:benchmark}. The effective AI compute capacity disparity is even larger: the US fleet delivers approximately 1{,}200~ExaFLOPS of FP16 capacity, China $\approx$450~ExaFLOPS, and India's current sovereign pool $\approx$35~ExaFLOPS.
+
+Under the baseline 500k scenario, deploying 500{,}000 GPUs would elevate India's active AI compute from approximately 35~ExaFLOPS to 245~ExaFLOPS---closing the gap with China's estimated 450~ExaFLOPS to within a factor of two---but requires managing deep structural dependencies at every supply chain layer. US Export Administration Regulations (EAR) classify H100 and H200 GPUs as controlled items; continued access depends on bilateral frameworks under iCET \cite{whitehouse2023icet} and ongoing Foreign Policy-level negotiations that are not guaranteed under any alternative US administration scenario.
+
+The GPU tariff dimension is equally significant. India's IndiaAI Mission provides subsidised compute access at Rs.~65 per GPU-hour ($\approx$\$0.78/hr) for approved startups and academic researchers, against a commercial market rate of \$2.00--2.80/hr \cite{sbicap2025datacentre}. This fiscal transfer of approximately 72\% cost reduction is sustainable only as long as the government budget remains committed and the underlying GPU lease agreements remain renewable---a dependency on continued geopolitical alignment with US export policy.
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.95\textwidth]{figures/fig3_country_comparison_benchmark.pdf}
-\caption{Cross-national comparative benchmark between the United States, China, and India across accelerated compute stock (Panel A) and microelectronic supply chain self-sufficiency tiers (Panel B).}
+\caption{Cross-national comparative benchmark between the United States, China, and India across accelerated compute stock in ExaFLOPS (Panel~A) and microelectronic supply chain self-sufficiency across four strategic tiers (Panel~B).}
 \label{fig:benchmark}
 \end{figure*}
 
@@ -346,37 +379,39 @@ India's sovereign GPU fleet of 34{,}000--45{,}000 accelerators represents approx
 
 \subsection{Three-Tier Intervention Architecture}
 
-Interventions are categorised into three operational tiers, ordered by feasibility, lead time, and sovereignty leverage:
+The DCM results, combined with the IAIRF~2.0 cross-pillar analysis, motivate a three-tier intervention architecture. Interventions are categorised by feasibility horizon, capital requirement, and sovereignty leverage---translating the qualitative ``Indispensable, Not Imitative'' doctrine \cite{niti2026semiconductor} into an operationally sequenced roadmap:
 
 \subsubsection{Tier~1: Build Domestically (2026--2028)}
 
 \begin{itemize}
-  \item \textbf{Geographic Diversification Mandate:} The DCM demonstrates that concentrating 891.8~MW in Mumbai is physically infeasible within a 24-month planning horizon. Policy should mandate 15--20\% capital rebates for greenfield AI clusters directed toward power-surplus states (Gujarat, Rajasthan, Andhra Pradesh, Odisha, Madhya Pradesh), targeting Mumbai below 35\% of national capacity by~2028.
-  \item \textbf{D2C Liquid Cooling Standard:} Condition IndiaAI compute subsidies on maximum facility PUE of 1.25 and mandatory closed-loop dry heat rejection, eliminating 11~billion litres per year of water loss at 500k scale.
-  \item \textbf{Fast-Track Transmission Substations:} Amend CEA regulations to create a dedicated 9-month approval window for 400/220~kV substations serving compute clusters of 50~MW or more. Establish a statutory AI Infrastructure Clearance Authority (AICA) under PMO to issue composite clearances within 90~days for qualifying projects.
-  \item \textbf{AI Infrastructure Zones (AIZs):} Designate 20 pre-cleared, pre-approved, pre-connected AI Infrastructure Zones across 10~states---analogous to Special Economic Zones---with aggregated land, pre-built substations, and pre-laid fibre dark rings, enabling 90-day developer uptake.
+  \item \textbf{Geographic Diversification Mandate:} The DCM demonstrates that concentrating 891.8~MW in Mumbai is physically infeasible within a 24-month planning horizon. Policy should mandate 15--20\% capital rebates for greenfield AI clusters directed toward power-surplus states (Gujarat, Rajasthan, Andhra Pradesh, Odisha, Madhya Pradesh), targeting Mumbai below 35\% of national capacity by~2028. The five designated AI Power Corridors should be pre-equipped with 400/220~kV dedicated transmission infrastructure rated for 5~GW aggregate load.
+  \item \textbf{D2C Liquid Cooling Standard:} Condition IndiaAI compute subsidies on maximum facility PUE of 1.25 and mandatory closed-loop dry heat rejection, eliminating 11~billion litres per year of water loss at 500k scale. This condition should be codified in the IndiaAI empanelment criteria for all new data-centre service providers.
+  \item \textbf{Fast-Track Transmission Substations:} Amend CEA regulations to create a dedicated 9-month approval window for 400/220~kV substations serving compute clusters of 50~MW or more. Establish a statutory AI Infrastructure Clearance Authority (AICA) under PMO to issue composite clearances within 90~days for qualifying projects across all 14--22 regulatory bodies currently involved in approving a major data-centre development.
+  \item \textbf{AI Infrastructure Zones (AIZs):} Designate 20 pre-cleared, pre-approved, pre-connected AI Infrastructure Zones across 10~states---analogous to Special Economic Zones---with aggregated land, pre-built 400~kV substations, and pre-laid 100~Gbps dark fibre rings, enabling 90-day developer uptake versus the current 36--60-month industry average.
+  \item \textbf{Open Runtime Stack Investment:} Fund development of an open-source AI compiler stack compatible with non-NVIDIA accelerators, reducing CUDA software dependency and enabling future procurement diversification toward alternative architectures (Gaudi, TPU, domestic RISC-V ASICs). This investment of approximately Rs.~200~crore can generate disproportionate sovereignty leverage by decoupling India's AI software stack from a single-vendor hardware lock-in.
 \end{itemize}
 
 \subsubsection{Tier~2: Develop Through Strategic Partnerships (2028--2031)}
 
 \begin{itemize}
-  \item \textbf{Advanced Packaging Joint Ventures:} Expand approved domestic ATMP/OSAT facilities (Tata Electronics, Micron Sanand) toward 2.5D silicon and glass interposer capability through joint ventures with Taiwanese OSATs (ASE, Powertech) and Japanese foundries (Ibiden) under Semicon India~2.0. Domestic CoWoS-equivalent capacity at 10\% of global scale would reduce India's 7.41\% foreign packaging dependency to below 1\% by 2032.
-  \item \textbf{Critical Mineral Refining:} Scale CSIR-IMMT technology to extract refined gallium from domestic bauxite refinery red mud at NALCO (Damanjodi) and Hindalco (Renukoot), targeting 50~metric tonnes per year of 6N-purity gallium to partially offset China's 99\% supply dominance \cite{usgs2025gallium}.
-  \item \textbf{Sovereign Chiplet Consortium:} Mobilise India's estimated 120{,}000 VLSI design engineers into an open-standard (UCIe protocol) chiplet consortium targeting domain-specific RISC-V matrix-acceleration tiles on mature 28\,nm nodes, leveraging India's design strength without premature leading-edge fab capital commitment.
-  \item \textbf{Captive Renewable Baseload:} Transition IndiaAI-funded compute campuses to Round-the-Clock (RTC) captive renewable power through hybrid solar-wind-BESS PPAs, supplemented by small modular reactor (SMR) procurement under the SHANTI Act (2025) targeting first nuclear power for AI campuses by~2030.
+  \item \textbf{Advanced Packaging Joint Ventures:} Expand approved domestic ATMP/OSAT facilities (Tata Electronics at Morigaon, Micron at Sanand) toward 2.5D silicon and glass interposer capability through joint ventures with Taiwanese OSATs (ASE Group, Powertech Technology) and Japanese substrate suppliers (Ibiden, Shinko Electric) under Semicon India~2.0. Domestic CoWoS-equivalent capacity at 10\% of global scale would reduce India's 7.41\% foreign packaging dependency to below 1\% by 2032, converting the primary structural chokepoint into a managed supply relationship.
+  \item \textbf{Critical Mineral Refining:} Scale CSIR-IMMT technology to extract refined gallium from domestic bauxite refinery red mud at NALCO (Damanjodi, Odisha) and Hindalco (Renukoot, UP), targeting 50~metric tonnes per year of 6N-purity gallium to partially offset China's 99\% supply dominance \cite{usgs2025gallium}. India's bauxite reserves represent an underutilised feedstock for gallium extraction that requires only proven hydrometallurgical technology at commercial scale.
+  \item \textbf{Sovereign Chiplet Consortium:} Mobilise India's estimated 120{,}000 VLSI design engineers into an open-standard (UCIe protocol) chiplet consortium targeting domain-specific RISC-V matrix-acceleration tiles on mature 28\,nm nodes---technology that can be fabricated at the Tata-PSMC Dholera facility. This leverages India's genuine comparative advantage in silicon design without committing to premature leading-edge fab capital.
+  \item \textbf{Captive Renewable Baseload:} Transition IndiaAI-funded compute campuses to Round-the-Clock (RTC) captive renewable power through hybrid solar-wind-BESS power purchase agreements, supplemented by small modular reactor (SMR) procurement under the SHANTI Act (2025) targeting first nuclear power delivery to AI campuses by~2030. Nuclear baseload at 300~MW per SMR unit eliminates the intermittency constraint that prevents solar from serving as five-nines compute power.
+  \item \textbf{BharatGen Foundation Model Sovereignty:} Fund development of a frontier-scale Indian foundation model with a dedicated Rs.~5{,}000~crore compute allocation within the expanded IndiaAI Mission, targeting performance parity with contemporary large language models on multilingual Indian language tasks. Mandatory deployment of BharatGen for all sensitive government AI workloads would eliminate foreign-cloud data sovereignty risk for national security applications.
 \end{itemize}
 
 \subsubsection{Tier~3: Manage External Dependencies (2031--2035)}
 
 \begin{itemize}
   \item \textbf{Foundry Capacity Reservations:} Secure multi-year sovereign wafer allocation agreements at TSMC and Samsung Foundry, leveraging India's 1.4-billion-consumer market as a strategic trade offset. Given that 500k GPUs require only 1.60\% of TSMC's sub-5\,nm output, this is a commercially manageable negotiation.
-  \item \textbf{HBM Supply Diversification:} Establish bilateral memory supply treaties with South Korea (SK Hynix, Samsung) and the United States (Micron) under QUAD Semiconductor Supply Chain Initiative, creating advance-purchase reservations for HBM4 allocations.
-  \item \textbf{Open AI Runtime Stack:} Commission development of an open-source AI compiler stack compatible with non-NVIDIA accelerators, reducing CUDA software dependency and enabling procurement diversification toward alternative compute architectures (Gaudi, TPU, domestic RISC-V ASICs).
+  \item \textbf{HBM Supply Diversification:} Establish bilateral memory supply treaties with South Korea (SK Hynix, Samsung) and the United States (Micron) under the QUAD Semiconductor Supply Chain Initiative, creating advance-purchase reservations for HBM4 allocations before 2032.
+  \item \textbf{Export Control Contingency Planning:} Develop a formal technology-shock response playbook specifying which sovereign compute assets can be maintained under various EAR restriction scenarios (from current controlled status to full allied-nation exclusion), enabling proactive infrastructure decisions that reduce discontinuity risk for national AI programmes.
 \end{itemize}
 
 \subsection{Investment and Governance Architecture}
 
-Table~\ref{tab:investment} summarises investment requirements across the five pillars. The aggregate public-sector requirement of approximately Rs.~95{,}500~crore (\$11.5~billion) compares to the United States' \$500~billion Stargate commitment, confirming the ``N-2'' structural asymmetry. India's strategy must maximise public investment leverage through PPP mobilisation, FDI facilitation, and multilateral development finance.
+Table~\ref{tab:investment} summarises investment requirements across the five pillars and three tiers. The aggregate public-sector requirement of approximately Rs.~95{,}500~crore (\$11.5~billion) over the 2026--2035 horizon compares to the United States' \$500~billion Stargate commitment, confirming the ``N-2'' structural asymmetry. However, India's strategic leverage lies in its 1.4-billion-user domestic market and unique geopolitical position as a neutral technical partner---assets that can be deployed to attract PPP mobilisation of Rs.~2{,}57{,}000~crore in private and multilateral capital against relatively modest public catalytic investment.
 
 \begin{table}[t]
 \centering
@@ -400,34 +435,46 @@ Connectivity/Security (P4) & 8{,}000 & 12{,}000 & DoT, NCIIPC \\
 \end{tabular*}
 \end{table}
 
-\subsection{Measurable Indicators}
+\subsection{Measurable Indicators and KPIs}
 
-\textbf{P1~---~Compute:} Sovereign GPU fleet size (units); domestic ATMP throughput (wafers/year); VLSI design IP registrations (annual count).
+To operationalise IAIRF~2.0 as an active policy monitoring instrument, each pillar requires publicly trackable key performance indicators:
 
-\textbf{P2~---~Energy:} Grid-connection lead time for $\ge$50\,MW compute loads (months); captive RTC renewable share at IndiaAI campuses (\%); BESS capacity in compute corridors (GWh).
+\noindent\textbf{P1~---~Compute:} Sovereign GPU fleet size (units); domestic ATMP throughput (wafers/year); VLSI design IP registrations (annual count); compute subsidy utilisation rate by Indian startups (\%).
 
-\textbf{P3~---~Physical:} Mumbai's share of national data-centre capacity (\%); D2C liquid-cooled share of AI compute MW (\%); average PUE at IndiaAI-empanelled sites.
+\noindent\textbf{P2~---~Energy:} Grid-connection lead time for $\ge$50\,MW compute loads (months); captive RTC renewable share at IndiaAI campuses (\%); BESS capacity commissioned in AI Power Corridors (GWh); average tariff per kWh for compute campuses (Rs.).
 
-\textbf{P4~---~Connectivity:} Inter-metro backbone capacity (Tbps); DPDPA implementing rules in force (binary); OT cybersecurity incident reporting compliance (\%).
+\noindent\textbf{P3~---~Physical:} Mumbai's share of national data-centre capacity (\%); D2C liquid-cooled share of AI compute MW (\%); average PUE at IndiaAI-empanelled sites; number of operational AI Infrastructure Zones.
 
-\textbf{P5~---~Governance:} AICA 90-day clearance compliance rate (\%); actual IndiaAI disbursement vs.\ sanctioned budget (\%); AI PhD completions per year (count).
+\noindent\textbf{P4~---~Connectivity:} Inter-metro backbone capacity to AIZ sites (Tbps); DPDPA implementing rules in force (binary); OT cybersecurity incident reporting compliance at 50~MW+ assets (\%); number of submarine cable systems with domestic landing rights.
+
+\noindent\textbf{P5~---~Governance:} AICA 90-day clearance compliance rate (\%); actual IndiaAI disbursement vs.\ sanctioned budget (\%); AI PhD completions per year (count); diaspora repatriation programme enrolments.
+
+\subsection{GDP Impact and Economic Multiplier Analysis}
+
+The economic case for accelerated AI infrastructure investment is compelling at the macro scale. NITI Aayog projects that AI can contribute \$500~billion to India's GDP by 2030 under accelerated deployment scenarios. Independent analysis from Stanford HAI \cite{hai2025aiindex} demonstrates that each dollar of sovereign compute investment generates approximately \$3--5 in downstream AI application economic value within five years, driven by the multiplier effect of enabling domestic AI model training, application development, and AI-optimised service delivery.
+
+At the 500k-GPU baseline scenario, the resulting 245~ExaFLOPS of sovereign compute capacity could enable: training 50+ competitive foundation models per year at GPT-4 equivalent scale; running 2~billion AI inference queries per day for government services (healthcare, agriculture, education, governance); and supporting 3{,}500+ AI startups with subsidised compute access---collectively supporting an AI-driven GDP contribution of approximately \$120~billion by 2030 versus \$50~billion under the current pace trajectory. The difference between these scenarios compounds to approximately \$2~trillion in additional economic value by 2047.
 
 \section{Limitations and Future Research}
 
-The DCM rests on three assumptions that bound generalisability. First, the model assumes static annual cluster utilisation ($U = 0.80$) without dynamic diurnal inference-load variation; real AI training clusters spike grid draw by 20--40\% above the modelled average during peak runs. Second, TSMC's proprietary defect density curves for its custom 4N process remain confidential; the Murphy model uses public academic bounds that may differ from commercial reality by $\pm$10--15 percentage points. Third, the geopolitical trajectory of US Export Administration Regulations is not deterministically modellable; continued H100/H200 access under iCET may not hold under alternative US policy scenarios.
+The DCM rests on three assumptions that bound generalisability. First, the model assumes static annual cluster utilisation ($U = 0.80$) without dynamic diurnal inference-load variation; real AI training clusters spike grid draw by 20--40\% above the modelled average during peak runs, potentially triggering state-level grid instability at higher deployment scenarios. Second, TSMC's proprietary defect density curves for its custom 4N process remain confidential; the Murphy model uses public academic bounds that may differ from commercial reality by $\pm$10--15 percentage points in yield, corresponding to $\pm$8--12\% error in wafer start estimates. Third, the geopolitical trajectory of US Export Administration Regulations is not deterministically modellable; continued H100/H200 access under iCET may not hold under alternative US policy scenarios, particularly if India-China border tensions or India-Pakistan conflict scenarios trigger allied-nation reassessment of technology transfer risk.
 
-Future research should integrate AC power-flow simulations linking DCM MW output to state-level grid topologies, incorporate dynamic diurnal AI inference scaling from real cluster telemetry, and extend the five-pillar framework to ASEAN peer economies (Indonesia, Vietnam, Thailand) facing analogous N-2 constraints with different resource endowments.
+Additional limitations include: the DCM models only H100-class TDP and does not account for the discrete step-function change introduced by Blackwell architecture at 1{,}200~W; municipal water pricing signals are absent from the water withdrawal analysis, underweighting economic incentives for liquid cooling adoption; and the investment table assumes constant 2026 capital costs without modelling manufacturing learning curves that typically reduce data-centre construction costs by 15--20\% per generation.
+
+Future research should integrate AC power-flow simulations linking DCM MW output to state-level grid topologies with the actual transmission loss and stability margins, incorporate dynamic diurnal AI inference scaling from real cluster telemetry available through IndiaAI Mission's monitoring infrastructure, extend the five-pillar framework to ASEAN peer economies (Indonesia, Vietnam, Thailand) facing analogous N-2 constraints with different resource endowments, and model the macro-economic welfare effects of different cooling technology transition rates on urban water security in Indian metropolitan areas.
 
 \section{Conclusion}
 
-This paper has presented IAIRF~2.0 and the Demand-Cascade Model as complementary instruments for evidence-based AI infrastructure planning in India. The empirical results yield four non-obvious findings that challenge prevailing policy assumptions: silicon wafer fabrication is not India's binding constraint; advanced packaging and metropolitan grid transmission are; tropical cooling physics impose a structural water-security threat at scale; and geographic concentration in Mumbai creates systemic fragility that software sovereignty cannot offset.
+This paper has presented IAIRF~2.0 and the Demand-Cascade Model as complementary instruments for evidence-based AI infrastructure planning in India. The empirical results yield four non-obvious findings that challenge prevailing policy assumptions: silicon wafer fabrication is not India's binding constraint; advanced packaging and metropolitan grid transmission are the true structural chokepoints; tropical cooling physics impose a structural water-security threat at scale; and geographic concentration in Mumbai creates systemic fragility that software sovereignty cannot offset.
 
-These findings motivate a strategic priority inversion. Instead of allocating constrained public capital toward a \$15--20~billion leading-edge logic foundry---consuming 20\% of India's five-year defence budget for 1.6\% of needed wafer volume---India should direct capital toward high-voltage transmission corridors, geographic dispersion incentives, advanced packaging joint ventures, and direct-to-chip cooling mandates. The leading-edge fab remains a valuable long-term aspiration but is not the binding constraint for India's 2026--2030 compute sovereignty objectives.
+These findings motivate a strategic priority inversion. Instead of allocating constrained public capital toward a \$15--20~billion leading-edge logic foundry---consuming 20\% of India's five-year defence budget for 1.6\% of the needed wafer volume---India should direct capital toward high-voltage transmission corridors, geographic dispersion incentives, advanced packaging joint ventures, direct-to-chip cooling mandates, and a pre-cleared AI Infrastructure Zone network. The leading-edge fab remains a valuable long-term aspiration for 2035+ but is not the binding constraint for India's 2026--2030 compute sovereignty objectives.
 
-India possesses structural competitive advantages that no policy alone can replicate: unmatched engineering talent depth, a 1.4-billion-user multilingual data asset, and a geopolitical position coveted by both the United States and the Global South. The IAIRF~2.0 framework and three-tier intervention roadmap provide a technically grounded, evidence-backed path for converting these latent advantages into operational infrastructure before the window of competitive opportunity narrows. The AI race is ultimately an infrastructure race. India can win it---but only at the speed of transmission towers, not press releases.
+The geopolitical window available to India is real but time-bounded. The US-China technology decoupling creates a narrow aperture in which India can leverage its market scale, engineering depth, and neutral position to secure bilateral technology partnerships that would not be available under normalised great-power competition. Operating within this window requires institutional velocity that India's current regulatory architecture does not yet demonstrate---but can achieve through the AICA clearance authority, AIZ pre-clearance programme, and AI Power Corridor designations proposed in this paper.
+
+India possesses structural competitive advantages that no policy alone can replicate: unmatched engineering talent depth, a 1.4-billion-user multilingual data asset, Rs.~10{,}371~crore of committed public compute capital, and a geopolitical position coveted by both the United States and the Global South. The IAIRF~2.0 framework and three-tier intervention roadmap provide a technically grounded, evidence-backed path for converting these latent advantages into operational infrastructure before the window of competitive opportunity narrows. The AI race is ultimately an infrastructure race---won in the unglamorous work of clearing land, stringing transmission lines, negotiating packaging capacity, and dissolving bureaucratic red tape. India can win it---but only at the speed of transmission towers, not press releases.
 
 \section*{Acknowledgment}
-The authors acknowledge research facilities at Amity University Madhya Pradesh and primary data provided by the Central Electricity Authority, MeitY, NITI Aayog, and open academic repositories. Quantitative modelling was implemented in Python~3.12. Generative AI tools were used exclusively for simulation scripting, \LaTeX\ formatting, and bibliographic indexing under full author verification and review. All claims are traceable to primary sources cited herein.
+The authors acknowledge research facilities at Amity University Madhya Pradesh and primary data provided by the Central Electricity Authority, Ministry of Electronics and Information Technology, NITI Aayog, State Bank of India Capital Markets, and open academic repositories including Stanford HAI and arXiv. Quantitative modelling was implemented in Python~3.12 with NumPy and Matplotlib. Generative AI tools were used exclusively for simulation scripting, \LaTeX\ formatting, and bibliographic indexing under full author verification and review. All claims are traceable to primary sources cited herein.
 
 \balance
 
