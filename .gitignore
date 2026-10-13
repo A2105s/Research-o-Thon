@@ -40,3 +40,6 @@ desktop.ini
 # Exclude copyrighted external PDFs from git tracking
 sources/research_papers/*.pdf
 sources/official_reports/*.pdf
+research papers/
+scratch/
+*.bak
