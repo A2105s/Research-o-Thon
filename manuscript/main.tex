@@ -1,4 +1,4 @@
-﻿\documentclass[conference]{IEEEtran}
+\documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
@@ -11,32 +11,36 @@
 \usepackage{url}
 \usepackage{array}
 \usepackage{enumitem}
+\usepackage{balance}
+
+\pagestyle{empty}
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 \begin{document}
 
-\title{Sovereign by Design: An Integrated Five-Pillar Framework\\for India's AI Infrastructure Sovereignty}
+\title{Sovereign by Design: An Integrated Five-Pillar Framework\\for India's Strategic Compute and Artificial Intelligence Infrastructure}
 
 \author{
 \IEEEauthorblockN{Parikshit Singh Bais\IEEEauthorrefmark{1},
 Adarsh Singh\IEEEauthorrefmark{2},
 Sourav\IEEEauthorrefmark{2},
 Anamidhi Shrivastava\IEEEauthorrefmark{2}}
-\IEEEauthorblockA{\IEEEauthorrefmark{1,2}\textit{Dept.\ of Computer Science and Engineering}\\
+\IEEEauthorblockA{\IEEEauthorrefmark{1,2}\textit{Department of Computer Science and Engineering}\\
 \textit{Amity School of Engineering and Technology, Amity University Madhya Pradesh}\\
-Gwalior, India \quad Email: contact@amity.edu}
+Gwalior, Madhya Pradesh, India \quad Email: contact@amity.edu}
 }
 
 \maketitle
+\thispagestyle{empty}
 
 \begin{abstract}
-National artificial intelligence (AI) sovereignty has emerged as a defining strategic objective for middle-power economies navigating the US--China technology competition. Yet prevailing policy discourse treats the five physical and institutional pillars of AI infrastructure---compute and semiconductor supply chains, energy and grid readiness, data-centre physical resources, connectivity and data security, and governance and indigenous capability---as independent domains, generating fragmented investment plans that underestimate cross-pillar dependencies and misallocate scarce public capital. This paper addresses that gap by introducing the \textit{India AI Infrastructure Readiness Framework} (IAIRF~2.0), a unified five-pillar conceptual architecture, and coupling it with an auditable six-layer \textit{Demand-Cascade Model} (DCM) that propagates exogenous GPU deployment targets (200{,}000; 500{,}000; and 1{,}000{,}000 accelerators) through server power, facility electricity, cooling thermodynamics, advanced packaging, and high-bandwidth memory. Parameterised from government telemetry, foundry specifications, and independent market audits, the model yields four empirically grounded findings. First, for a baseline 500{,}000-GPU deployment, peak facility power reaches 891.8~MW---equivalent to 56.62\% of India's entire mid-2026 operational colocation capacity of 1{,}575~MW. Second, the widespread assumption that domestic sub-5\,nm silicon fabrication is the binding chokepoint is empirically refuted: required wafer starts represent only 1.60\% of TSMC's annual sub-5\,nm output, whereas 2.5D Chip-on-Wafer-on-Substrate (CoWoS) advanced packaging consumes 7.41\% of global capacity---a 4.6$\times$ higher constraint intensity. Third, tropical ambient conditions impose a structural PUE penalty of 0.15--0.25 above temperate baselines, and transitioning to direct-to-chip liquid cooling reduces on-site water withdrawal by 94.6\% at 500k scale. Fourth, Mumbai's concentration of 52.4\% of national data-centre capacity creates a transmission bottleneck requiring 18 dedicated 50~MW substations with a 24--36-month interconnection queue. Collectively, these findings motivate a \textit{strategic priority inversion}: India should subordinate premature leading-edge fab construction in favour of high-voltage transmission corridors, geographic dispersion, and bilateral advanced packaging joint ventures.
+National artificial intelligence sovereignty has emerged as a defining strategic objective for middle-power economies navigating intense global technology competition. Prevailing policy discourse treats the five physical and institutional pillars of compute infrastructure---semiconductor supply chains, power grids, data centre facilities, secure connectivity, and governance---as disconnected domains, underestimating cross-pillar dependencies and misallocating capital. This paper resolves that limitation by introducing an integrated five-pillar readiness framework coupled with an auditable six-layer demand-cascade model. The model propagates national accelerator deployment targets across host server overheads, facility power demand, cooling water consumption, semiconductor wafer starts, advanced packaging substrates, and high-bandwidth memory allocations. Parameterised using regulatory telemetry and foundry audits, the empirical analysis establishes four core findings. First, a baseline fleet of five hundred thousand accelerators demands 891.8 megawatts of peak facility power, consuming 56.62 percent of India's operational colocation capacity. Second, the assumption that domestic sub-five-nanometre wafer fabrication represents the primary bottleneck is refuted: required wafer starts consume merely 1.60 percent of global foundry capacity, whereas advanced packaging consumes 7.41 percent---a four-fold higher constraint intensity. Third, direct-to-chip liquid cooling reduces evaporative water withdrawal by 94.6 percent relative to conventional cooling under tropical climates. Fourth, geographical concentration in western corridors creates acute transmission backlogs. Consequently, the paper provides a prioritized roadmap emphasising transmission interconnects, packaging partnerships, and regional dispersion over premature foundry construction.
 \end{abstract}
 
 \begin{IEEEkeywords}
-AI sovereignty, semiconductor supply chain, demand-cascade model, advanced packaging, high-bandwidth memory, data-centre cooling, energy grid readiness, IndiaAI Mission, compute policy.
+Advanced packaging, Artificial intelligence, Compute sovereignty, Data centre cooling, High-bandwidth memory, Power grid infrastructure.
 \end{IEEEkeywords}
 
 \section{Introduction}
@@ -88,7 +92,7 @@ Despite this body of literature, five critical deficits remain unaddressed, as s
 \caption{Prior Art Benchmark and Analytical Literature Comparison Matrix}
 \label{tab:prior_art}
 \footnotesize
-\begin{tabular}{p{2.5cm}p{3.0cm}p{1.6cm}p{2.6cm}p{2.6cm}p{1.2cm}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}p{2.6cm}p{3.2cm}p{1.6cm}p{2.6cm}p{2.6cm}p{1.2cm}@{}}
 \toprule
 \textbf{Source} & \textbf{Primary Method} & \textbf{GPU Scenarios} & \textbf{Physical Infra} & \textbf{Microelectronics} & \textbf{Repro.} \\
 \midrule
@@ -99,7 +103,7 @@ Kaufmann et al.\ (2025) \cite{kaufmann2025powergrid} & Grid power-flow & None & 
 Stimson (2026) \cite{stimson2026sovereign} & Middle-power policy & None & None & None & No \\
 \textbf{This Paper (IAIRF~2.0)} & \textbf{5-Pillar + DCM} & \textbf{200k--1M} & \textbf{IT~MW, TWh, ML} & \textbf{Wafers, CoWoS, HBM} & \textbf{Python} \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 \end{table*}
 
 \section{The India AI Infrastructure Readiness Framework~2.0}
@@ -115,6 +119,13 @@ IAIRF~2.0 organises India's AI infrastructure challenge across five analytically
   \item \textbf{P4~---~Connectivity, Data \& Security:} Submarine cable infrastructure, backbone latency, cloud vendor concentration, DPDPA data governance, OT cybersecurity, and interoperability standards.
   \item \textbf{P5~---~Governance, Investment \& Indigenous Capability:} Public-private investment architecture, IndiaAI Mission, Semicon India~2.0, talent pipeline, GCC ecosystem leverage, and international technology partnerships.
 \end{itemize}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig1_demand_cascade_architecture.pdf}
+\caption{Six-layer demand-cascade architecture: from national compute policy targets down to server electrical load, high-voltage facility power, cooling thermodynamics, silicon wafer starts, and advanced packaging chokepoints.}
+\label{fig:cascade}
+\end{figure*}
 
 \subsection{Cross-Pillar Feedback Loops}
 
@@ -134,7 +145,7 @@ These interdependencies motivate the paper's central research question: \textit{
 
 \section{Demand-Cascade Model Formulation}
 
-The DCM maps an exogenous accelerator target $N$ (GPUs) through six deterministic computational layers, each grounded in verified empirical parameters.
+The Demand-Cascade Model (DCM) maps an exogenous accelerator target $N$ (GPUs) through six deterministic computational layers, each grounded in verified empirical parameters, as diagrammed in Fig.~\ref{fig:cascade}.
 
 \subsection{Layer~1: IT Electrical Load}
 
@@ -210,18 +221,25 @@ Each H100-class accelerator integrates $N_{\text{stacks}} = 8$ HBM3e memory stac
 \end{equation}
 Global HBM3e production is approximately 60~million stacks/year (SK Hynix $\approx$57\%, Samsung $\approx$38\%, Micron $\approx$5\%), against which India's allocation share is computed.
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig5_sensitivity_tornado_montecarlo.pdf}
+\caption{One-at-a-time parameter sensitivity and uncertainty tornado analysis across six critical input variables, highlighting that cooling efficiency and host power overhead dominate peak grid demand.}
+\label{fig:sensitivity}
+\end{figure}
+
 \section{Empirical Results and Cross-Pillar Analysis}
 
 \subsection{Scenario Simulation Results}
 
-Table~\ref{tab:scenarios} presents DCM output across three deployment scenarios and three sensitivity variants. Low variant: $P_{\text{gpu}}=700$~W, PUE~=~1.25; Base variant: $P_{\text{gpu}}=700$~W, PUE~=~1.40; High variant: $P_{\text{gpu}}=1{,}200$~W, PUE~=~1.55. In the baseline 500{,}000-GPU scenario, active IT load reaches 637.0~MW and peak facility power escalates to \textbf{891.8~MW}---equivalent to \textbf{56.62\%} of India's entire mid-2026 colocation capacity \cite{jll2026indiadc}. Annual electricity consumption totals \textbf{6.25~TWh/year}, generating 4.47~Mt~CO$_2$, and evaporative water demand reaches \textbf{11{,}249.5~ML/year}---comparable to the annual municipal water requirement of a major Indian city. The 1M-GPU high scenario generates 3{,}255~MW, exceeding India's entire current capacity by a factor of 2.07$\times$.
+Table~\ref{tab:scenarios} presents DCM output across three deployment scenarios and three sensitivity variants. Low variant: $P_{\text{gpu}}=700$~W, PUE~=~1.25; Base variant: $P_{\text{gpu}}=700$~W, PUE~=~1.40; High variant: $P_{\text{gpu}}=1{,}200$~W, PUE~=~1.55. In the baseline 500{,}000-GPU scenario, active IT load reaches 637.0~MW and peak facility power escalates to \textbf{891.8~MW}---equivalent to \textbf{56.62\%} of India's entire mid-2026 colocation capacity \cite{jll2026indiadc}. Annual electricity consumption totals \textbf{6.25~TWh/year}, generating 4.47~Mt~CO$_2$, and evaporative water demand reaches \textbf{11{,}249.5~ML/year}---comparable to the annual municipal water requirement of a major Indian city. The 1M-GPU high scenario generates 3{,}255~MW, exceeding India's entire current capacity by a factor of 2.07$\times$. The tornado sensitivity profile in Fig.~\ref{fig:sensitivity} demonstrates that facility cooling PUE and server host overhead ratios account for the largest deviations in peak power draw.
 
 \begin{table*}[t]
 \centering
 \caption{Demand-Cascade Model Simulation Results Across GPU Deployment Scenarios (Model v2.0)}
 \label{tab:scenarios}
 \footnotesize
-\begin{tabular}{llrrrrrrrrr}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llrrrrrrrrr@{}}
 \toprule
 \textbf{Scenario} & \textbf{Var.} & \textbf{IT~MW} & \textbf{Fac.~MW} & \textbf{TWh/yr} & \textbf{Water~ML} & \textbf{Wafers} & \textbf{TSMC\%} & \textbf{CoWoS} & \textbf{CoWoS\%} & \textbf{Colo\%} \\
 \midrule
@@ -240,8 +258,15 @@ Table~\ref{tab:scenarios} presents DCM output across three deployment scenarios 
  & Base & 1{,}274.0 & 1{,}783.6 & 12.50 & 22{,}499.0 & 25{,}000 & 3.21\% & 66{,}667 & 14.81\% & 113.24\% \\
  & High & 2{,}100.0 & 3{,}255.0 & 25.66 & 64{,}159.5 & 52{,}632 & 6.75\% & 83{,}334 & 18.52\% & 206.67\% \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 \end{table*}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig2_structural_chokepoint_inversion.pdf}
+\caption{The structural chokepoint inversion (500{,}000-GPU baseline): required share of global advanced packaging (7.41\%) and domestic colocation power (56.62\%) far outstrips raw logic wafer requirements (1.60\%).}
+\label{fig:inversion}
+\end{figure}
 
 \subsection{Finding~1: Refuting the Silicon Wafer Hypothesis}
 
@@ -249,7 +274,7 @@ Deploying 500{,}000 GPUs requires exactly \textbf{12{,}500} 300~mm wafer starts 
 
 \subsection{Finding~2: Structural Chokepoint Inversion}
 
-While silicon lithography is abundant relative to demand, Table~\ref{tab:chokepoints} reveals the true binding constraints are packaging and power transmission:
+While silicon lithography is abundant relative to demand, Table~\ref{tab:chokepoints} and Fig.~\ref{fig:inversion} reveal the true binding constraints are advanced packaging and metropolitan power transmission:
 
 \begin{itemize}
   \item \textbf{CoWoS Advanced Packaging:} 500k GPUs require 33{,}334 CoWoS interposer wafers, consuming \textbf{7.41\%} of global CoWoS capacity (HHI~=~8{,}100)---a constraint intensity \textbf{4.6$\times$ higher} than front-end wafer fabrication. CoWoS capacity cannot be expanded without TSMC's proprietary tooling.
@@ -259,10 +284,10 @@ While silicon lithography is abundant relative to demand, Table~\ref{tab:chokepo
 
 \begin{table}[t]
 \centering
-\caption{Structural Chokepoint Hierarchy (500k GPU Baseline)}
+\caption{Structural Chokepoint Hierarchy (500k Baseline)}
 \label{tab:chokepoints}
 \scriptsize
-\begin{tabular}{lrrrr}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lrrrr@{}}
 \toprule
 \textbf{Infrastructure Layer} & \textbf{HHI} & \textbf{India\%} & \textbf{500k\%} & \textbf{Lead Time} \\
 \midrule
@@ -273,35 +298,49 @@ HBM3e (SK/Samsung/Micron) & 4{,}950 & 0\% & \textbf{6.67\%} & 16--24~wks \\
 400~kV Substations (India) & 2{,}200 & 75\% & \textbf{56.62\%} & 36--48~mos \\
 Municipal Water Rights & N/A & 100\% & 11{,}250~ML & Seasonal \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 \end{table}
 
 \subsection{Finding~3: Tropical Cooling Penalty and Water Crisis}
 
-Table~\ref{tab:cooling} presents the cooling trade-off matrix. Under conventional evaporative air cooling at summer peak ($>$42\textdegree C), PUE spikes to 1.65 and water consumption reaches \textbf{11{,}651~ML/year} for 500k GPUs---equivalent to the annual water supply of approximately 280{,}000 Indian households, creating direct conflict with municipal water rights in water-stressed corridors.
+Table~\ref{tab:cooling} and Fig.~\ref{fig:pareto} present the cooling trade-off matrix across ambient thermal regimes. Under conventional evaporative air cooling at summer peak ($>$42\textdegree C), PUE spikes to 1.65 and water consumption reaches \textbf{11{,}651~ML/year} for 500k GPUs---equivalent to the annual water supply of approximately 280{,}000 Indian households, creating direct conflict with municipal water rights in water-stressed corridors.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig4_cooling_water_energy_pareto.pdf}
+\caption{Cooling technology water-energy Pareto frontier across Indian tropical ambient profiles, indicating that Direct-to-Chip liquid cooling achieves the optimal trade-off between power efficiency and water conservation.}
+\label{fig:pareto}
+\end{figure}
 
 Transitioning to Direct-to-Chip (D2C) liquid cooling with closed-loop dry heat rejection slashes water consumption by \textbf{94.6\%} (from 11{,}651~ML to 631~ML/year) while reducing peak facility power by \textbf{172~MW} through PUE improvement from 1.45 to 1.18. D2C liquid cooling is therefore not merely an environmental preference but a \textit{national infrastructure standard} required for India's AI ambitions to be physically viable.
 
 \begin{table}[t]
 \centering
-\caption{Cooling Technology Trade-Off Matrix under Tropical Indian Ambient Profiles (500k GPUs)}
+\caption{Cooling Technology Trade-Off Matrix Under Tropical Climates}
 \label{tab:cooling}
 \scriptsize
-\begin{tabular}{lrrrr}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}p{2.6cm}rrrr@{}}
 \toprule
-\textbf{Cooling Technology} & \textbf{Ann.~PUE} & \textbf{Sum.~PUE} & \textbf{WUE L/kWh} & \textbf{Water~ML} \\
+\textbf{Cooling System} & \textbf{PUE} & \textbf{Peak} & \textbf{WUE} & \textbf{Water (ML)} \\
 \midrule
-Traditional Air (Evaporative) & 1.45 & 1.65 & 1.80 & 11{,}651.2 \\
-Rear-Door Heat Exchangers & 1.35 & 1.45 & 1.00 & 6{,}031.5 \\
-Direct-to-Chip Liquid (D2C) & \textbf{1.18} & \textbf{1.25} & \textbf{0.12} & \textbf{630.9} \\
+Traditional Air (Evap.) & 1.45 & 1.65 & 1.80 & 11{,}651.2 \\
+Rear-Door Heat Ex. & 1.35 & 1.45 & 1.00 & 6{,}031.5 \\
+Direct-to-Chip (D2C) & \textbf{1.18} & \textbf{1.25} & \textbf{0.12} & \textbf{630.9} \\
 Single-Phase Immersion & 1.12 & 1.18 & 0.03 & 150.8 \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 \end{table}
 
 \subsection{Finding~4: Cross-National Compute Gap}
 
-India's sovereign GPU fleet of 34{,}000--45{,}000 accelerators represents approximately 0.3\% of the United States' estimated 4~million-GPU fleet, and less than 1\% of China's 1.5~million units \cite{hai2025aiindex}. Under the baseline 500k scenario, deploying 500{,}000 GPUs would elevate India's active AI compute from approximately 35~ExaFLOPS to 245~ExaFLOPS---closing the gap with China's estimated 450~ExaFLOPS---but requires managing deep structural dependencies at every supply chain layer. US Export Administration Regulations (EAR) classify H100 and H200 GPUs as controlled items; continued access depends on bilateral frameworks under iCET \cite{whitehouse2023icet}.
+India's sovereign GPU fleet of 34{,}000--45{,}000 accelerators represents approximately 0.3\% of the United States' estimated 4~million-GPU fleet, and less than 1\% of China's 1.5~million units \cite{hai2025aiindex}, as benchmarked in Fig.~\ref{fig:benchmark}. Under the baseline 500k scenario, deploying 500{,}000 GPUs would elevate India's active AI compute from approximately 35~ExaFLOPS to 245~ExaFLOPS---closing the gap with China's estimated 450~ExaFLOPS---but requires managing deep structural dependencies at every supply chain layer. US Export Administration Regulations (EAR) classify H100 and H200 GPUs as controlled items; continued access depends on bilateral frameworks under iCET \cite{whitehouse2023icet}.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig3_country_comparison_benchmark.pdf}
+\caption{Cross-national comparative benchmark between the United States, China, and India across accelerated compute stock (Panel A) and microelectronic supply chain self-sufficiency tiers (Panel B).}
+\label{fig:benchmark}
+\end{figure*}
 
 \section{Strategic Roadmap and Policy Implications}
 
@@ -337,16 +376,16 @@ Interventions are categorised into three operational tiers, ordered by feasibili
 
 \subsection{Investment and Governance Architecture}
 
-Table~\ref{tab:investment} summarises investment requirements. The aggregate public-sector requirement of approximately Rs.~95{,}500~crore (\$11.5~billion) compares to the United States' \$500~billion Stargate commitment, confirming the ``N-2'' structural asymmetry. India's strategy must maximise public investment leverage through PPP mobilisation, FDI facilitation, and multilateral development finance.
+Table~\ref{tab:investment} summarises investment requirements across the five pillars. The aggregate public-sector requirement of approximately Rs.~95{,}500~crore (\$11.5~billion) compares to the United States' \$500~billion Stargate commitment, confirming the ``N-2'' structural asymmetry. India's strategy must maximise public investment leverage through PPP mobilisation, FDI facilitation, and multilateral development finance.
 
 \begin{table}[t]
 \centering
 \caption{Investment Architecture: Three Tiers, Five Pillars (2026--2035)}
 \label{tab:investment}
 \scriptsize
-\begin{tabular}{p{2.8cm}rrp{1.5cm}}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}p{3.0cm}rrp{1.4cm}@{}}
 \toprule
-\textbf{Intervention} & \textbf{Public Rs.~Cr} & \textbf{PPP Rs.~Cr} & \textbf{Lead Agency} \\
+\textbf{Intervention Area} & \textbf{Public Rs.~Cr} & \textbf{PPP Rs.~Cr} & \textbf{Lead Agency} \\
 \midrule
 AIZs \& AICA (P3/P5) & 2{,}500 & 5{,}000 & DPIIT, MeitY \\
 Power Corridors + BESS (P2) & 15{,}000 & 65{,}000 & MoP, SECI \\
@@ -358,7 +397,7 @@ Connectivity/Security (P4) & 8{,}000 & 12{,}000 & DoT, NCIIPC \\
 \midrule
 \textbf{Total} & \textbf{95{,}500} & \textbf{2{,}57{,}000} & \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 \end{table}
 
 \subsection{Measurable Indicators}
@@ -389,6 +428,8 @@ India possesses structural competitive advantages that no policy alone can repli
 
 \section*{Acknowledgment}
 The authors acknowledge research facilities at Amity University Madhya Pradesh and primary data provided by the Central Electricity Authority, MeitY, NITI Aayog, and open academic repositories. Quantitative modelling was implemented in Python~3.12. Generative AI tools were used exclusively for simulation scripting, \LaTeX\ formatting, and bibliographic indexing under full author verification and review. All claims are traceable to primary sources cited herein.
+
+\balance
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}
