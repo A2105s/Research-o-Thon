@@ -51,6 +51,7 @@ def save(name):
     fig = plt.gcf()
     fig.savefig(FIG_DIR / f"{name}.pdf")
     fig.savefig(FIG_DIR / f"{name}.png")
+    fig.savefig(FIG_DIR / f"{name}.svg")
     plt.close(fig)
 
 
