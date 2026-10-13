@@ -19,6 +19,10 @@ DARK_GREY = "#595959"
 MID_GREY = "#8C8C8C"
 LIGHT_GREY = "#C9C9C9"
 PALE_GREY = "#F2F2F2"
+NAVY = "#4472C4"
+DARK_RED = "#C00000"
+FOREST = "#70AD47"
+AMBER = "#BF8F00"
 HATCHES = ("///", "xxx", "\\\\", "+++", "...", "OOO")
 
 plt.rcParams.update({
@@ -63,17 +67,20 @@ def box(ax, text, centre, width, height, fill, fontsize=6.4):
     patch = FancyBboxPatch(
         (x - width / 2, y - height / 2), width, height,
         boxstyle="round,pad=0.008,rounding_size=0.012",
-        facecolor=fill, edgecolor=BLACK, linewidth=0.7, hatch="///",
+        facecolor=fill, edgecolor=BLACK, linewidth=0.7, hatch=None,
         transform=ax.transAxes, zorder=2, alpha=0.98)
     ax.add_patch(patch)
-    ax.text(x, y, text, color="white", ha="center", va="center", fontsize=fontsize,
-            weight="bold", transform=ax.transAxes, zorder=3, linespacing=1.12)
+    ax.text(x, y - height / 2 - 0.035, text, color=BLACK, ha="center", va="top",
+            fontsize=6.1, weight="bold", transform=ax.transAxes, zorder=4,
+            linespacing=1.08, bbox=dict(boxstyle="round,pad=0.16", fc="white",
+            ec="none", alpha=0.92))
 
 
 def arrow(ax, start, end):
     patch = FancyArrowPatch(start, end, connectionstyle="arc3,rad=0.0",
                             transform=ax.transAxes, arrowstyle="-|>",
-                            mutation_scale=9, lw=0.9, color=BLACK, zorder=4)
+                            mutation_scale=12, lw=1.15, color=BLACK, zorder=4,
+                            capstyle="round", joinstyle="round")
     ax.add_patch(patch)
 
 
@@ -84,17 +91,17 @@ def figure1():
     ax.set_ylim(0, 1)
 
     rows = [
-        ("Policy targets\n200k / 500k / 1M GPUs", (0.085, 0.5), CHARCOAL, 0.13, 0.50),
-        ("Layer 1: IT load\n700-1,000 W/GPU\nhost factor 1.82", (0.265, 0.5), DARK_GREY, 0.13, 0.50),
-        ("Layer 2: Facility\nPUE 1.40 base\n891.8 MW peak", (0.445, 0.5), DARK_GREY, 0.13, 0.50),
-        ("Layer 3: Cooling\nWUE 0.12-1.80", (0.635, 0.755), MID_GREY, 0.125, 0.26),
-        ("Layer 4: Silicon\n12,500 wafer starts", (0.635, 0.245), MID_GREY, 0.125, 0.26),
-        ("Layers 5-6\n33,334 CoWoS\n4.0M HBM", (0.835, 0.5), BLACK, 0.13, 0.50),
+        ("Policy targets\n200k / 500k / 1M GPUs", (0.09, 0.5), NAVY, 0.15, 0.52),
+        ("Layer 1: IT load\n700-1,000 W/GPU\nhost factor 1.82", (0.265, 0.5), CHARCOAL, 0.13, 0.50),
+        ("Layer 2: Facility\nPUE 1.40 base\n891.8 MW peak", (0.445, 0.5), CHARCOAL, 0.13, 0.50),
+        ("Layer 3: Cooling\nWUE 0.12-1.80", (0.635, 0.755), DARK_GREY, 0.125, 0.26),
+        ("Layer 4: Silicon\n12,500 wafer starts", (0.635, 0.245), DARK_GREY, 0.125, 0.26),
+        ("Layers 5-6\n33,334 CoWoS\n4.0M HBM", (0.835, 0.5), DARK_RED, 0.13, 0.50),
     ]
     for text, centre, fill, width, height in rows:
         box(ax, text, centre, width, height, fill)
 
-    for start, end in [((0.15, 0.5), (0.20, 0.5)), ((0.33, 0.5), (0.38, 0.5)),
+    for start, end in [((0.165, 0.5), (0.20, 0.5)), ((0.33, 0.5), (0.38, 0.5)),
                       ((0.51, 0.62), (0.572, 0.755)), ((0.51, 0.38), (0.572, 0.245)),
                       ((0.697, 0.755), (0.77, 0.62)), ((0.697, 0.245), (0.77, 0.38))]:
         arrow(ax, start, end)
@@ -108,12 +115,12 @@ def figure2():
     categories = ["Wafer starts: TSMC share", "HBM3e: global output", "CoWoS: global capacity",
                   "Colocation power: 2030 pipeline", "Colocation power: mid-2026"]
     shares = [1.60, 6.67, 7.41, 27.9, 56.62]
-    fills = [LIGHT_GREY, MID_GREY, CHARCOAL, DARK_GREY, BLACK]
+    fills = [LIGHT_GREY, MID_GREY, NAVY, DARK_GREY, DARK_RED]
 
     fig, ax = plt.subplots(figsize=(3.45, 2.8))
     y = np.arange(len(categories))
     bars = ax.barh(y, shares, height=0.54, color=fills, edgecolor=BLACK, linewidth=0.5,
-                   hatch=HATCHES[:len(categories)], zorder=3)
+                   zorder=3)
     ax.set_yticks(y)
     ax.set_yticklabels(categories)
     ax.set_xlabel("Required share of constrained capacity (%)")
@@ -125,8 +132,8 @@ def figure2():
         ax.text(val + 0.9, bar.get_y() + bar.get_height() / 2, f"{val:.1f}%",
                va="center", ha="left", fontsize=7.6, color=BLACK)
 
-    ax.text(0.98, 0.02, "Values are required shares at the 500,000-GPU baseline",
-           transform=ax.transAxes, ha="right", va="bottom", fontsize=6.6, color=DARK_GREY)
+    ax.text(0.98, 0.98, "Values are required shares at the 500,000-GPU baseline",
+           transform=ax.transAxes, ha="right", va="top", fontsize=6.6, color=DARK_GREY)
     save("fig2_structural_chokepoint_inversion")
 
 
@@ -136,9 +143,9 @@ def figure3():
 
     countries = ["US", "China", "India\nnow", "India\n500k plan"]
     compute = [1200, 450, 35, 245]
-    bar_colors = [BLACK, CHARCOAL, MID_GREY, LIGHT_GREY]
+    bar_colors = [NAVY, DARK_RED, MID_GREY, LIGHT_GREY]
     bars = ax1.bar(countries, compute, color=bar_colors, width=0.62, edgecolor=BLACK,
-                   linewidth=0.5, hatch=HATCHES[:4], zorder=3)
+                   linewidth=0.5, zorder=3)
     ax1.set_ylabel("AI compute (EFLOPS FP16 eq.)")
     ax1.set_title("(a) Accelerated compute stock")
     ax1.set_xticks(np.arange(len(countries)))
@@ -150,28 +157,28 @@ def figure3():
     stages = ["Sub-5 nm", "Packaging", "Design", "Gallium"]
     scores = ( (5, 5, 85, 0), (2, 3, 20, 99), (0, 0, 20, 0.5) )
     labels = ("US", "China", "India")
-    fills = (BLACK, CHARCOAL, LIGHT_GREY)
+    fills = (NAVY, DARK_RED, LIGHT_GREY)
     x = np.arange(len(stages))
     w = 0.23
     for idx, (score, fill) in enumerate(zip(scores, fills)):
         ax2.bar(x + (idx - 1) * w, score, w, color=fill, edgecolor=BLACK,
-                linewidth=0.4, hatch=HATCHES[idx], zorder=3, label=labels[idx])
+                linewidth=0.4, zorder=3, label=labels[idx])
     ax2.set_xticks(x)
     ax2.set_xticklabels(stages)
     ax2.set_ylabel("Domestic self-sufficiency (%)")
     ax2.set_title("(b) Microelectronic dependencies")
     ax2.set_ylim(0, 108)
     base_axes(ax2)
-    ax2.legend(loc="upper right", frameon=False, handlelength=1.1)
+    ax2.legend(loc="upper left", frameon=True, handlelength=1.0, fontsize=7.0)
     save("fig3_country_comparison_benchmark")
 
 
 def figure4():
     tech = {
-        "Traditional air": (1.80, 1.45, BLACK, "o"),
-        "Rear-door HEX": (1.00, 1.35, CHARCOAL, "s"),
-        "D2C liquid": (0.12, 1.18, DARK_GREY, "^"),
-        "Immersion": (0.03, 1.12, MID_GREY, "D"),
+        "Traditional air": (1.80, 1.45, DARK_RED, "o"),
+        "Rear-door HEX": (1.00, 1.35, AMBER, "s"),
+        "D2C liquid": (0.12, 1.18, NAVY, "^"),
+        "Immersion": (0.03, 1.12, FOREST, "D"),
     }
     fig, ax = plt.subplots(figsize=(3.45, 2.8))
     wue_values = []
@@ -187,7 +194,7 @@ def figure4():
     curve_x = np.array(wue_values)[order]
     curve_y = np.array(pue_values)[order]
     ax.plot(curve_x, curve_y, color=DARK_GREY, linestyle="--", lw=0.95, zorder=3)
-    ax.fill_between(curve_x, curve_y, color=PALE_GREY, alpha=0.35, hatch="...", zorder=2)
+    ax.fill_between(curve_x, curve_y, color=PALE_GREY, alpha=0.35, zorder=2)
 
     ax.annotate("High summer humidity raises PUE and water use", xy=(1.80, 1.45),
                xytext=(0.82, 1.56), fontsize=7.0, color=BLACK, weight="bold",
@@ -213,9 +220,9 @@ def figure5():
 
     fig, ax = plt.subplots(figsize=(3.45, 2.9))
     y = np.arange(len(parameters))
-    ax.barh(y, neg, height=0.5, color=LIGHT_GREY, edgecolor=BLACK, hatch="///", zorder=3,
+    ax.barh(y, neg, height=0.5, color=LIGHT_GREY, edgecolor=BLACK, zorder=3,
             label="Lower input bound")
-    ax.barh(y, pos, height=0.5, color=CHARCOAL, edgecolor=BLACK, hatch="xxx", zorder=3,
+    ax.barh(y, pos, height=0.5, color=NAVY, edgecolor=BLACK, zorder=3,
             label="Upper input bound")
     ax.axvline(0, color=BLACK, lw=0.8, zorder=4)
     ax.set_yticks(y)
