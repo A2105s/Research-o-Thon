@@ -1,9 +1,9 @@
 # A Five-Pillar Infrastructure Planning Framework for India's Sovereign AI
 ## Assessing Dependencies Across Compute, Energy, Data Centres, Connectivity, and Governance
 
-**Authors:** Adarsh Singh, Sourav, and Anamidhi Shrivastava  
+**Authors:** Parikshit Singh Bais, Adarsh Singh, Sourav, and Anamidhi Shrivastava  
 **Affiliation:** Department of Computer Science & Engineering, Amity School of Engineering and Technology, Amity University Madhya Pradesh, Gwalior 474005, India  
-**Correspondence:** `{adarsh.singh, sourav, anamidhi.shrivastava}@amity.edu`  
+**Correspondence:** `{parikshit.bais, adarsh.singh, sourav, anamidhi.shrivastava}@amity.edu`  
 **Conference / Track:** Amity ResearchThon 2026 — Track: Technology & Artificial Intelligence (AI Infrastructure & Sovereignty)  
 **Publication Standard:** IEEE Transactions-Length Research Monograph (15 Pages Aligned)
 
