@@ -1,0 +1,8 @@
+Metric,India_Demand_Pct,Global_Capacity_Pct,Lead_Time_Months,HHI_Score,Constraint_Severity
+CoWoS Interposers,7.41,100,18,0.71,9.2
+HBM3e Stacks,6.67,100,12,0.65,8.7
+EUV Lithography,2.1,100,36,0.92,9.8
+Sub-3nm Wafer Starts,1.6,100,24,0.78,7.5
+Advanced Substrates,3.2,100,14,0.58,6.8
+Thermal Interface Mat.,1.8,100,6,0.38,4.2
+High-Voltage Substations,12.4,100,30,0.22,9.5

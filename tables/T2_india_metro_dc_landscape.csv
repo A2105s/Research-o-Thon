@@ -1,0 +1,8 @@
+City,Capacity_MW,Pipeline_MW,Occupancy_Pct,Tier_III_Pct,Avg_Power_Density_kW_rack,Water_Source
+Mumbai,780,1200,78,72,12,Sea/Grid
+Hyderabad,310,680,72,68,14,Groundwater
+Bengaluru,250,520,81,74,15,Groundwater
+Chennai,148,310,68,65,11,Sea/River
+Pune,52,190,61,55,10,River
+Delhi-NCR,20,140,55,60,9,Groundwater
+Kolkata,15,60,48,40,8,River
