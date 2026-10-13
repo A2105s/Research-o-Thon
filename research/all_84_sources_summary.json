@@ -1,0 +1,1296 @@
+[
+  {
+    "id": 1,
+    "filename": "2024 United States Data Center Energy.pdf",
+    "char_count": 188802,
+    "line_count": 2807,
+    "preview": "--- PAGE 1 --- | 2024 United States Data Center Energy | Usage Report",
+    "sample_gpus": [
+      "100 GPU",
+      "8 GPUs"
+    ],
+    "sample_crores": [],
+    "sample_dollars": [
+      "4.5"
+    ],
+    "sample_mw": [
+      "132",
+      "10,275"
+    ]
+  },
+  {
+    "id": 2,
+    "filename": "2024-india-semiconductor-readiness.pdf",
+    "char_count": 173650,
+    "line_count": 2307,
+    "preview": "--- PAGE 1 --- | itif.org | Assessing India\u2019s Readiness to Assume",
+    "sample_gpus": [],
+    "sample_crores": [
+      "5,000",
+      "3,750"
+    ],
+    "sample_dollars": [
+      "67.6",
+      "15.6",
+      "588"
+    ],
+    "sample_mw": [
+      "172"
+    ]
+  },
+  {
+    "id": 3,
+    "filename": "2026-gtipa-ai-policy-innovation.pdf",
+    "char_count": 472682,
+    "line_count": 6056,
+    "preview": "--- PAGE 1 --- | Making AI Policy to | Drive Innovation",
+    "sample_gpus": [
+      "12 \nGPU",
+      "38,000 GPUs"
+    ],
+    "sample_crores": [
+      "10,371.92",
+      "4,563",
+      "10,372"
+    ],
+    "sample_dollars": [
+      "1",
+      "200",
+      "15"
+    ],
+    "sample_mw": [
+      "500"
+    ]
+  },
+  {
+    "id": 4,
+    "filename": "20260217_AI_sovereignty_final (1).pdf",
+    "char_count": 266697,
+    "line_count": 6179,
+    "preview": "--- PAGE 1 --- | IS AI SOVEREIGNTY | POSSIBLE?",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "48.9",
+      "12",
+      "8.2"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 5,
+    "filename": "20260217_AI_sovereignty_final.pdf",
+    "char_count": 266698,
+    "line_count": 6179,
+    "preview": "--- PAGE 1 --- | IS AI SOVEREIGNTY | POSSIBLE?",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "48.9",
+      "12",
+      "8.2"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 6,
+    "filename": "221011_Allen_China_AccesstoAI.pdf",
+    "char_count": 35929,
+    "line_count": 410,
+    "preview": "--- PAGE 1 --- | OCTOBER 2022 | Choking Off China\u2019s Access to",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "52.7"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 7,
+    "filename": "AI Accelerators Market Size, Share & 2031 Trends Report.pdf",
+    "char_count": 30006,
+    "line_count": 813,
+    "preview": "--- PAGE 1 --- | AI ACCELERATORS MARKET SIZE & SHARE ANALYSIS - | GROWTH TRENDS AND FORECAST (2026 - 2031)",
+    "sample_gpus": [
+      "1 GPU"
+    ],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": [
+      "84"
+    ]
+  },
+  {
+    "id": 8,
+    "filename": "AI Infrastructure Sovereignty.pdf",
+    "char_count": 177240,
+    "line_count": 3439,
+    "preview": "--- PAGE 1 --- | 10/13/26, 4:30 PM | AI Infrastructure Sovereignty",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 9,
+    "filename": "AI SUPPLY CHAIN CHOKEPOINTS.pdf",
+    "char_count": 97671,
+    "line_count": 1788,
+    "preview": "--- PAGE 1 --- | Artificial Intelligence: Supply-Chain Chokepoints | and the Reach of Industrial Policy\u2217",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 10,
+    "filename": "AI Safety - Little Hope for a US-China Deal - CEPA.pdf",
+    "char_count": 12307,
+    "line_count": 208,
+    "preview": "--- PAGE 1 --- | Insights & Analysis | Article",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 11,
+    "filename": "AI and Cybersecurity_ Same Challenges, Less Time - CEPA.pdf",
+    "char_count": 7311,
+    "line_count": 117,
+    "preview": "--- PAGE 1 --- | Insights & Analysis | Article",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 12,
+    "filename": "AI_ Let\u2019s Not Pause Progress - CEPA.pdf",
+    "char_count": 5050,
+    "line_count": 92,
+    "preview": "--- PAGE 1 --- | Insights & Analysis | Article",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 13,
+    "filename": "AI\u2019s Rubberstamp\u00a0 - CEPA.pdf",
+    "char_count": 6969,
+    "line_count": 122,
+    "preview": "--- PAGE 1 --- | Insights & Analysis | Article",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 14,
+    "filename": "Achieving AI Sovereignty_ A North-South Coalition for an Alternative AI Stack \u2022 Stimson Center.pdf",
+    "char_count": 20867,
+    "line_count": 609,
+    "preview": "--- PAGE 1 --- | POLICY MEMO | Achieving AI Sovereignty: A North-South",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "8.3"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 15,
+    "filename": "Annual Report 2024-25 (With cover pages)_compressed.pdf",
+    "char_count": 337459,
+    "line_count": 7968,
+    "preview": "--- PAGE 1 --- | ANNUAL | REPORT",
+    "sample_gpus": [
+      "1 GPU",
+      "100 GPU",
+      "2 GPU"
+    ],
+    "sample_crores": [
+      "138",
+      "2.5",
+      "1.19"
+    ],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 16,
+    "filename": "Artificial intelligence in India - Wikipedia.pdf",
+    "char_count": 186041,
+    "line_count": 2770,
+    "preview": "--- PAGE 1 --- | Artificial intelligence in India | The artificial intelligence (AI) market in India is projected to rea",
+    "sample_gpus": [
+      "10,000 GPUs",
+      "8693 GPUs",
+      "18,693 GPUs"
+    ],
+    "sample_crores": [
+      "7,500",
+      "50,000",
+      "15"
+    ],
+    "sample_dollars": [
+      "10",
+      "17",
+      "8"
+    ],
+    "sample_mw": [
+      "3"
+    ]
+  },
+  {
+    "id": 17,
+    "filename": "China has ~12% of global AI-relevant compute \u2014 AI 2027 Tracker.pdf",
+    "char_count": 6544,
+    "line_count": 134,
+    "preview": "--- PAGE 1 --- | AI 2027 Tracker | Predictions",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 18,
+    "filename": "China\u2019s intelligent computing power projected to soar 87.9% in 2026 as AI demand surges_ report - Global Times.pdf",
+    "char_count": 10680,
+    "line_count": 298,
+    "preview": "--- PAGE 1 --- | Published: Sep 23, 2026 09:08 PM | BUSINESS (https://www.globaltimes.cn/business/index.html)\u00a0/\u00a0ECONOMY",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 19,
+    "filename": "Compute Forecast \u2014 AI 2027.pdf",
+    "char_count": 72675,
+    "line_count": 2849,
+    "preview": "--- PAGE 1 --- | AI 2027 | AI 2040",
+    "sample_gpus": [
+      "100 GPU",
+      "200 GPU"
+    ],
+    "sample_crores": [],
+    "sample_dollars": [
+      "400",
+      "100",
+      "140"
+    ],
+    "sample_mw": [
+      "60",
+      "10",
+      "50"
+    ]
+  },
+  {
+    "id": 20,
+    "filename": "Compute sovereignty_ The strategic importance of digital infrastructure _ S&P Global.pdf",
+    "char_count": 25593,
+    "line_count": 478,
+    "preview": "--- PAGE 1 --- | ___ | By Melanie Posey, William Fellows, Tony Lenoir, and Hill Vaden",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "200"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 21,
+    "filename": "Copycat Tech_ Why the AI Bubble Might Burst - CEPA.pdf",
+    "char_count": 6325,
+    "line_count": 109,
+    "preview": "--- PAGE 1 --- | Insights & Analysis | Article",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "50",
+      "0.60."
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 22,
+    "filename": "DOI10.1109TCPMT.2026.3716987_authorsversion.pdf",
+    "char_count": 111594,
+    "line_count": 3112,
+    "preview": "--- PAGE 1 --- | This article has been accepted for publication in IEEE Transactions on Components, Packaging and Manufa",
+    "sample_gpus": [
+      "100 GPU"
+    ],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 23,
+    "filename": "Data Center Energy Challenge_ Can the US and Europe Deliver_ - CEPA.pdf",
+    "char_count": 8185,
+    "line_count": 129,
+    "preview": "--- PAGE 1 --- | Insights & Analysis | Article",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 24,
+    "filename": "Data Center Policy and Investment Advisory _ DC Market Insights.pdf",
+    "char_count": 29425,
+    "line_count": 557,
+    "preview": "--- PAGE 1 --- | A Credence Research company | US +1 628 262 7656",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": [
+      "200"
+    ]
+  },
+  {
+    "id": 25,
+    "filename": "Data Center Power Demand_ Global Electricity Consumption, Supply Gaps, and the Nuclear Bet - Underhyped AI Research and Analysis.pdf",
+    "char_count": 27692,
+    "line_count": 596,
+    "preview": "--- PAGE 1 --- | Feb 16, 2026 in Energy & Infrastructure | The 35 Gigawatt Gap",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "1",
+      "300"
+    ],
+    "sample_mw": [
+      "35",
+      "10",
+      "2,600"
+    ]
+  },
+  {
+    "id": 26,
+    "filename": "Data Centers Move Center Stage - CEPA.pdf",
+    "char_count": 9101,
+    "line_count": 152,
+    "preview": "--- PAGE 1 --- | Insights & Analysis | Commentary",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "295"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 27,
+    "filename": "Data-Centre-Energy-Use-Critical-Review-of-Models-and-Results.pdf",
+    "char_count": 188476,
+    "line_count": 3890,
+    "preview": "--- PAGE 1 --- | Data Centre Energy Use: | Critical Review of Models",
+    "sample_gpus": [
+      "200 GPUs",
+      "100 GPU"
+    ],
+    "sample_crores": [],
+    "sample_dollars": [
+      "1.8"
+    ],
+    "sample_mw": [
+      "60",
+      "43",
+      "127"
+    ]
+  },
+  {
+    "id": 28,
+    "filename": "Defining the intension and extension of nations  sovereignty in the age of generative AI.pdf",
+    "char_count": 82614,
+    "line_count": 920,
+    "preview": "--- PAGE 1 --- | Territory, Politics, Governance | ISSN: 2162-2671 (Print) 2162-268X (Online) Journal homepage: www.tand",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "1",
+      "52.7",
+      "1.25"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 29,
+    "filename": "Digital Sovereignty_ Can Europe Afford It_ - CEPA.pdf",
+    "char_count": 17420,
+    "line_count": 356,
+    "preview": "--- PAGE 1 --- | Insights & Analysis | Article",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "233",
+      "40",
+      "480"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 30,
+    "filename": "Electricity2024-Analysisandforecastto2026.pdf",
+    "char_count": 400292,
+    "line_count": 9529,
+    "preview": "--- PAGE 1 --- | Analysis and forecast to 2026 | Electricity",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": [
+      "151",
+      "29",
+      "178"
+    ]
+  },
+  {
+    "id": 31,
+    "filename": "Empowering Data Sovereignty Through Artificial Intelligence_ A Framework for Sustainable Smart Energy Systems _ TechRxiv.pdf",
+    "char_count": 15562,
+    "line_count": 379,
+    "preview": "--- PAGE 1 --- | Abstract | As smart energy systems become central to national sustainability strategies,",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 32,
+    "filename": "Energy demand from AI - Energy and AI - IEA.pdf",
+    "char_count": 14063,
+    "line_count": 438,
+    "preview": "--- PAGE 1 --- | Energy demand from AI | What is a data centre?",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 33,
+    "filename": "EnergyandAI.pdf",
+    "char_count": 792919,
+    "line_count": 15235,
+    "preview": "--- PAGE 1 --- | World Energy Outlook Special Report | Energy and AI",
+    "sample_gpus": [
+      "200 GPU",
+      "000 GPUs",
+      "2024\nGPU"
+    ],
+    "sample_crores": [],
+    "sample_dollars": [
+      "10",
+      "16",
+      "2"
+    ],
+    "sample_mw": [
+      "25",
+      "100"
+    ]
+  },
+  {
+    "id": 34,
+    "filename": "Engineering-Tomorrow-Intelligent-Systems-Sustainable-Design-and-Emerging-Technologies.pdf",
+    "char_count": 520104,
+    "line_count": 8789,
+    "preview": "--- PAGE 1 --- | --- PAGE 2 --- | Engineering Tomorrow:",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 35,
+    "filename": "Fighting AI with AI_ The US's New Cyber Rules of Engagement - CEPA.pdf",
+    "char_count": 6937,
+    "line_count": 116,
+    "preview": "--- PAGE 1 --- | Insights & Analysis | Article",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 36,
+    "filename": "Future-of-India-Semiconductor-Industry.pdf",
+    "char_count": 107417,
+    "line_count": 3727,
+    "preview": "--- PAGE 1 --- | Future of India\u2019s | Semiconductor",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 37,
+    "filename": "Global Foundry Revenue Approaches US$53.49 Billion in 2Q26 as SMIC Narrows Market Share Gap with Samsung, Says TrendForce.pdf",
+    "char_count": 8802,
+    "line_count": 249,
+    "preview": "--- PAGE 1 --- | Press Center | Home (/) /\u00a0 Press Center",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "53.49"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 38,
+    "filename": "Government AI Readiness Index 2025 - Oxford Insights.pdf",
+    "char_count": 9412,
+    "line_count": 359,
+    "preview": "--- PAGE 1 --- | Government AI | Readiness Index 2025",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 39,
+    "filename": "Heatwaves, Rooftop Solar and Data Centres Force Rethink of India\u2019s Power Sector Planning.pdf",
+    "char_count": 14629,
+    "line_count": 295,
+    "preview": "--- PAGE 1 --- | Heatwaves, Rooftop Solar and | Data Centres Force Rethink of",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": [
+      "256",
+      "20",
+      "10,000"
+    ]
+  },
+  {
+    "id": 40,
+    "filename": "How AI-Driven Influence Operations Attack Ukraine - CEPA.pdf",
+    "char_count": 7676,
+    "line_count": 125,
+    "preview": "--- PAGE 1 --- | Insights & Analysis | Article",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 41,
+    "filename": "India AI_ $1.25B Mission, 38,000 GPUs.pdf",
+    "char_count": 18072,
+    "line_count": 556,
+    "preview": "--- PAGE 1 --- | Home / Blog / India's AI Policy 2026: GPU Pro\u2026 | AI & Technology",
+    "sample_gpus": [
+      "38,000 GPUs"
+    ],
+    "sample_crores": [
+      "4,500",
+      "10,372"
+    ],
+    "sample_dollars": [
+      "200",
+      "1.25"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 42,
+    "filename": "India Data Centre Capacity to Reach 2 GW by 2026_ CBRE _ IBEF.pdf",
+    "char_count": 4453,
+    "line_count": 94,
+    "preview": "--- PAGE 1 --- | Indian Economy News | India likely to add more than 200 MW of new data centre capacity in H2 2026, push",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "38",
+      "173"
+    ],
+    "sample_mw": [
+      "200",
+      "2"
+    ]
+  },
+  {
+    "id": 43,
+    "filename": "India Data Centre Market H1 2026 _ IN _ Cushman & Wakefield.pdf",
+    "char_count": 3624,
+    "line_count": 75,
+    "preview": "--- PAGE 1 --- | SHARE: | \uf39e",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": [
+      "400",
+      "3.9",
+      "1.8"
+    ]
+  },
+  {
+    "id": 44,
+    "filename": "India Just Made OT Cyber a Board Problem. NERC CIP Shows Where That Road Leads_.pdf",
+    "char_count": 15980,
+    "line_count": 357,
+    "preview": "--- PAGE 1 --- | BLOG | India Just Made OT",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "1",
+      "7.74",
+      "17.12"
+    ],
+    "sample_mw": [
+      "50",
+      "552",
+      "249"
+    ]
+  },
+  {
+    "id": 45,
+    "filename": "India data centre 2026 mid-year report.pdf",
+    "char_count": 7278,
+    "line_count": 160,
+    "preview": "--- PAGE 1 --- | 31 August 2026 | Insight",
+    "sample_gpus": [],
+    "sample_crores": [
+      "250"
+    ],
+    "sample_dollars": [
+      "50"
+    ],
+    "sample_mw": [
+      "6",
+      "1.6",
+      "500"
+    ]
+  },
+  {
+    "id": 46,
+    "filename": "India data centre investments shift to multi-city portfolios, capacity nears 2GW, ETDatacenters.pdf",
+    "char_count": 6600,
+    "line_count": 117,
+    "preview": "--- PAGE 1 --- | Investments & Deals | 2 Min Read",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "38",
+      "173"
+    ],
+    "sample_mw": [
+      "2"
+    ]
+  },
+  {
+    "id": 47,
+    "filename": "India to Add 20,000 GPUs as AI Mission 2.0 Expands - EE Times.pdf",
+    "char_count": 8318,
+    "line_count": 134,
+    "preview": "--- PAGE 1 --- | Claim your free Gemini | student plan",
+    "sample_gpus": [
+      "20,000 GPUs",
+      "38,000 GPUs"
+    ],
+    "sample_crores": [
+      "10,371.92"
+    ],
+    "sample_dollars": [
+      "500",
+      "1.14",
+      "90"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 48,
+    "filename": "India's data centre capacity to reach 2 GW by end of 2026, says CBRE report.pdf",
+    "char_count": 6903,
+    "line_count": 157,
+    "preview": "--- PAGE 1 --- | NEWS | India's data centre capacity to reach 2 GW by end of",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "38",
+      "173"
+    ],
+    "sample_mw": [
+      "200",
+      "2"
+    ]
+  },
+  {
+    "id": 49,
+    "filename": "IndiaAI Foundation Models_ A Critical Assessment Of India's Sovereign AI (2024).pdf",
+    "char_count": 24361,
+    "line_count": 552,
+    "preview": "--- PAGE 1 --- | From Proposals to Products -Assessing the IndiaAI Foundation Models Pillar\u2019s | Sovereign LLM Progress (",
+    "sample_gpus": [
+      "4,000 GPUs"
+    ],
+    "sample_crores": [
+      "1,971",
+      "10,371"
+    ],
+    "sample_dollars": [
+      "120",
+      "90"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 50,
+    "filename": "IndiasSemiconductorsandStrategicDependenceIndiasTransitionfromImportstoIndigenousManufacturing.pdf",
+    "char_count": 55168,
+    "line_count": 870,
+    "preview": "--- PAGE 1 --- | 1 | India\u2019s Semiconductors and Strategic",
+    "sample_gpus": [],
+    "sample_crores": [
+      "40,000"
+    ],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 51,
+    "filename": "India\u2019s Data Centre Market in a New Era _ CBRE India.pdf",
+    "char_count": 2810,
+    "line_count": 54,
+    "preview": "--- PAGE 1 --- | Report | Intelligent Investment | India\u2019s Data Centre",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": [
+      "260",
+      "1.5",
+      "1,530"
+    ]
+  },
+  {
+    "id": 52,
+    "filename": "Iniads sovereign ai status.pdf",
+    "char_count": 37585,
+    "line_count": 541,
+    "preview": "--- PAGE 1 --- | title: >- | India's Sovereign AI Status: What It Really Means, What's Been Built, and",
+    "sample_gpus": [
+      "20,000 GPUs",
+      "34,000 GPUs"
+    ],
+    "sample_crores": [
+      "10,371.92",
+      "10,371"
+    ],
+    "sample_dollars": [
+      "1.25"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 53,
+    "filename": "Mapped_ Data Center Capacity Around the World.pdf",
+    "char_count": 6892,
+    "line_count": 258,
+    "preview": "--- PAGE 1 --- | Mapped: Data Center Capacity Around the | World",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "231"
+    ],
+    "sample_mw": [
+      "11.9",
+      "53.7"
+    ]
+  },
+  {
+    "id": 54,
+    "filename": "NATO's Missing Link_ Shielding Vulnerable Infrastructure - CEPA.pdf",
+    "char_count": 8141,
+    "line_count": 132,
+    "preview": "--- PAGE 1 --- | Insights & Analysis | Article",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "32"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 55,
+    "filename": "NVIDIA AI GPU Market Share 2026_ ~80% of AI Accelerators.pdf",
+    "char_count": 17299,
+    "line_count": 725,
+    "preview": "--- PAGE 1 --- | Home / Analysis / NVIDIA GPU Market Share 2024\u20132026: 87% Peak, What Comes Next | AI ACCELERATORS",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "100",
+      "15"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 56,
+    "filename": "Number of Data Centers by Country (November 2025) _ Cargoson.pdf",
+    "char_count": 330,
+    "line_count": 20,
+    "preview": "--- PAGE 1 --- | --- PAGE 2 --- | --- PAGE 3 ---",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 57,
+    "filename": "Orbiting Data Centers\u00a0 - CEPA.pdf",
+    "char_count": 4596,
+    "line_count": 81,
+    "preview": "--- PAGE 1 --- | Insights & Analysis | Article",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "200"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 58,
+    "filename": "Powered Land Full Report 2025_ Global Data Center Trends - Hines.pdf",
+    "char_count": 20429,
+    "line_count": 333,
+    "preview": "--- PAGE 1 --- | Power Play: The Emerging Powered | Land Opportunity",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": [
+      "2.1",
+      "2.5",
+      "1.9"
+    ]
+  },
+  {
+    "id": 59,
+    "filename": "Presentation Lookup Table \u2013 IAQVEC 2026.pdf",
+    "char_count": 52816,
+    "line_count": 3666,
+    "preview": "--- PAGE 1 --- | Presentation Lookup Table | 1-1",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 60,
+    "filename": "Press Release Page _ Press Information Bureau.pdf",
+    "char_count": 28270,
+    "line_count": 385,
+    "preview": "--- PAGE 1 --- | PIB Backgrounder | Transforming India with AI",
+    "sample_gpus": [
+      "10,000 GPUs",
+      "38,000 GPUs"
+    ],
+    "sample_crores": [
+      "10,300",
+      "10,371.92"
+    ],
+    "sample_dollars": [
+      "280"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 61,
+    "filename": "Press Release Page _ Press Information Bureau_2.pdf",
+    "char_count": 7336,
+    "line_count": 115,
+    "preview": "--- PAGE 1 --- | Ministry of Electronics & IT | Government Expands Sovereign AI Infrastructure",
+    "sample_gpus": [],
+    "sample_crores": [
+      "3,660",
+      "10,371.92",
+      "1,27,500"
+    ],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 62,
+    "filename": "Press Release Page _ Press Information Bureau_22.pdf",
+    "char_count": 7554,
+    "line_count": 178,
+    "preview": "--- PAGE 1 --- | Ministry of Electronics & IT | In less than 24 months, India AI Mission has Set up a",
+    "sample_gpus": [],
+    "sample_crores": [
+      "10,372"
+    ],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 63,
+    "filename": "Programmable Sovereignty_ Coordinated Specialization as a Response to the N-2 Problem in AI - Portulans Institute.pdf",
+    "char_count": 90503,
+    "line_count": 1372,
+    "preview": "--- PAGE 1 --- | (https://portulansinstitute.org/) | Home (https://portulansinstitute.org/)",
+    "sample_gpus": [
+      "100,000 GPUs"
+    ],
+    "sample_crores": [],
+    "sample_dollars": [
+      "109.1",
+      "9.3",
+      "2"
+    ],
+    "sample_mw": [
+      "1,125",
+      "1,293",
+      "3,200"
+    ]
+  },
+  {
+    "id": 64,
+    "filename": "Real Estate Highlight_ Data Center\u2014India Edition.pdf",
+    "char_count": 46603,
+    "line_count": 915,
+    "preview": "--- PAGE 1 --- | December 2025 | Real Estate Highlight",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "5.7",
+      "70",
+      "325"
+    ],
+    "sample_mw": [
+      "1",
+      "400",
+      "70"
+    ]
+  },
+  {
+    "id": 65,
+    "filename": "Real-World Impact.pdf",
+    "char_count": 126280,
+    "line_count": 5195,
+    "preview": "--- PAGE 1 --- | --- PAGE 2 --- | --- PAGE 3 ---",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 66,
+    "filename": "Sector Report DataCentre.pdf",
+    "char_count": 50043,
+    "line_count": 804,
+    "preview": "--- PAGE 1 --- | Data Centres in India | Sector report, April 2026",
+    "sample_gpus": [],
+    "sample_crores": [
+      "75",
+      "10",
+      "10,300"
+    ],
+    "sample_dollars": [
+      "6.5"
+    ],
+    "sample_mw": [
+      "1.5",
+      "6.5",
+      "1,123"
+    ]
+  },
+  {
+    "id": 67,
+    "filename": "Semicon 2.0 and IndiaAI Mission Drive India's Chip-to-AI Build-Out \u2014 UPSC Current Affairs 2026.pdf",
+    "char_count": 21919,
+    "line_count": 480,
+    "preview": "--- PAGE 1 --- | Home chevron_right 13 Aug 2026 chevron_right Semicon 2.0 and IndiaAI Mission Drive India's Chip-to-AI B",
+    "sample_gpus": [
+      "45,000\nGPUs"
+    ],
+    "sample_crores": [
+      "76,000",
+      "1,27,500",
+      "10,372"
+    ],
+    "sample_dollars": [],
+    "sample_mw": [
+      "1,575",
+      "375"
+    ]
+  },
+  {
+    "id": 68,
+    "filename": "Semiconductor Foundry Market Size Report, 2026-2035.pdf",
+    "char_count": 26547,
+    "line_count": 874,
+    "preview": "--- PAGE 1 --- | Search... | Reports \uf0d7",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "194.8",
+      "180.7",
+      "383.0"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 69,
+    "filename": "Sovereign AI Infrastructure Requirements for India.pdf",
+    "char_count": 6501,
+    "line_count": 129,
+    "preview": "--- PAGE 1 --- | Make in India OEM \u00b7 INR-transparent \u00b7 Pan-India onsite SLA | Talk to sales: +91 720 794 8743",
+    "sample_gpus": [
+      "34,000 GPUs"
+    ],
+    "sample_crores": [
+      "10,371.92"
+    ],
+    "sample_dollars": [
+      "1.25"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 70,
+    "filename": "Sovereign AI and BharatGen_ India's Bid for Indigenous Foundation Models (UPSC Science & Tech) - Anantam IAS.pdf",
+    "char_count": 32569,
+    "line_count": 586,
+    "preview": "--- PAGE 1 --- | Join Anantam IAS Channel on Telegram | Open Telegram",
+    "sample_gpus": [
+      "10,000 GPUs",
+      "38,000 GPUs"
+    ],
+    "sample_crores": [
+      "10,371.92",
+      "10,372"
+    ],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 71,
+    "filename": "Sovereign AI and BharatGen_ India\u2019s Bid for Indigenous Foundation Models (UPSC Science & Tech) \u2014 PDF.pdf",
+    "char_count": 26288,
+    "line_count": 387,
+    "preview": "--- PAGE 1 --- | ANANTAM IAS | POST \u00b7 2 JUNE 2026",
+    "sample_gpus": [
+      "10,000 GPUs",
+      "38,000 GPUs"
+    ],
+    "sample_crores": [
+      "10,371.92",
+      "10,372"
+    ],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 72,
+    "filename": "Supply chain - Atlantic Council.pdf",
+    "char_count": 23710,
+    "line_count": 292,
+    "preview": "--- PAGE 1 --- | Issue Brief | June 1, 2026",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 73,
+    "filename": "The AI Financial Fault Line \u2014 Does China Enjoy an Edge_ - CEPA.pdf",
+    "char_count": 6105,
+    "line_count": 101,
+    "preview": "--- PAGE 1 --- | Insights & Analysis | Article",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "12.2",
+      "105"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 74,
+    "filename": "The Fed - The State of AI Competition in Advanced Economies.pdf",
+    "char_count": 40937,
+    "line_count": 1030,
+    "preview": "--- PAGE 1 --- | An official website of the United States Government | Here's how you know",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "470",
+      "50",
+      "28"
+    ],
+    "sample_mw": [
+      "0.2",
+      "1.6",
+      "117"
+    ]
+  },
+  {
+    "id": 75,
+    "filename": "The Geopolitics of Compute_ Sovereignty, Power and Strategic Dependence in the AI Infrastructure Race _ The Economy Research.pdf",
+    "char_count": 39200,
+    "line_count": 579,
+    "preview": "--- PAGE 1 --- | The Geopolitics of Compute: Sovereignty, Power | and Strategic Dependence in the AI Infrastructure",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "52"
+    ],
+    "sample_mw": [
+      "8.5",
+      "2",
+      "3.3"
+    ]
+  },
+  {
+    "id": 76,
+    "filename": "The Great Divide_ How the US and China Are Splitting the AI World _ BCG.pdf",
+    "char_count": 44175,
+    "line_count": 722,
+    "preview": "--- PAGE 1 --- | INTERNATIONAL BUSINESS | The Great Divide: How the US and",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "500",
+      "380",
+      "300"
+    ],
+    "sample_mw": [
+      "31",
+      "12",
+      "50"
+    ]
+  },
+  {
+    "id": 77,
+    "filename": "Top 30+ AI Chip Makers_ NVIDIA & Its Competitors.pdf",
+    "char_count": 96709,
+    "line_count": 2756,
+    "preview": "--- PAGE 1 --- | AI | AI Hardware",
+    "sample_gpus": [
+      "200\nGPU",
+      "72\nGPU"
+    ],
+    "sample_crores": [],
+    "sample_dollars": [
+      "500",
+      "1.2",
+      "15"
+    ],
+    "sample_mw": [
+      "1",
+      "6"
+    ]
+  },
+  {
+    "id": 78,
+    "filename": "Trade Restrictions Create New Chokepoints Across Semiconductor Supply Chains.pdf",
+    "char_count": 13647,
+    "line_count": 234,
+    "preview": "--- PAGE 1 --- | Trax Technologies | Jan 28, 2026 8:00:01 AM",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "30",
+      "300"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 79,
+    "filename": "United States Data Center Energy Usage Report_ 2025 Update _ Energy Technologies Area.pdf",
+    "char_count": 3360,
+    "line_count": 72,
+    "preview": "--- PAGE 1 --- | Energy Technologies Area | United States Data Center Energy Usage Report: 2025 Update",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 80,
+    "filename": "View of How Sovereign Is Sovereign Compute_ A Review of 775 Non-U.S. Data Centers.pdf",
+    "char_count": 177,
+    "line_count": 11,
+    "preview": "--- PAGE 1 --- | --- PAGE 2 --- | --- PAGE 3 ---",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [],
+    "sample_mw": []
+  },
+  {
+    "id": 81,
+    "filename": "cetas_research_report_-_semiconductor_supply_chains_ai_and_economic_statecraft.pdf",
+    "char_count": 171662,
+    "line_count": 2883,
+    "preview": "--- PAGE 1 --- | Semiconductor Supply Chains, AI | and Economic Statecraft",
+    "sample_gpus": [
+      "800 GPUs",
+      "100 GPUs"
+    ],
+    "sample_crores": [],
+    "sample_dollars": [
+      "40",
+      "39",
+      "11"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 82,
+    "filename": "data-centres-global-report-2025-12054.pdf",
+    "char_count": 108751,
+    "line_count": 4173,
+    "preview": "--- PAGE 1 --- | knightfrank.com/research | 2025",
+    "sample_gpus": [
+      "200 \nGPUs",
+      "200 GPUs",
+      "200 GPU"
+    ],
+    "sample_crores": [],
+    "sample_dollars": [
+      "500",
+      "16",
+      "530"
+    ],
+    "sample_mw": [
+      "11",
+      "40",
+      "3"
+    ]
+  },
+  {
+    "id": 83,
+    "filename": "hai_ai_index_report_2025.pdf",
+    "char_count": 829561,
+    "line_count": 28894,
+    "preview": "--- PAGE 1 --- | Artificial Intelligence | Index Report 2025",
+    "sample_gpus": [
+      "100 GPU"
+    ],
+    "sample_crores": [],
+    "sample_dollars": [
+      "109.1",
+      "9.3",
+      "4.5"
+    ],
+    "sample_mw": []
+  },
+  {
+    "id": 84,
+    "filename": "latest-news-India-Data-Centre-Growth-Story.pdf",
+    "char_count": 51051,
+    "line_count": 1029,
+    "preview": "--- PAGE 1 --- | INDIA\u2019S DATA CENTRE | GROWTH STORY:",
+    "sample_gpus": [],
+    "sample_crores": [],
+    "sample_dollars": [
+      "7.4",
+      "32"
+    ],
+    "sample_mw": [
+      "8",
+      "1.8",
+      "5.6"
+    ]
+  }
+]

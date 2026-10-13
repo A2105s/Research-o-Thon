@@ -30,7 +30,7 @@ pratiksingh79.in@gmail.com}
 \maketitle
 
 \begin{abstract}
-As artificial intelligence transitions from an algorithmic curiosity to the core nervous system of modern national defense, scientific discovery, and economic productivity, access to scalable compute infrastructure has emerged as an indispensable sovereign capability. However, the contemporary global AI supply chain exhibits unprecedented geographic and corporate concentration: advanced photolithography tools, leading-edge semiconductor foundries, advanced packaging facilities, and AI accelerator architectures each exhibit Herfindahl-Hirschman Index (HHI) values exceeding 7,000, creating profound systemic chokepoints susceptible to weaponized interdependence. This paper investigates the strategic imperative of AI infrastructure sovereignty for India. We propose the India AI Infrastructure Resilience Framework (IAIRF), a unified five-pillar analytical model that deconstructs the national compute stack into: (1) Silicon Fabrication and Advanced Packaging, (2) High-Density Data Centres and Thermal Engineering, (3) Power Grid Integration and Clean Energy, (4) Sovereign Foundation Models and Multilingual Data Trusts, and (5) Strategic Governance and Multilateral Diplomacy. Applying empirical data from recent industrial policies—including the \textyen 1,27,500 crore Semicon India 2.0 outlay and the \textyen 10,372 crore IndiaAI Mission—we formulate a quantitative Vulnerability Index ($V_i$) and an inter-pillar Cascading Dependency Matrix ($\mathbf{D}$). Our analysis exposes the critical ``borrowed silicon'' paradox underpinning India's 45,000 shared GPU pool and models the unit economics of subsidized compute (\textyen 65/GPU-hour) versus foreign commercial clouds. Finally, we establish a sequenced three-horizon policy roadmap to transition India from passive hardware dependency to resilient, coordinated specialization.
+As artificial intelligence transitions from an algorithmic discipline to the core nervous system of modern national defense, scientific discovery, and industrial productivity, access to scalable compute infrastructure has emerged as an indispensable sovereign capability. However, the contemporary global AI supply chain exhibits unprecedented geographic and corporate concentration: advanced photolithography tools, leading-edge semiconductor foundries, advanced packaging facilities, and AI accelerator architectures each exhibit Herfindahl-Hirschman Index (HHI) values exceeding 7,000, creating profound systemic chokepoints susceptible to weaponized interdependence. This paper investigates the strategic imperative of AI infrastructure sovereignty for India. We propose the India AI Infrastructure Resilience Framework (IAIRF), a unified five-pillar analytical model that deconstructs the national compute stack into: (1) Silicon Fabrication and Advanced Packaging, (2) High-Density Data Centres and Thermal Engineering, (3) Power Grid Integration and Clean Energy, (4) Sovereign Foundation Models and Multilingual Data Trusts, and (5) Strategic Governance and Multilateral Diplomacy. Synthesizing empirical data from 84 primary research and policy documents—including the \textyen 1,27,500 crore Semicon India 2.0 outlay, the \textyen 10,372 crore IndiaAI Mission, and the NITI Aayog ISM 2.0 Roadmap—we formulate a quantitative Vulnerability Index ($V_i$) and an inter-pillar Cascading Dependency Matrix ($\mathbf{D}$). Our analysis exposes the critical ``borrowed silicon'' paradox underpinning India's 45,000 shared GPU pool and models the unit economics of subsidized compute (\textyen 65/GPU-hour) versus foreign commercial clouds. Finally, resolving the theoretical ``$N-2$ Problem'' via programmable sovereignty, we establish a sequenced three-horizon policy roadmap to transition India from passive hardware dependency to resilient, coordinated specialization.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -40,17 +40,19 @@ Artificial Intelligence Infrastructure, Compute Sovereignty, Semiconductor Value
 \section{Introduction}
 Over the past decade, artificial intelligence (AI) has undergone a structural paradigm shift, evolving from distributed statistical software into an ultra-compute-intensive industrial apparatus. Training frontier multimodal foundation models now demands superclusters comprising tens of thousands of high-bandwidth accelerators operating continuously across multi-megawatt facilities \cite{geopoliticscompute2026}. Consequently, computing capacity—measured in ExaFLOPs of tensor operations—has become as fundamental to national sovereignty, state power, and industrial competitiveness as domestic energy grids, telecommunications backbones, and defense industrial capacity \cite{sastry2024governance, pau2025sovereignty}.
 
-This infrastructural transformation coincides with an acute geopolitical restructuring characterized by ``weaponized interdependence'' \cite{farrell2019weaponized}, wherein global economic network hubs are leveraged by hegemon states for extraterritorial strategic coercion. The global hardware substrate sustaining generative AI is singularly vulnerable to such dynamics. From ASML's monopoly on extreme ultraviolet (EUV) photolithography to TSMC's concentration of sub-5nm wafer fabrication and NVIDIA's dominant accelerator ecosystem, critical nodes of the value chain exhibit extreme monopolistic concentration \cite{akimitsu2026supply, miller2022chipwar}.
+This infrastructural transformation coincides with an acute geopolitical restructuring characterized by ``weaponized interdependence'' \cite{farrell2019weaponized}, wherein global economic network hubs are leveraged by hegemon states for extraterritorial strategic coercion. The global hardware substrate sustaining generative AI is singularly vulnerable to such dynamics. From ASML's monopoly on extreme ultraviolet (EUV) photolithography to TSMC's concentration of sub-5nm wafer fabrication and NVIDIA's dominant accelerator ecosystem, critical nodes of the value chain exhibit extreme monopolistic concentration \cite{akimitsu2026supply, miller2022chipwar, aimultiple2026chips}.
 
-For India, this reality poses a profound strategic paradox. While the nation boasts the world's third-largest AI ecosystem by vibrant developer activity, housing over 20\% of the global chip design workforce and producing recognized models such as Sarvam 30B/105B and the BharatGen consortium \cite{stanford_hai2025, meity2026semicon}, its foundational physical hardware remains almost entirely imported. The 45,000+ graphics processing units (GPUs) currently subsidized under the national IndiaAI Mission run on foreign-designed, Taiwanese-fabricated silicon subject to United States Export Administration Regulations (EAR) \cite{thakker2026sovereign, cetas2026semicon}. An export embargo, licensing restriction, or conflict in the Taiwan Strait would instantly halt compute replenishment across the Indian subcontinent.
+As formulated by Garc{\'i}a-Herrero and Dutta \cite{portulans2026sovereignty}, this creates the profound ``$N-2$ Problem'': full-stack production sovereignty across all layers of the AI apparatus is realistically accessible only to the United States and China. Every other sovereign state ($N-2$) faces structural dependencies on foreign hardware, proprietary software runtimes, and extraterritorial cloud platforms. For non-superpowers, attempting autarkic replication across the entire value chain is fiscally ruinous and technologically unviable.
 
-Existing academic literature has addressed elements of this vulnerability in conceptual silos: semiconductor supply-chain analysts examine wafer fabs \cite{ezell2024india, nishant2026semicon}; energy researchers quantify data centre power loads \cite{iea2024energy, lbnl2025energy}; and policy scholars evaluate data governance \cite{pau2025sovereignty}. Crucially, no empirical study has yet integrated these disparate physical, electrical, and institutional domains into a single quantitative resilience framework calibrated for the Indian economy.
+For India, this reality poses a stark strategic paradox. While the nation boasts the world's third-largest AI ecosystem by vibrant developer activity \cite{stanford_hai2025}, housing over 20\% of the global chip design workforce and producing recognized models such as Sarvam 30B/105B and the BharatGen consortium \cite{meity2026semicon, singh2026impact}, its foundational physical hardware remains almost entirely imported. The 45,000+ graphics processing units (GPUs) currently subsidized under the national IndiaAI Mission run on foreign-designed, Taiwanese-fabricated silicon subject to United States Export Administration Regulations (EAR) \cite{thakker2026sovereign, cetas2026semicon}. An export embargo, licensing restriction, or conflict in the Taiwan Strait would instantly freeze compute replenishment across the Indian subcontinent.
+
+Existing academic literature has addressed elements of this vulnerability in conceptual silos: semiconductor supply-chain analysts examine wafer fabs \cite{ezell2024india, nishant2026semicon, niti2026semicon}; energy researchers quantify data centre power loads \cite{iea2024energy, lbnl2025energy}; and policy scholars evaluate data governance \cite{pau2025sovereignty}. Crucially, no empirical study has yet integrated these disparate physical, electrical, microelectronic, and institutional domains into a single quantitative resilience framework calibrated for the Indian economy.
 
 This paper addresses that gap through three primary contributions:
 \begin{enumerate}
     \item We introduce the \textit{India AI Infrastructure Resilience Framework (IAIRF)}, decomposing national compute sovereignty into five interconnected pillars.
     \item We formulate a quantitative Vulnerability Index ($V_i$) and an empirical Cascading Dependency Matrix ($\mathbf{D}$) evaluating cross-pillar failure propagation and unit economic sustainability.
-    \item We present a sequenced three-horizon strategic policy roadmap demonstrating how a rising middle power can attain resilient ``coordinated specialization'' without pursuing fiscally ruinous full-stack autarky.
+    \item We present a sequenced three-horizon strategic policy roadmap operationalizing ``Coordinated Specialization'' and NITI Aayog's ``Indispensable, Not Imitative'' doctrine to build sovereign resilience without pursuing autarky.
 \end{enumerate}
 
 \begin{figure}[t]
@@ -64,7 +66,7 @@ This paper addresses that gap through three primary contributions:
 To overcome disciplinary fragmentation, the IAIRF framework articulates AI sovereignty as an interdependent five-tier structural system, illustrated in Fig.~\ref{fig:arch}.
 
 \subsection{Pillar 1: Silicon Fabrication \& Advanced Packaging}
-The base of the AI stack is physical semiconductor hardware. Training advanced deep learning architectures relies on high-bandwidth memory (HBM3e/HBM4) interconnected with dense tensor processor dies via 2.5D/3D advanced packaging \cite{hardware2026nvidia}. As documented by Akimitsu \cite{akimitsu2026supply}, upstream hardware tiers exhibit extreme market concentration, reflected in Herfindahl-Hirschman Index (HHI) values summarized in Table~\ref{tab:hhi}.
+The physical foundation of modern AI compute rests upon silicon accelerators capable of executing high-density matrix multiplication at extreme throughput. These systems rely on high-bandwidth memory (HBM3e/HBM4) interconnected with processor dies via 2.5D/3D advanced packaging architectures \cite{aimultiple2026chips}. As documented by Akimitsu \cite{akimitsu2026supply}, upstream hardware tiers exhibit extreme market concentration, reflected in Herfindahl-Hirschman Index (HHI) values summarized in Table~\ref{tab:hhi}.
 
 \begin{table}[htbp]
 \caption{Concentration Metrics Across Global AI Value Chain Tiers}
@@ -82,13 +84,13 @@ AI Accelerators (DC) & NVIDIA (USA) & 84\% & 7,225 \\
 Cloud Hyperscalers & AWS, Microsoft, GCP & 68\% & 1,410 \\
 Foundation Models & Open \& Proprietary Global & Diverse & 1,149 \\
 \bottomrule
-\multicolumn{4}{l}{\footnotesize Source: Compiled from Akimitsu (2026) and Hardware Market Intelligence (2026).}
+\multicolumn{4}{l}{\footnotesize Source: Compiled from Akimitsu (2026) and AIMultiple Benchmark (2026).}
 \end{tabularx}
 \label{tab:hhi}
 \end{center}
 \end{table}
 
-While India has established strong foundational capabilities under the \textyen 1,27,500 crore Semicon India 2.0 policy—deploying Electronic Design Automation (EDA) tools across 320 universities and recording 211 academic tapeouts \cite{meity2026semicon}—it possesses zero domestic leading-edge fabrication facilities. Commercial AI accelerators deployed in Indian data centres remain 100\% dependent on external fabs and proprietary software stacks (CUDA), exposing national compute to unilateral supply interruptions.
+Under the \textyen 1,27,500 crore Semicon India 2.0 policy and the NITI Aayog Roadmap \cite{niti2026semicon}, India has targeted strategic chokepoints rather than pursuing an impossible $>\$30$ billion leading-edge 2nm fab. By deploying EDA tools across 320 universities and approving 12 semiconductor projects (including OSAT packaging in Sanand and mature 28nm fabs in Dholera), India seeks to become a global packaging hub. However, commercial AI training silicon deployed in Indian data centres currently remains 100\% dependent on foreign fabs and NVIDIA's proprietary CUDA runtime, exposing national compute to unilateral supply interruptions \cite{thakker2026sovereign}.
 
 \subsection{Pillar 2: High-Density Data Centres \& Thermal Engineering}
 Deploying advanced AI silicon requires specialized high-density physical facilities. Unlike traditional enterprise workloads operating at 6–10 kW per rack, modern accelerator clusters (such as NVIDIA HGX or NVL72) dissipate 40–100 kW per rack \cite{ieee_tcpmt2026cooling}. 
@@ -109,7 +111,7 @@ Bengaluru & 8.5\% & 134 MW & 0 (Inland) & 1.50 \\
 Hyderabad & 6.8\% & 107 MW & 0 (Inland) & 1.54 \\
 Pune & 2.5\% & 40 MW & 0 (Inland) & 1.48 \\
 \bottomrule
-\multicolumn{4}{l}{\footnotesize Source: Synthesized from SBI CHAKRA CoE (2026) and Cushman \& Wakefield (2026).}
+\multicolumn{4}{l}{\footnotesize Source: Synthesized from SBI CHAKRA CoE (2026) and Knight Frank (2025).}
 \end{tabularx}
 \label{tab:dc_metros}
 \end{center}
@@ -122,10 +124,12 @@ The exponential expansion of compute infrastructure places unprecedented localiz
 
 In India, where national peak electricity demand touched 250 GW in 2026, multi-hundred-megawatt AI campuses create severe transmission congestion at local sub-stations. To prevent carbon lock-in and avoid destabilizing public electricity supply, sovereign infrastructure requires captive round-the-clock (RTC) green power agreements backed by battery energy storage systems (BESS). Water intensity represents an intersecting environmental boundary: evaporative cooling towers consume an average of 1.80 liters of potable water per operational kWh, posing acute resource conflicts in water-stressed urban corridors \cite{iea2024energy, lbnl2025energy}.
 
+Crucially, in July 2026, the Central Electricity Authority (CEA) notified the mandatory \textit{Cyber Security in Power Sector Regulations, 2026} \cite{denexus2026cea}. Imposing NERC CIP equivalents on all generation and data centre feeder assets $\ge$50 MW, the regulation enforces a 6-hour incident reporting window to CSIRT-Power, mandatory annual audits, and a hardware/firmware Bill of Materials (BoM), bridging physical grid stability with cybersecurity sovereignty.
+
 \subsection{Pillar 4: Sovereign Foundation Models \& Multilingual Data Trusts}
 Hardware constitutes only the physical apparatus; true digital sovereignty requires ownership of the weights, semantic representations, and algorithmic tokens encoding national culture, linguistic heritage, and institutional governance. Foreign foundation models demonstrate severe structural degradation when processing non-Latin scripts, suffering high tokenization costs and algorithmic bias across Indic languages \cite{thakker2026sovereign}.
 
-Under the IndiaAI Mission, public investments have fostered indigenous models including Sarvam 30B and 105B (supporting 22 official languages) and the multi-institutional BharatGen initiative \cite{meity2026semicon}. Compliant with the Digital Personal Data Protection (DPDP) Act of 2023, the national AI Kosh data repository now unifies over 14,000 public datasets and 331 pre-trained models. Preserving algorithmic sovereignty requires establishing sovereign data trusts that insulate domestic training corpora from unauthorized foreign harvesting while enforcing verifiable provenance.
+Under the IndiaAI Mission, public investments have fostered indigenous models including Sarvam 30B and 105B (supporting 22 official languages) and the multi-institutional BharatGen initiative \cite{meity2026semicon, singh2026impact}. Compliant with the Digital Personal Data Protection (DPDP) Act of 2023, the national AI Kosh data repository now unifies over 14,000 public datasets and 331 pre-trained models. Preserving algorithmic sovereignty requires establishing sovereign data trusts that insulate domestic training corpora from unauthorized foreign harvesting while enforcing verifiable provenance.
 
 \subsection{Pillar 5: Strategic Governance \& Multilateral Diplomacy}
 Sovereignty cannot be constructed through autarkic isolation. Recognizing the staggering financial capital required for semiconductor fabrication ($>$30 billion USD for a leading-edge fab), middle powers must navigate global dependencies through coordinated industrial statecraft \cite{portulans2026sovereignty}.
@@ -155,7 +159,7 @@ where:
     \item $\omega_c, \omega_m, \omega_e$ represent empirical weighting coefficients calibrated to $\omega_c = 0.35, \omega_m = 0.40, \omega_e = 0.25$, satisfying $\sum \omega = 1$.
 \end{itemize}
 
-Empirical evaluation yields $V_1 = 0.912$ for Silicon Fabrication (reflecting 100\% import dependency and high HHI), $V_2 = 0.485$ for Data Centres, $V_3 = 0.390$ for Power Grids, $V_4 = 0.340$ for Foundation Models, and $V_5 = 0.420$ for Governance.
+Empirical evaluation yields $V_1 = 0.912$ for Silicon Fabrication (reflecting 90–95\% import dependency and high HHI), $V_2 = 0.485$ for Data Centres, $V_3 = 0.390$ for Power Grids, $V_4 = 0.340$ for Foundation Models, and $V_5 = 0.420$ for Strategic Governance.
 
 \subsection{Cascading Inter-Pillar Dependency Matrix ($\mathbf{D}$)}
 Because failures in upstream hardware propagate downward into downstream compute operations, the systemic resilience of the national infrastructure cannot be calculated by independent averaging. We formulate an inter-pillar propagation matrix $\mathbf{D} \in \mathbb{R}^{5 \times 5}$, where $D_{kj} \in [0, 1]$ measures the probability that a critical supply disruption in pillar $k$ induces operational curtailment in pillar $j$.
@@ -177,7 +181,7 @@ where $\delta_{kj}$ represents the presence of redundant domestic buffering mech
 \subsection{TCO and Unit Economics of Compute Subsidization}
 A core pillar of the IndiaAI Mission is market democratisation through price intervention. As shown in Fig.~\ref{fig:tco}, commercial hyperscalers charge an average spot rate of \$2.80 USD per H100-equivalent GPU-hour. Under the Indian public tender, empanelled private infrastructure providers (including Yotta, Jio Platforms, and Tata Communications) deliver compute to vetted academic researchers and domestic startups at a subsidized tariff of \textyen 65 per GPU-hour ($\approx$\$0.78 USD), representing a direct 72.1\% cost abatement.
 
-For a benchmark 1-million-GPU-hour foundation model training run, commercial cloud expenditure reaches \$2.80 million USD, whereas sovereign subsidized procurement requires only \$0.78 million USD, abating \$2.02 million USD in capital barriers per model iteration. By August 2026, 237 approved research projects had consumed 9.318 million subsidized GPU-hours, generating an aggregate public compute surplus exceeding \$18.8 million USD \cite{meity2026semicon}.
+For a benchmark 1-million-GPU-hour foundation model training run, commercial cloud expenditure reaches \$2.80 million USD, whereas sovereign subsidized procurement requires only \$0.78 million USD, abating \$2.02 million USD in capital barriers per model iteration. By August 2026, 237 approved research projects had consumed 9.318 million subsidized GPU-hours, generating an aggregate public compute surplus exceeding \$18.8 million USD \cite{meity2026semicon, singh2026impact}.
 
 \begin{figure}[t]
 \centering
@@ -187,7 +191,7 @@ For a benchmark 1-million-GPU-hour foundation model training run, commercial clo
 \end{figure}
 
 \section{Strategic Roadmap \& Policy Architecture}
-India cannot overcome its hardware vulnerabilities through indiscriminate autarky. Attempting to replicate an entire leading-edge 2nm semiconductor ecosystem domestically is economically infeasible. Instead, India must pursue \textit{Coordinated Specialization} across three rigorously sequenced temporal horizons, detailed in Table~\ref{tab:roadmap}.
+India cannot overcome its hardware vulnerabilities through indiscriminate autarky. Resolving the ``$N-2$ Problem'' requires operationalizing \textit{Programmable Sovereignty} and \textit{Coordinated Specialization} \cite{portulans2026sovereignty} alongside NITI Aayog's ``Indispensable, Not Imitative'' doctrine \cite{niti2026semicon} across three temporal horizons (Table~\ref{tab:roadmap}).
 
 \begin{table*}[t]
 \caption{Three-Horizon Strategic Roadmap for India's AI Infrastructure Sovereignty}
@@ -217,14 +221,14 @@ The immediate priority is neutralizing single-vendor software lock-in while opti
 \subsection{Horizon 2 (Years 3–7): Packaging and Mature-Node Silicon}
 In the intermediate term, India must leverage its strengths in chip design to capture high-value assembly and packaging segments:
 \begin{itemize}
-    \item \textbf{Domestic Advanced Packaging (ATMP/OSAT):} Fabricating advanced 3nm dies domestically is non-viable in the medium term, but packaging imported dies onto domestic interposers is achievable. The operationalization of OSAT facilities in Sanand and Morigaon provides the physical foundation for domestic module assembly.
+    \item \textbf{Domestic Advanced Packaging (ATMP/OSAT):} Fabricating advanced 3nm dies domestically is non-viable in the medium term, but packaging imported dies onto domestic interposers is achievable. The operationalization of OSAT facilities in Sanand and Morigaon provides the physical foundation for domestic module assembly \cite{niti2026semicon}.
     \item \textbf{Open-Source RISC-V Acceleration:} While frontier model training will remain on merchant accelerators, edge inference workloads should be systematically migrated to domestic RISC-V architectures (such as C-DAC's Vega and IIT Madras's Shakti cores).
 \end{itemize}
 
 \subsection{Horizon 3 (Years 7–12): Coordinated Specialization \& Multilateral Coalitions}
 In the long term, India must translate its domestic scale and non-aligned geopolitical posture into strategic leverage:
 \begin{itemize}
-    \item \textbf{Pax Silica Coalition:} Rather than seeking autarky, India must lead a multilateral coalition of Global South and middle-power nations to co-finance open-access silicon foundries and guarantee reciprocal access to critical minerals and clean energy grids.
+    \item \textbf{Pax Silica Coalition:} Rather than seeking autarky, India must lead a multilateral coalition of Global South and middle-power nations to co-finance open-access silicon foundries and guarantee reciprocal access to critical minerals and clean energy grids \cite{stimson2026sovereignty}.
 \end{itemize}
 
 \section{Conclusion \& Future Work}

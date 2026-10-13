@@ -1,0 +1,4 @@
+# Ignore scratch scripts and caches
+scratch/
+__pycache__/
+*.pyc
