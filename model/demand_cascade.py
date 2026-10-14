@@ -9,7 +9,7 @@ Enhancements in v2.0:
   - Multi-mode cooling disaggregation (Air, RDHx, D2C Liquid, Immersion)
   - Explicit global/national capacity absorption percentages (TSMC, CoWoS, HBM, Colocation)
   - CEA Carbon emission factor integration (0.716 tCO2/MWh)
-  - Monte Carlo simulation engine (1,000 Latin-hypercube draws)
+  - Monte Carlo simulation engine (1,000 uniform random draws, fixed seed 42)
   - Automated CSV export for IEEE tables and plots
 """
 
@@ -68,7 +68,7 @@ def run_cascade_v2(
     die_area_mm2: float = 814.0,
     defect_density_cm2: float = 0.08,
     cowos_per_wafer: int = 15,
-    hbm_stacks_per_gpu: int = 8,
+    hbm_stacks_per_gpu: int = 6,
 ) -> dict:
     """Execute complete 6-layer Demand-Cascade simulation for given parameters."""
     
@@ -141,7 +141,7 @@ def generate_scenario_table():
     scenarios = [200000, 500000, 1000000]
     variants = {
         "Low":  {"p_gpu_w": 700.0, "r_host": 1.60, "pue": 1.25, "u": 0.65, "wue": 0.20, "d0": 0.06, "cowos_per_w": 18, "hbm_per_g": 6},
-        "Base": {"p_gpu_w": 700.0, "r_host": 1.82, "pue": 1.40, "u": 0.80, "wue": 1.80, "d0": 0.08, "cowos_per_w": 15, "hbm_per_g": 8},
+        "Base": {"p_gpu_w": 700.0, "r_host": 1.82, "pue": 1.40, "u": 0.80, "wue": 1.80, "d0": 0.08, "cowos_per_w": 15, "hbm_per_g": 6},
         "High": {"p_gpu_w": 1000.0, "r_host": 2.10, "pue": 1.55, "u": 0.90, "wue": 2.50, "d0": 0.12, "cowos_per_w": 12, "hbm_per_g": 8},
     }
     
@@ -220,7 +220,7 @@ def run_monte_carlo(n_gpu: int = 500000, n_simulations: int = 1000):
         wue = random.uniform(0.30, 2.20)
         d0 = random.uniform(0.06, 0.11)
         cowos_pw = random.choice([14, 15, 16])
-        hbm_pg = 8
+        hbm_pg = 6
         
         res = run_cascade_v2(
             n_gpu=n_gpu,

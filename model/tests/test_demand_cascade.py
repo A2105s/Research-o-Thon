@@ -57,9 +57,9 @@ class TestDemandCascadeV2(unittest.TestCase):
         self.assertAlmostEqual(self.base_res["cowos_share_pct"], 7.41, places=2)
 
     def test_hbm_stacks_exact(self):
-        # 500,000 * 8 = 4,000,000 stacks
-        self.assertEqual(self.base_res["hbm_stacks"], 4000000)
-        self.assertAlmostEqual(self.base_res["hbm_share_pct"], 6.67, places=2)
+        # 500,000 * 6 = 3,000,000 stacks (H100/H200: 6 HBM stacks, parameter register PAR-011)
+        self.assertEqual(self.base_res["hbm_stacks"], 3000000)
+        self.assertAlmostEqual(self.base_res["hbm_share_pct"], 5.00, places=2)
 
     def test_chokepoint_ratio(self):
         # CoWoS share (7.41%) / Wafer share (1.60%) = ~4.63x

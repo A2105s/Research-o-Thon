@@ -8,7 +8,7 @@
 [![Tests: Passing](https://img.shields.io/badge/Tests-10%2F10%20Passing-brightgreen.svg)](model/tests/)
 
 **Institution:** Department of Computer Science & Engineering, Amity School of Engineering and Technology, Amity University Madhya Pradesh, Gwalior, India  
-**Authors:** Adarsh Singh, Sourav, Anamidhi Shrivastava  
+**Authors:** Dr. Madhavi Dhingra (faculty), Adarsh Singh, Parikshit Singh Bais, Anamidi Shrivastava, Sourav  
 **Track:** AI Infrastructure, Semiconductor Sovereignty & Strategic Computing  
 
 ---
@@ -20,7 +20,7 @@ National artificial intelligence (AI) strategies increasingly treat high-perform
 This repository provides the complete, reproducible research codebase, evidence register, simulation models, and LaTeX manuscript for our **Five-Pillar Conceptual Framework** and six-layer **Demand-Cascade Model**. Evaluating three illustrative deployment scenarios (**200,000, 500,000, and 1,000,000 GPUs**), our model translates accelerator targets into:
 - **IT Electrical Load & Substation Capacity:** 637.0 MW IT load and 891.8 MW peak facility draw (500k GPUs @ PUE 1.40).
 - **National Grid Absorption:** Absorbs **56.62% of India's current operational colocation data centre capacity** (1,575 MW in mid-2026).
-- **The Structural Chokepoint Inversion:** Refutes the widespread belief that front-end semiconductor fabrication capacity is India's binding physical bottleneck: required wafer starts represent merely **1.60%** of TSMC's annual sub-5nm output (12,500 wafers), whereas 2.5D advanced packaging (CoWoS) consumes **7.41%** of global capacity ($4.6\times$ higher intensity) and HBM3e absorbs **6.67%** of global production.
+- **The Structural Chokepoint Inversion:** Refutes the widespread belief that front-end semiconductor fabrication capacity is India's binding physical bottleneck: required wafer starts represent merely **1.60%** of TSMC's annual sub-5nm output (12,500 wafers), whereas 2.5D advanced packaging (CoWoS) consumes **7.41%** of global capacity ($4.6\times$ higher intensity) and HBM3e absorbs **5.00%** of global production.
 
 ---
 
@@ -62,13 +62,13 @@ ResearchThon_Final/
 ├── tables/                        # Machine-readable CSV tables matching manuscript
 ├── manuscript/
 │   ├── main.tex                   # IEEE conference LaTeX source code
-│   ├── references.bib             # 23 verified BibTeX citations (2024–2026)
+│   ├── references.bib             # 40 BibTeX entries (30 cited in the paper)
 │   └── figures/                   # Vector PDFs and PNGs embedded in paper
 ├── presentation/
 │   ├── speaker_notes.md           # 5-minute timed presentation script
 │   └── jury_questions.md          # Defense Q&A register for jury evaluation
 ├── output/
-│   ├── final_paper.pdf            # 5-page compiled submission PDF (IEEE format)
+│   ├── final_paper.pdf            # 6-page compiled submission PDF (IEEE format)
 │   └── review_report.md           # Red-team compliance checklist
 └── scripts/
     ├── compile_paper.py           # Automated PDF compiler
@@ -109,7 +109,7 @@ Vector PDFs and high-DPI PNGs are generated in `figures/` and copied to `manuscr
 ```bash
 python scripts/compile_paper.py
 ```
-Compiles the publication-ready 5-page IEEE PDF to `output/final_paper.pdf`.
+Compiles the publication-ready 6-page IEEE PDF to `output/final_paper.pdf`.
 
 ---
 
@@ -126,8 +126,8 @@ Compiles the publication-ready 5-page IEEE PDF to `output/final_paper.pdf`.
 | **TSMC Sub-5nm Allocation** | 0.64% | **1.60%** | 3.21% | TSMC Advanced Capacity (~780k wpy) |
 | **CoWoS Interposer Wafers** | 13,334 | **33,334** | 66,667 | 15 packages / 300mm interposer wafer |
 | **Global CoWoS Allocation** | 2.96% | **7.41%** | 14.81% | Global CoWoS Capacity (~450k wpy) |
-| **HBM3e Memory Stacks** | 1,600,000 | **4,000,000** | 8,000,000 | 8 stacks / accelerator card |
-| **Global HBM Allocation** | 2.67% | **6.67%** | 13.33% | Global HBM Output (~60M stacks/yr) |
+| **HBM3e Memory Stacks** | 1,200,000 | **3,000,000** | 6,000,000 | 6 stacks / accelerator card (H100/H200 class, PAR-011) |
+| **Global HBM Allocation** | 2.00% | **5.00%** | 10.00% | Global HBM Output (~60M stacks/yr) |
 
 ---
 
@@ -135,8 +135,8 @@ Compiles the publication-ready 5-page IEEE PDF to `output/final_paper.pdf`.
 
 ```bibtex
 @inproceedings{singh2026demanddriven,
-  author    = {Singh, Adarsh and Sourav and Shrivastava, Anamidhi},
-  title     = {A Demand-Driven Framework for India's AI Infrastructure Planning: Linking Compute, Energy, Physical Resources, and Semiconductor Dependencies},
+  author    = {Dhingra, Madhavi and Singh, Adarsh and Bais, Parikshit Singh and Shrivastava, Anamidi and Sourav},
+  title     = {Sovereign by Design: A Five-Pillar Framework for India's Strategic Compute and AI Infrastructure},
   booktitle = {Proceedings of ResearchThon 2026},
   organization = {Amity University Madhya Pradesh},
   year      = {2026},

@@ -107,8 +107,16 @@ def check_layout(fig, name, patches_to_avoid=(), inside_ok=()):
 
 
 def save(fig, name):
+    import time
     for ext in ("pdf", "png", "svg"):
-        fig.savefig(FIG_DIR / f"{name}.{ext}", bbox_inches="tight")
+        for attempt in range(4):          # transient file-lock errors on synced folders
+            try:
+                fig.savefig(FIG_DIR / f"{name}.{ext}", bbox_inches="tight")
+                break
+            except OSError:
+                if attempt == 3:
+                    raise
+                time.sleep(1.0)
     plt.close(fig)
 
 
