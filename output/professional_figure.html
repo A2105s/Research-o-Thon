@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Demand-Cascade Scenario Summary</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1f1f1f;
+    --muted: #595959;
+    --border: #d9d9d9;
+    --accent: #1f3864;
+    --accent-2: #7f7f7f;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Times New Roman", "Times", "Liberation Serif", serif;
+    color: var(--fg);
+    background: var(--bg);
+    padding: 24px;
+  }
+  .page {
+    max-width: 980px;
+    margin: 0 auto;
+    border: 1px solid var(--border);
+    padding: 24px 24px 20px;
+  }
+  .title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 4px;
+    color: var(--accent);
+  }
+  .subtitle {
+    margin: 0 0 16px;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+  }
+  .table th, .table td {
+    border: 1px solid var(--border);
+    padding: 6px 8px;
+    text-align: right;
+  }
+  .table th:first-child, .table td:first-child { text-align: left; }
+  .table thead { background: #f2f2f2; }
+  .chart-wrap {
+    height: 320px;
+    margin-top: 8px;
+  }
+  .note {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+  @media (max-width: 640px) {
+    .table th, .table td { font-size: 0.8rem; padding: 4px 6px; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <h1 class="title">Demand-Cascade Scenario Summary</h1>
+    <p class="subtitle">Scenario outputs for 200,000 / 500,000 / 1,000,000 GPU deployments. Base variant, tropical PUE baseline.</p>
+    <table class="table">
+      <thead>
+        <tr><th>Metric</th><th>200k GPUs</th><th>500k GPUs</th><th>1M GPUs</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>IT Load (MW)</td><td>254.8</td><td>637.0</td><td>1,274.0</td></tr>
+        <tr><td>Facility Power (MW)</td><td>356.7</td><td>891.8</td><td>1,783.6</td></tr>
+        <tr><td>Annual Energy (TWh)</td><td>2.50</td><td>6.25</td><td>12.50</td></tr>
+        <tr><td>Cooling Water (ML)</td><td>4,499.8</td><td>11,249.5</td><td>22,499.0</td></tr>
+        <tr><td>Colocation Share (%)</td><td>22.65</td><td>56.62</td><td>113.24</td></tr>
+      </tbody>
+    </table>
+    <div class="chart-wrap"><canvas id="chart"></canvas></div>
+    <p class="note">Source: Demand-Cascade Model v2 outputs (model/demand_cascade.py). Facility power uses PUE 1.40 tropical baseline, 80% utilisation.</p>
+  </div>
+<script>
+const ctx = document.getElementById('chart').getContext('2d');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['200k GPUs', '500k GPUs', '1M GPUs'],
+    datasets: [
+      {
+        label: 'Facility Power (MW)',
+        data: [356.7, 891.8, 1783.6],
+        backgroundColor: '#1f3864',
+        borderRadius: 0,
+        barThickness: 34
+      },
+      {
+        label: 'Colocation Share (%)',
+        data: [22.65, 56.62, 113.24],
+        backgroundColor: '#8c8c8c',
+        borderRadius: 0,
+        barThickness: 34
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { color: '#1f1f1f', boxWidth: 12, usePointStyle: false, font: { family: "'Times New Roman', 'Times', serif" } }
+      },
+      tooltip: {
+        backgroundColor: '#1f1f1f',
+        titleColor: '#fff',
+        bodyColor: '#fff',
+        cornerRadius: 2
+      }
+    },
+    scales: {
+      x: {
+        ticks: { color: '#1f1f1f', font: { family: "'Times New Roman', 'Times', serif" } },
+        grid: { display: false }
+      },
+      y: {
+        ticks: { color: '#1f1f1f', font: { family: "'Times New Roman', 'Times', serif" } },
+        grid: { color: '#e6e6e6' },
+        beginAtZero: true
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+mode,annual_pue,summer_pue,wue_l_kwh,fac_power_mw,fac_power_summer_mw,annual_energy_twh,annual_water_ml,rack_count
+Traditional_Air,1.45,1.65,1.8,923.6,1051.0,6.47,11651.3,42467
+RDHx,1.35,1.45,1.0,860.0,923.6,6.03,6026.5,18200
+D2C_Liquid,1.18,1.25,0.12,751.7,796.2,5.27,632.1,7963
+Immersion,1.12,1.18,0.03,713.4,751.7,5.0,150.0,5309
