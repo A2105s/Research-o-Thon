@@ -236,10 +236,11 @@ def figure5():
     for yi, val in enumerate(pos):
         ax.text(val + 1.0, yi, f"+{val:.1f}%", ha="left", va="center", fontsize=6.7, color=BLACK)
     for yi, val in enumerate(neg):
-        ax.text(val - 1.0, yi, f"{val:.1f}%", ha="right", va="center", fontsize=6.7, color=BLACK)
-    ax.legend(loc="lower right", frameon=False, handlelength=1.1)
-    ax.text(0.99, 0.01, "Primary metric: facility power or resource use", transform=ax.transAxes,
-           ha="right", va="bottom", fontsize=6.6, color=DARK_GREY)
+        if val < -50:
+            ax.text(val + 2.0, yi, f"{val:.1f}%", ha="left", va="center", fontsize=6.7, color=BLACK, weight="bold")
+        else:
+            ax.text(val - 1.0, yi, f"{val:.1f}%", ha="right", va="center", fontsize=6.7, color=BLACK)
+    ax.legend(loc="upper left", frameon=False, handlelength=1.1)
     save("fig5_sensitivity_tornado_montecarlo")
 
 
