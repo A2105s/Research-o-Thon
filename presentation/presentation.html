@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sovereign by Design | ResearchThon 2026</title>
+<style>
+/* ------------------------------------------------------------------
+   Tokens
+   Colour code (same as the paper's figures):
+   green = electricity, blue = physical resources / global capacity,
+   red = semiconductor supply chain / India constraint, ink = neutral
+------------------------------------------------------------------- */
+:root{
+  --bg:#F7F6F2;
+  --ink:#121212;
+  --mute:#6E6E69;
+  --rule:#D9D7CF;
+  --card:#FFFFFF;
+  --green:#1E7A4F;
+  --green-l:#8DBFA5;
+  --blue:#1F4E8C;
+  --blue-l:#8FAAD0;
+  --red:#B23A2E;
+  --red-l:#DDA19B;
+  --font:"Inter","Segoe UI","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#1b1b1b;overflow:hidden;font-family:var(--font);color:var(--ink)}
+body{-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+
+/* ---------------- Stage (fixed 1600x900, scaled to fit) ---------------- */
+#stage{position:fixed;left:50%;top:50%;width:1600px;height:900px;transform-origin:center center;background:var(--bg);overflow:hidden}
+.slide{position:absolute;inset:0;padding:76px 110px 92px;display:none;flex-direction:column}
+.slide.active{display:flex;animation:fade .35s ease both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.notes{display:none}
+
+.kicker{font-size:19px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);font-weight:600;margin-bottom:16px}
+h1{font-size:112px;line-height:1;font-weight:700;letter-spacing:-.035em}
+h2{font-size:54px;line-height:1.1;font-weight:600;letter-spacing:-.02em;max-width:1380px;margin-bottom:38px}
+h3{font-size:28px;font-weight:600;letter-spacing:-.01em}
+p{font-size:29px;line-height:1.4}
+.mute{color:var(--mute)}
+.g{color:var(--green)}.b{color:var(--blue)}.r{color:var(--red)}
+.fill{flex:1}
+.rule{height:2px;background:var(--ink)}
+.hair{height:1px;background:var(--rule)}
+
+/* Chrome */
+.chrome{position:absolute;left:110px;right:110px;bottom:32px;display:flex;justify-content:space-between;font-size:16px;color:var(--mute);letter-spacing:.04em;z-index:5}
+.progress{position:absolute;left:0;bottom:0;height:4px;background:var(--ink);width:0;transition:width .3s ease;z-index:6}
+#stage.cover .chrome,#stage.cover .progress{display:none}
+#timer{position:absolute;top:22px;right:34px;font-size:16px;color:var(--mute);letter-spacing:.06em;display:none;z-index:7}
+#timer.on{display:block}
+
+/* Fragments */
+[data-f]{opacity:0;transition:opacity .45s ease}
+[data-f].on{opacity:1}
+
+/* ---------------- Horizontal bars ---------------- */
+.bar{position:relative;height:100%}
+.bar i{position:absolute;left:0;top:0;bottom:0;width:0;transition:width .9s cubic-bezier(.2,.7,.2,1)}
+.slide.active .bar i{width:var(--w)}
+.slide.active [data-f]:not(.on) .bar i{width:0}
+.bar.c-g i{background:var(--green)}.bar.c-b i{background:var(--blue)}.bar.c-r i{background:var(--red)}
+.bar.c-gl i{background:var(--green-l)}.bar.c-bl i{background:var(--blue-l)}.bar.c-rl i{background:var(--red-l)}
+.bar.c-k i{background:var(--ink)}.bar.c-m i{background:#BDBBB2}
+
+/* ---------------- Cover ---------------- */
+.cover-wrap{display:flex;flex:1;gap:80px}
+.cover-l{flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.cover-r{width:420px;display:flex;flex-direction:column;justify-content:center;gap:20px;align-items:flex-end}
+.cover-r div{height:16px}
+.cover-sub{font-size:36px;line-height:1.25;max-width:1000px;margin-top:34px;font-weight:400}
+.authors{font-size:24px;line-height:1.55;color:var(--ink)}
+.authors .mute{font-size:20px}
+.event{font-size:19px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--mute);line-height:1.7}
+.cover-img{padding:0;background:#fff;align-items:center;justify-content:center}
+.cover-img img{max-width:100%;max-height:100%}
+
+/* ---------------- Why it matters (technology races) ---------------- */
+.race{display:grid;grid-template-columns:repeat(5,1fr);margin-top:14px}
+.tn{position:relative;padding:34px 24px 0 0}
+.tn::before{content:"";position:absolute;top:-9px;left:0;width:20px;height:20px;border-radius:50%;background:var(--ink);z-index:2}
+.tn .seg{position:absolute;top:0;left:0;height:2px;width:0;background:var(--ink);transition:width 1.1s cubic-bezier(.3,.7,.2,1) .1s}
+.tn.on .seg{width:100%}
+.tn .yr{font-size:18px;letter-spacing:.16em;color:var(--mute);font-weight:600;margin-bottom:10px}
+.tn .nm{font-size:31px;font-weight:600;line-height:1.15;letter-spacing:-.01em;min-height:72px}
+.tn .gv{font-size:22px;color:var(--mute);line-height:1.4;margin-top:12px}
+.tn.ai::before{width:26px;height:26px;top:-12px;background:var(--ink)}
+.tn.ai.on::after{content:"";position:absolute;top:-12px;left:0;width:26px;height:26px;border-radius:50%;border:2px solid var(--ink);animation:ring 2.2s ease-out infinite;z-index:1}
+@keyframes ring{0%{transform:scale(1);opacity:.8}100%{transform:scale(2.6);opacity:0}}
+.tn.ai .seg{background:linear-gradient(90deg,var(--ink),rgba(18,18,18,0))}
+.tn.ai .nm{font-size:34px}
+.rise{transform:translateY(26px);transition:opacity .55s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.rise.on{transform:none}
+.rband{display:grid;grid-template-columns:1fr 1fr;column-gap:56px}
+.rband .a{border-top:6px solid var(--ink);padding-top:20px}
+.rband .a .k,.rband .b2 .k{font-size:17px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--mute);margin-bottom:10px}
+.rband .a .v{font-size:31px;line-height:1.3;font-weight:600;letter-spacing:-.01em}
+.rband .b2{background:var(--ink);color:#fff;padding:26px 34px 28px}
+.rband .b2 .k{color:#bdbbb2}
+.rband .b2 .v{font-size:31px;line-height:1.3;font-weight:600;letter-spacing:-.01em}
+.rband .b2 .v span{font-weight:400;color:#d6d4cc}
+
+/* ---------------- Problem ---------------- */
+.scale-row{display:grid;grid-template-columns:330px 1fr 210px;align-items:center;column-gap:24px;height:56px;white-space:nowrap}
+.scale-row .lbl{font-size:24px}
+.scale-row .val{font-size:26px;font-weight:600}
+.scale-row .bar{height:34px}
+.chain{display:flex;border-top:2px solid var(--ink)}
+.chain .st{flex:1;padding:30px 28px 0 0;position:relative}
+.chain .st::before{content:"";position:absolute;top:-10px;left:0;width:18px;height:18px;border-radius:50%;background:var(--ink)}
+.chain .st.g::before{background:var(--green)}.chain .st.b::before{background:var(--blue)}.chain .st.r::before{background:var(--red)}
+.chain .n{font-size:18px;letter-spacing:.14em;color:var(--mute);font-weight:600;margin-bottom:10px}
+.chain .t{font-size:30px;font-weight:600;line-height:1.2;letter-spacing:-.01em}
+.chain .d{font-size:21px;color:var(--mute);margin-top:10px;line-height:1.35}
+
+/* ---------------- Gap ---------------- */
+.silos{display:grid;grid-template-columns:repeat(3,1fr);column-gap:48px}
+.silo{border-top:6px solid var(--ink);padding-top:22px}
+.silo.r{border-color:var(--red)}.silo.g{border-color:var(--green)}.silo.k{border-color:#8d8b82}
+.silo.r,.silo.g,.silo.k,.pil.r,.pil.g,.pil.b,.tk.g,.tk.r,.tk.b,.fl.r,.fl.g,.fl.b{color:var(--ink)}
+.pil.r .id{color:var(--red)}.pil.g .id{color:var(--green)}.pil.b .id{color:var(--blue)}
+.silo h3{margin-bottom:14px}
+.silo .s{font-size:25px;line-height:1.4;margin-bottom:14px}
+.silo .x{font-size:25px;line-height:1.4;color:var(--mute)}
+.silo .x b{color:var(--ink);font-weight:600}
+.bridge{background:var(--ink);color:#fff;padding:34px 44px;display:grid;grid-template-columns:1fr 1fr;column-gap:60px}
+.bridge .k{font-size:17px;letter-spacing:.16em;text-transform:uppercase;color:#bdbbb2;font-weight:600;margin-bottom:8px}
+.bridge .v{font-size:30px;line-height:1.25;font-weight:600}
+.bridge .v span{font-weight:400;color:#d6d4cc}
+
+/* ---------------- Pillars ---------------- */
+.pillars{display:grid;grid-template-columns:repeat(5,1fr);column-gap:26px}
+.pil{background:var(--card);border-top:6px solid #8d8b82;padding:24px 22px 26px;min-height:300px}
+.pil.r{border-color:var(--red)}.pil.g{border-color:var(--green)}.pil.b{border-color:var(--blue)}
+.pil .id{font-size:44px;font-weight:700;letter-spacing:-.02em;margin-bottom:14px}
+.pil h3{font-size:25px;line-height:1.2;margin-bottom:14px}
+.pil p{font-size:21px;color:var(--mute);line-height:1.38}
+.loops{display:grid;grid-template-columns:repeat(4,1fr);column-gap:36px;border-top:2px solid var(--ink);padding-top:22px}
+.loop .id{font-size:17px;letter-spacing:.16em;font-weight:600;color:var(--mute);text-transform:uppercase;margin-bottom:8px}
+.loop h3{font-size:24px;line-height:1.2;margin-bottom:8px}
+.loop p{font-size:20px;color:var(--mute);line-height:1.38}
+
+/* ---------------- Cascade (SVG) ---------------- */
+svg text{font-family:var(--font)}
+.lt{font-size:16px;font-weight:600;letter-spacing:.14em}
+.ln{font-size:21px;font-weight:600;fill:var(--ink)}
+.lv{font-size:40px;font-weight:700;letter-spacing:-.02em;fill:var(--ink)}
+.ls{font-size:17px;fill:var(--mute)}
+.box{fill:#fff;stroke:var(--rule);stroke-width:1.5}
+
+/* ---------------- Power wall ---------------- */
+.wall{display:grid;grid-template-columns:600px 1fr;column-gap:90px;flex:1}
+.huge{font-size:170px;font-weight:700;letter-spacing:-.05em;line-height:.9;color:var(--green)}
+.huge small{font-size:64px;letter-spacing:-.02em;font-weight:600;margin-left:8px}
+.eq{margin-top:46px;border-top:2px solid var(--ink)}
+.eq div{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--rule);font-size:25px}
+.eq div b{font-weight:600}
+.eq div span{color:var(--mute)}
+.share{display:flex;flex-direction:column;justify-content:center}
+.share .cap{font-size:22px;color:var(--mute);margin-bottom:76px;line-height:1.4}
+.srow{display:grid;grid-template-columns:150px 1fr;align-items:center;column-gap:18px;height:100px}
+.srow .lbl{font-size:25px;font-weight:600}
+.track{position:relative;height:100%;display:flex;align-items:center}
+.track .bar{height:56px;width:100%}
+.track .v{position:absolute;font-size:34px;font-weight:700;top:50%;transform:translateY(-50%);transition:opacity .4s}
+.limit{position:absolute;top:-14px;bottom:-14px;border-left:2px dashed var(--ink)}
+.limit-lbl{position:absolute;top:-44px;font-size:18px;letter-spacing:.08em;font-weight:600;transform:translateX(-100%);white-space:nowrap}
+
+/* ---------------- Inversion chart ---------------- */
+.chart-grid{display:grid;grid-template-columns:330px 1fr;column-gap:24px}
+.crow{display:grid;grid-template-columns:330px 1fr;column-gap:24px;align-items:center;height:78px}
+.crow .lbl{font-size:25px;line-height:1.15}
+.crow .lbl small{display:block;font-size:17px;color:var(--mute);margin-top:3px}
+.crow .track .bar{height:40px}
+.group{font-size:17px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin:18px 0 4px}
+.callout{position:absolute;font-size:24px;font-weight:600;white-space:nowrap}
+.note-line{font-size:20px;color:var(--mute);margin-top:auto}
+
+/* ---------------- Cooling ---------------- */
+.cool{display:grid;grid-template-columns:1fr 430px;column-gap:90px;flex:1}
+.crow2{display:grid;grid-template-columns:260px 1fr;align-items:center;column-gap:20px;height:92px}
+.crow2 .lbl{font-size:25px;font-weight:600;line-height:1.15}
+.crow2 .lbl small{display:block;font-weight:400;font-size:18px;color:var(--mute);margin-top:4px}
+.crow2 .track .bar{height:44px}
+.stat{border-top:2px solid var(--ink);padding:20px 0 30px}
+.stat .n{font-size:84px;white-space:nowrap;font-weight:700;letter-spacing:-.04em;line-height:1}
+.stat .d{font-size:24px;color:var(--mute);margin-top:10px;line-height:1.35}
+
+/* ---------------- Robustness ---------------- */
+.rob{display:grid;grid-template-columns:810px 1fr;column-gap:70px;flex:1}
+.sub{font-size:18px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-weight:600;margin-bottom:6px}
+.sub-s{font-size:20px;color:var(--mute);margin-bottom:18px;line-height:1.35}
+.trow{display:grid;grid-template-columns:270px 1fr;align-items:center;column-gap:16px;height:70px}
+.trow .lbl{font-size:22px;font-weight:600;line-height:1.15}
+.trow .lbl small{display:block;font-weight:400;font-size:16px;color:var(--mute);margin-top:2px}
+.tt{position:relative;height:100%}
+.tt::before{content:"";position:absolute;left:66.667%;top:6px;bottom:6px;border-left:2px solid var(--ink)}
+.tt i{position:absolute;top:16px;bottom:16px;width:0;transition:width .9s cubic-bezier(.2,.7,.2,1)}
+.tt i.neg{right:33.333%}
+.tt i.pos{left:66.667%}
+.slide.active .tt i{width:var(--w)}
+.tt .lab{position:absolute;top:50%;transform:translateY(-50%);font-size:18px;font-weight:600;white-space:nowrap}
+.mc-row{margin-bottom:34px}
+.mc-row .t{font-size:22px;font-weight:600;margin-bottom:10px;display:flex;justify-content:space-between}
+.mc-row .t span{color:var(--mute);font-weight:400}
+.axis{position:relative;height:26px;margin-top:4px;border-top:1px solid var(--rule)}
+.axis b{position:absolute;top:6px;font-size:16px;color:var(--mute);font-weight:400;transform:translateX(-50%)}
+.range{position:relative;height:30px;background:#ECEAE3}
+.range i{position:absolute;top:0;bottom:0;transition:opacity .6s}
+
+/* ---------------- Roadmap ---------------- */
+.axis-t{display:flex;font-size:18px;color:var(--mute);letter-spacing:.06em;margin-bottom:8px}
+.tiers{display:flex;gap:6px}
+.tier{padding:26px 28px 28px;color:#fff;min-height:330px}
+.tier .id{font-size:17px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;opacity:.75;margin-bottom:10px}
+.tier h3{font-size:30px;line-height:1.15;margin-bottom:6px}
+.tier .yr{font-size:22px;opacity:.8;margin-bottom:22px}
+.tier ul{list-style:none}
+.tier li{font-size:21px;line-height:1.35;padding:10px 0;border-top:1px solid rgba(255,255,255,.28)}
+.t1{background:#121212;flex:3}.t2{background:#4a4a46;flex:3}.t3{background:#7b7a73;flex:4}
+.invest{margin-top:34px}
+.invest .head{display:flex;justify-content:space-between;font-size:22px;margin-bottom:12px}
+.invest .head b{font-weight:600}
+.invest .head span{color:var(--mute)}
+.stack{display:flex;height:48px}
+.stack div{display:flex;align-items:center;padding:0 18px;font-size:21px;font-weight:600;color:#fff}
+
+/* ---------------- Takeaways ---------------- */
+.take{display:grid;grid-template-columns:repeat(3,1fr);column-gap:56px;flex:1}
+.tk{border-top:6px solid var(--ink);padding-top:22px;display:flex;flex-direction:column}
+.tk.g{border-color:var(--green)}.tk.r{border-color:var(--red)}.tk.b{border-color:var(--blue)}
+.tk .n{font-size:110px;font-weight:700;letter-spacing:-.045em;line-height:1}
+.tk h3{margin:18px 0 10px;font-size:30px;line-height:1.2}
+.tk p{font-size:24px;color:var(--mute);line-height:1.4}
+.limits{border-top:1px solid var(--rule);padding-top:20px;font-size:22px;color:var(--mute);line-height:1.45;margin-top:34px}
+.limits b{color:var(--ink);font-weight:600}
+
+/* ---------------- Q&A ---------------- */
+.qa{flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.repro{font-family:Consolas,"Cascadia Mono",monospace;font-size:24px;line-height:1.7;color:var(--ink)}
+.repro span{color:var(--mute)}
+
+/* ---------------- Tables ---------------- */
+table{border-collapse:collapse;width:100%}
+th{font-size:17px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);font-weight:600;text-align:left;padding:0 14px 12px 0;border-bottom:2px solid var(--ink)}
+td{font-size:23px;padding:10px 14px 10px 0;border-bottom:1px solid var(--rule);vertical-align:middle}
+td.n,th.n{text-align:right;padding-right:26px}
+td.hl{font-weight:700}
+td small{color:var(--mute);font-size:18px}
+tr.sep td{border-bottom:2px solid var(--ink)}
+.divider{justify-content:center}
+.divider h1{font-size:96px}
+
+/* flow (backup wafer maths) */
+.flow{display:flex;align-items:stretch;gap:0}
+.fl{flex:1;border-top:6px solid var(--ink);padding:20px 20px 0 0;position:relative}
+.fl.r{border-color:var(--red)}.fl.g{border-color:var(--green)}.fl.b{border-color:var(--blue)}
+.fl .k{font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-weight:600;margin-bottom:10px;min-height:44px}
+.fl .v{font-size:60px;font-weight:700;letter-spacing:-.03em;line-height:1}
+.fl .d{font-size:21px;color:var(--mute);margin-top:12px;line-height:1.35}
+.eqn{font-family:"Cambria Math","Cambria",Georgia,serif;font-size:26px;font-style:italic;margin-top:12px;color:var(--ink)}
+.list-n{counter-reset:n;list-style:none}
+.list-n li{counter-increment:n;display:grid;grid-template-columns:64px 1fr;font-size:25px;line-height:1.4;padding:16px 0;border-bottom:1px solid var(--rule)}
+.list-n li::before{content:counter(n,decimal-leading-zero);color:var(--mute);font-weight:600;font-size:20px;padding-top:4px}
+.list-n li b{font-weight:600}
+
+/* Notes panel (press N) */
+#notes{position:fixed;left:0;right:0;bottom:0;background:#111;color:#e9e8e2;font-size:18px;line-height:1.5;padding:16px 28px;display:none;z-index:50;max-height:26vh;overflow:auto;border-top:1px solid #333}
+#notes.on{display:block}
+#help{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);background:#111;color:#cfcdc5;font-size:14px;letter-spacing:.04em;padding:8px 16px;border-radius:2px;z-index:60;opacity:0;transition:opacity .4s;pointer-events:none}
+#help.on{opacity:.92}
+
+/* ---------------- Print / PDF export ---------------- */
+@page{size:1600px 900px;margin:0}
+@media print{
+  html,body{background:#fff;overflow:visible;height:auto}
+  #stage{position:static;transform:none !important;width:1600px;height:auto;overflow:visible}
+  .slide,.slide.active{display:flex;position:relative;width:1600px;height:900px;page-break-after:always;break-after:page;animation:none;background:var(--bg)}
+  [data-f]{opacity:1 !important}
+  .bar i,.tt i{width:var(--w) !important;transition:none}
+  .tn .seg{width:100% !important;transition:none}
+  .rise{transform:none !important}
+  .tn.ai::after{animation:none;display:none}
+  .chrome,.progress,#timer,#notes,#help{display:none !important}
+}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="progress" id="progress"></div>
+  <div class="chrome"><span>Sovereign by Design &nbsp;|&nbsp; ResearchThon 2026</span><span id="counter"></span></div>
+  <div id="timer"></div>
+
+<!-- ============================ 01 COVER ============================ -->
+<section class="slide" data-cover="1">
+  <aside class="notes">Opening. One sentence: we asked what India's AI chip plans physically require. If the organisers' cover page is available, save it as organizer_cover.png beside this file and it will appear as the first slide automatically.</aside>
+  <div class="cover-wrap">
+    <div class="cover-l">
+      <div class="event">ResearchThon 2026<br>IEEE Student Branch, ASET &nbsp;|&nbsp; Amity University Madhya Pradesh</div>
+      <div>
+        <h1>Sovereign<br>by Design</h1>
+        <div class="cover-sub">A Five-Pillar Framework for India's Strategic Compute and AI Infrastructure</div>
+      </div>
+      <div class="authors">
+        Dr. Madhavi Dhingra, Adarsh Singh, Parikshit Singh Bais, Anamidi Shrivastava, Sourav<br>
+        <span class="mute">Department of Computer Science and Engineering, Amity School of Engineering and Technology, Gwalior<br>Track: AI Infrastructure, Semiconductor Sovereignty and Strategic Computing</span>
+      </div>
+    </div>
+    <div class="cover-r" aria-hidden="true">
+      <div style="width:100%;background:var(--green)"></div>
+      <div style="width:86%;background:var(--green)"></div>
+      <div style="width:72%;background:var(--blue)"></div>
+      <div style="width:58%;background:var(--red)"></div>
+      <div style="width:44%;background:var(--red)"></div>
+      <div style="width:30%;background:var(--red)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 02 WHY IT MATTERS ============================ -->
+<section class="slide">
+  <aside class="notes">Click through the timeline. Every strategic technology has split the world into those who built it and those who bought it. Nuclear weapons gave deterrence and a voice in world order. Jet fighters and engines gave air power, and the engine is still the hardest part to master. Rockets gave launch, navigation and surveillance. 5G and 6G decide who controls the standards and networks everyone else runs on. AI is the next one on this line. India has been here before: it built its nuclear and space programmes while others restricted access. AI is the next test, and unlike the others it needs physical infrastructure at enormous scale. That is what this paper measures.</aside>
+  <div class="kicker">Why this matters</div>
+  <h2>Technology races decide who sets the rules</h2>
+  <div class="race">
+    <div class="tn" data-f="1"><div class="seg"></div><div class="yr">1945</div><div class="nm">Nuclear weapons</div><div class="gv">Deterrence, and a voice in world order</div></div>
+    <div class="tn" data-f="2"><div class="seg"></div><div class="yr">1940s</div><div class="nm">Fighters and jet engines</div><div class="gv">Air power. The engine is still the hardest part</div></div>
+    <div class="tn" data-f="3"><div class="seg"></div><div class="yr">1957</div><div class="nm">Rockets and space</div><div class="gv">Launch, navigation, surveillance</div></div>
+    <div class="tn" data-f="4"><div class="seg"></div><div class="yr">2019</div><div class="nm">5G, then 6G</div><div class="gv">Control of standards and networks</div></div>
+    <div class="tn ai" data-f="5"><div class="seg"></div><div class="yr">NOW</div><div class="nm">Artificial intelligence</div><div class="gv">Economy, defence, information</div></div>
+  </div>
+  <div class="fill"></div>
+  <div class="rband">
+    <div class="a rise" data-f="6"><div class="k">The pattern</div><div class="v">A handful of countries got there first, wrote the rules and became powers. Everyone else became a buyer.</div></div>
+    <div class="b2 rise" data-f="7"><div class="k">India's position</div><div class="v">India built its nuclear and space programmes against restrictions. <span>AI is the next test, and it needs physical infrastructure at national scale.</span></div></div>
+  </div>
+</section>
+
+<!-- ============================ 03 PROBLEM ============================ -->
+<section class="slide">
+  <aside class="notes">AI is not just software. A chip needs electricity, water, and a supply chain that starts in the Netherlands, runs through Taiwan, and ends in a data centre. India's plan counts GPUs; we asked what those GPUs physically require. The 500,000 figure is a scenario, not a forecast.</aside>
+  <div class="kicker">The problem</div>
+  <h2>Buying GPUs is the easy part</h2>
+
+  <div class="sub">Scale of the baseline scenario</div>
+  <div style="margin:10px 0 56px">
+    <div class="scale-row">
+      <div class="lbl">IndiaAI shared GPU pool</div>
+      <div class="bar c-m"><i style="--w:9%"></i></div>
+      <div class="val">about 45,000</div>
+    </div>
+    <div class="scale-row">
+      <div class="lbl">Baseline scenario</div>
+      <div class="bar c-k"><i style="--w:100%"></i></div>
+      <div class="val">500,000</div>
+    </div>
+    <div class="mute" style="font-size:22px;margin-top:10px">The baseline is 11 to 15 times today's shared pool (34,000 to 45,000 GPUs).</div>
+  </div>
+
+  <div class="fill"></div>
+  <div class="chain">
+    <div class="st"><div class="n">01</div><div class="t">GPU target</div><div class="d">The number everyone counts</div></div>
+    <div class="st g"><div class="n">02</div><div class="t">Electricity</div><div class="d">Substations, transmission, grid stability</div></div>
+    <div class="st b"><div class="n">03</div><div class="t">Cooling water</div><div class="d">Heat and water stress</div></div>
+    <div class="st r"><div class="n">04</div><div class="t">Chips</div><div class="d">Wafers, advanced packaging, memory</div></div>
+    <div class="st r"><div class="n">05</div><div class="t">Foreign suppliers</div><div class="d">Concentrated and export-controlled</div></div>
+  </div>
+</section>
+
+<!-- ============================ 03 GAP ============================ -->
+<section class="slide">
+  <aside class="notes">Existing studies each cover one piece. The paper calls this disciplinary siloing and lists five specific gaps, RG-01 to RG-05. Safe claim: none of the studies we reviewed combines GPU targets, power, cooling and chip supply in one model. Do not say first ever.</aside>
+  <div class="kicker">The gap</div>
+  <h2>Each field sees one piece of the chain</h2>
+  <div class="silos">
+    <div class="silo r">
+      <h3>Semiconductor analysts</h3>
+      <div class="s">Study who makes the chips and how concentrated supply is.</div>
+      <div class="x"><b>Ignore</b> how much power a data centre needs.</div>
+    </div>
+    <div class="silo g">
+      <h3>Power-grid researchers</h3>
+      <div class="s">Study electricity demand, grid flows and stability.</div>
+      <div class="x"><b>Ignore</b> chip packaging and memory limits.</div>
+    </div>
+    <div class="silo k">
+      <h3>Policy writers</h3>
+      <div class="s">Set missions, targets and subsidies.</div>
+      <div class="x"><b>Never count</b> the physical resources a target implies.</div>
+    </div>
+  </div>
+  <div class="fill"></div>
+  <div class="bridge">
+    <div><div class="k">Contribution 1: the map</div><div class="v">IAIRF 2.0 <span>&nbsp;Five-pillar conceptual framework</span></div></div>
+    <div><div class="k">Contribution 2: the calculator</div><div class="v">Demand-Cascade Model <span>&nbsp;Six layers, deterministic</span></div></div>
+  </div>
+  <div class="mute" style="font-size:20px;margin-top:16px">Five gaps addressed (RG-01 to RG-05): siloing, no cascade, the silicon wafer fallacy, tropical cooling, and the operationalisation deficit.</div>
+</section>
+
+<!-- ============================ 04 PILLARS ============================ -->
+<section class="slide">
+  <aside class="notes">One line per pillar. Give one loop as the example: Loop A, the power-compute deadlock. You cannot install GPUs without power, and you cannot get power without proving you will use it. These loops are why the pillars cannot be fixed one at a time.</aside>
+  <div class="kicker">The framework</div>
+  <h2>Five pillars, coupled by four feedback loops</h2>
+  <div class="pillars">
+    <div class="pil r"><div class="id">P1</div><h3>Compute and Semiconductor Sovereignty</h3><p>GPUs, packaging, critical minerals</p></div>
+    <div class="pil g"><div class="id">P2</div><h3>Energy and Grid Readiness</h3><p>Supply, transmission, connection queues</p></div>
+    <div class="pil b"><div class="id">P3</div><h3>Physical Resources and Data Centres</h3><p>Buildings, cooling, water, location</p></div>
+    <div class="pil"><div class="id">P4</div><h3>Connectivity, Data and Security</h3><p>Subsea cables, DPDPA, grid cybersecurity</p></div>
+    <div class="pil"><div class="id">P5</div><h3>Governance, Investment, Indigenous Capability</h3><p>Missions, capital, talent, models</p></div>
+  </div>
+  <div class="fill"></div>
+  <div class="loops">
+    <div class="loop"><div class="id">Loop A</div><h3>Power-Compute deadlock</h3><p>No GPUs without power, no power without proof of use.</p></div>
+    <div class="loop"><div class="id">Loop B</div><h3>Packaging-Memory co-constraint</h3><p>One export rule can cut both at once.</p></div>
+    <div class="loop"><div class="id">Loop C</div><h3>Data-Connectivity tension</h3><p>Localisation raises cost and deters investors.</p></div>
+    <div class="loop"><div class="id">Loop D</div><h3>Talent-Sovereignty paradox</h3><p>4.3 million engineers, many in foreign GCCs.</p></div>
+  </div>
+</section>
+
+<!-- ============================ 05 CASCADE ============================ -->
+<section class="slide">
+  <aside class="notes">Click through the layers. Start with a number, how many GPUs. Each draws 700 watts, but the server around it makes it 1.82 times that. 500,000 GPUs need 637 megawatts. The building's cooling overhead lifts that to 891.8 megawatts. In parallel the same number drives wafers, packaging and memory. Every number on this slide is computed by code you can re-run.</aside>
+  <div class="kicker">The calculator</div>
+  <h2>One number cascades into six physical requirements</h2>
+  <svg viewBox="0 0 1380 505" width="1380" height="505" role="img" aria-label="Six-layer demand cascade for 500,000 GPUs">
+    <defs>
+      <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#121212"/></marker>
+    </defs>
+
+    <!-- Input + Layer 1 -->
+    <g data-f="1">
+      <rect class="box" x="0" y="10" width="290" height="150"/><rect x="0" y="10" width="7" height="150" fill="#121212"/>
+      <text class="lt" x="28" y="44" fill="#6E6E69">INPUT</text>
+      <text class="ln" x="28" y="74">GPU target N</text>
+      <text class="lv" x="28" y="120">500,000</text>
+      <text class="ls" x="28" y="147">H100-class accelerators</text>
+
+      <line x1="292" y1="85" x2="360" y2="85" stroke="#121212" stroke-width="2" marker-end="url(#ah)"/>
+      <rect class="box" x="363" y="10" width="290" height="150"/><rect x="363" y="10" width="7" height="150" fill="#1E7A4F"/>
+      <text class="lt" x="391" y="44" fill="#1E7A4F">LAYER 1</text>
+      <text class="ln" x="391" y="74">IT electrical load</text>
+      <text class="lv" x="391" y="120">637.0 MW</text>
+      <text class="ls" x="391" y="147">N x 700 W x 1.82</text>
+    </g>
+    <!-- Layer 2 -->
+    <g data-f="2">
+      <line x1="655" y1="85" x2="723" y2="85" stroke="#121212" stroke-width="2" marker-end="url(#ah)"/>
+      <rect class="box" x="726" y="10" width="290" height="150"/><rect x="726" y="10" width="7" height="150" fill="#1E7A4F"/>
+      <text class="lt" x="754" y="44" fill="#1E7A4F">LAYER 2</text>
+      <text class="ln" x="754" y="74">Facility power</text>
+      <text class="lv" x="754" y="120">891.8 MW</text>
+      <text class="ls" x="754" y="147">PUE 1.40; 6.25 TWh per year</text>
+    </g>
+    <!-- Layer 3 -->
+    <g data-f="3">
+      <line x1="1018" y1="85" x2="1086" y2="85" stroke="#121212" stroke-width="2" marker-end="url(#ah)"/>
+      <rect class="box" x="1089" y="10" width="290" height="150"/><rect x="1089" y="10" width="7" height="150" fill="#1F4E8C"/>
+      <text class="lt" x="1117" y="44" fill="#1F4E8C">LAYER 3</text>
+      <text class="ln" x="1117" y="74">Cooling water</text>
+      <text class="lv" x="1117" y="120">11,249.5 ML</text>
+      <text class="ls" x="1117" y="147">10,617 racks at 60 kW</text>
+    </g>
+    <!-- Layer 4 -->
+    <g data-f="4">
+      <path d="M145 162 V345 H356" fill="none" stroke="#121212" stroke-width="2" marker-end="url(#ah)"/>
+      <rect class="box" x="363" y="270" width="290" height="150"/><rect x="363" y="270" width="7" height="150" fill="#B23A2E"/>
+      <text class="lt" x="391" y="304" fill="#B23A2E">LAYER 4</text>
+      <text class="ln" x="391" y="334">Logic wafers</text>
+      <text class="lv" x="391" y="380">12,500</text>
+      <text class="ls" x="391" y="407">63 dies, 40 good per wafer</text>
+    </g>
+    <!-- Layers 5-6 -->
+    <g data-f="5">
+      <line x1="655" y1="345" x2="723" y2="345" stroke="#121212" stroke-width="2" marker-end="url(#ah)"/>
+      <rect class="box" x="726" y="270" width="290" height="150"/><rect x="726" y="270" width="7" height="150" fill="#B23A2E"/>
+      <text class="lt" x="754" y="304" fill="#B23A2E">LAYER 5</text>
+      <text class="ln" x="754" y="334">CoWoS packaging</text>
+      <text class="lv" x="754" y="380">33,334</text>
+      <text class="ls" x="754" y="407">interposer wafers</text>
+
+      <line x1="1018" y1="345" x2="1086" y2="345" stroke="#121212" stroke-width="2" marker-end="url(#ah)"/>
+      <rect class="box" x="1089" y="270" width="290" height="150"/><rect x="1089" y="270" width="7" height="150" fill="#B23A2E"/>
+      <text class="lt" x="1117" y="304" fill="#B23A2E">LAYER 6</text>
+      <text class="ln" x="1117" y="334">HBM3e memory</text>
+      <text class="lv" x="1117" y="380">3.0 M</text>
+      <text class="ls" x="1117" y="407">stacks, 6 per GPU</text>
+    </g>
+    <!-- Legend -->
+    <g>
+      <rect x="0" y="470" width="16" height="16" fill="#1E7A4F"/><text x="26" y="484" font-size="18" fill="#6E6E69">Electrical</text>
+      <rect x="150" y="470" width="16" height="16" fill="#1F4E8C"/><text x="176" y="484" font-size="18" fill="#6E6E69">Physical resources</text>
+      <rect x="360" y="470" width="16" height="16" fill="#B23A2E"/><text x="386" y="484" font-size="18" fill="#6E6E69">Semiconductor supply chain</text>
+      <text x="1379" y="484" text-anchor="end" font-size="18" fill="#6E6E69">Baseline: 500,000 GPUs. Same inputs always give the same outputs.</text>
+    </g>
+  </svg>
+</section>
+
+<!-- ============================ 06 POWER WALL ============================ -->
+<section class="slide">
+  <aside class="notes">891.8 megawatts is more than half of everything India's colocation data-centre industry has today. At a million GPUs it is more than all of it. Careful: this is a scale comparison, not a forecast. Say "equivalent to 56.62 percent of today's operational colocation capacity of 1,575 MW". Against the 3,200 MW pipeline to 2030 it is 27.87 percent.</aside>
+  <div class="kicker">Result 1: the power wall</div>
+  <h2>One programme equals half of India's capacity</h2>
+  <div class="wall">
+    <div>
+      <div class="huge">891.8<small>MW</small></div>
+      <div class="mute" style="font-size:26px;margin-top:14px">peak facility draw, 500,000 GPUs</div>
+      <div class="eq">
+        <div><b>500,000 GPUs x 700 W x 1.82</b><span>637.0 MW IT</span></div>
+        <div><b>x PUE 1.40</b><span>891.8 MW</span></div>
+        <div><b>Annual energy at 80% use</b><span>6.25 TWh</span></div>
+      </div>
+    </div>
+    <div class="share">
+      <div class="cap">Share of India's colocation capacity today (1,575 MW)</div>
+      <div style="position:relative">
+        <!-- scale 0 to 120% across track; 100% line at 83.33% -->
+        <div class="limit" style="left:calc(150px + 18px + (100% - 168px) * .8333)"></div>
+        <div class="limit-lbl" style="left:calc(150px + 18px + (100% - 168px) * .8333)">100% OF TODAY'S CAPACITY</div>
+        <div class="srow"><div class="lbl">200,000</div><div class="track"><div class="bar c-m"><i style="--w:18.875%"></i></div><div class="v" style="left:calc(18.875% + 16px)">22.65%</div></div></div>
+        <div class="srow"><div class="lbl">500,000</div><div class="track"><div class="bar c-g"><i style="--w:47.18%"></i></div><div class="v g" style="left:calc(47.18% + 16px)">56.62%</div></div></div>
+        <div class="srow"><div class="lbl">1,000,000</div><div class="track"><div class="bar c-r"><i style="--w:94.37%"></i></div><div class="v r" style="left:calc(94.37% - 190px);color:#fff">113.24%</div></div></div>
+      </div>
+      <div class="mute" style="font-size:21px;margin-top:40px;line-height:1.4">Scenario comparison, not a forecast. Against the 3,200 MW pipeline to 2030, the baseline is 27.87%. Over half of existing capacity already sits in Mumbai (52.4%).</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 07 INVERSION ============================ -->
+<section class="slide">
+  <aside class="notes">Everyone argues India needs its own chip factory. The wafers for 500,000 GPUs are 1.6 percent of what one company makes in a year. The scarce thing is the packaging, 7.4 percent, and the memory. The easy problem is the famous one; the hard problem is the invisible one. Careful: blue and red bars have different denominators, so this shows relative pressure, not one scale of difficulty. This says wafer volume is not the bottleneck; it does not say fabs are useless.</aside>
+  <div class="kicker">Result 2: structural chokepoint inversion</div>
+  <h2>The famous bottleneck is the smallest one</h2>
+  <div style="position:relative">
+    <div class="group b" style="margin-top:0">Share of global semiconductor capacity needed by 500,000 GPUs</div>
+    <!-- scale 0 to 60% -->
+    <div data-f="1">
+      <div class="crow"><div class="lbl">Logic wafers<small>sub-5 nm, TSMC</small></div>
+        <div class="track"><div class="bar c-b"><i style="--w:2.667%"></i></div><div class="v b" style="left:calc(2.667% + 16px)">1.60%</div></div></div>
+    </div>
+    <div data-f="2">
+      <div class="crow"><div class="lbl">HBM3e memory<small>3 suppliers, none in India</small></div>
+        <div class="track"><div class="bar c-b"><i style="--w:8.333%"></i></div><div class="v b" style="left:calc(8.333% + 16px)">5.00%</div></div></div>
+      <div class="crow"><div class="lbl">CoWoS packaging<small>about 90% by TSMC</small></div>
+        <div class="track"><div class="bar c-b"><i style="--w:12.35%"></i></div><div class="v b" style="left:calc(12.35% + 16px)">7.41%</div>
+          <div class="callout b" style="left:calc(12.35% + 150px)">4.6 times the wafer pressure</div></div></div>
+    </div>
+    <div class="group r" style="margin-top:22px">Share of India's colocation power capacity</div>
+    <div data-f="3">
+      <div class="crow"><div class="lbl">Against 2030 pipeline<small>3,200 MW</small></div>
+        <div class="track"><div class="bar c-rl"><i style="--w:46.45%"></i></div><div class="v r" style="left:calc(46.45% + 16px)">27.87%</div></div></div>
+      <div class="crow"><div class="lbl">Against today<small>1,575 MW</small></div>
+        <div class="track"><div class="bar c-r"><i style="--w:94.37%"></i></div><div class="v r" style="left:calc(94.37% - 170px);color:#fff">56.62%</div></div></div>
+    </div>
+  </div>
+  <div class="fill"></div>
+  <div class="note-line">Blue and red bars use different denominators (global chip capacity vs India's power capacity). The chart shows relative pressure, not one scale of difficulty.</div>
+</section>
+
+<!-- ============================ 08 COOLING ============================ -->
+<section class="slide">
+  <aside class="notes">India is hot and water-stressed. Direct-to-chip liquid cooling cuts the water by 94.6 percent and saves 172 megawatts. This is the cheapest policy lever in our study. Immersion is better on paper but harder to deploy, so D2C is the practical balance.</aside>
+  <div class="kicker">Result 3: the cooling lever</div>
+  <h2>Cooling is the largest single policy lever</h2>
+  <div class="cool">
+    <div>
+      <div class="sub">Annual cooling water, 500,000 GPUs (megalitres)</div>
+      <div class="sub-s">Annual PUE shown under each system</div>
+      <!-- scale 0 to 12,000 -->
+      <div class="crow2"><div class="lbl">Air, evaporative<small>PUE 1.45</small></div><div class="track"><div class="bar c-m"><i style="--w:97.1%"></i></div><div class="v" style="left:calc(97.1% - 190px);color:var(--ink);font-size:28px">11,651</div></div></div>
+      <div class="crow2"><div class="lbl">Rear-door exchanger<small>PUE 1.35</small></div><div class="track"><div class="bar c-bl"><i style="--w:50.2%"></i></div><div class="v" style="left:calc(50.2% + 16px);font-size:28px">6,027</div></div></div>
+      <div class="crow2"><div class="lbl">Direct-to-chip<small>PUE 1.18</small></div><div class="track"><div class="bar c-b"><i style="--w:5.27%"></i></div><div class="v b" style="left:calc(5.27% + 16px);font-size:28px">632</div></div></div>
+      <div class="crow2"><div class="lbl">Single-phase immersion<small>PUE 1.12</small></div><div class="track"><div class="bar c-bl"><i style="--w:1.25%"></i></div><div class="v" style="left:calc(1.25% + 16px);font-size:28px">150</div></div></div>
+      <div class="mute" style="font-size:21px;margin-top:26px;line-height:1.4;max-width:780px">Direct-to-chip is the practical balance. Immersion is better on paper but harder to deploy. Policy link: condition IndiaAI subsidies on PUE of 1.25 or lower and closed-loop heat rejection.</div>
+    </div>
+    <div>
+      <div class="stat"><div class="n b">&minus;94.6%</div><div class="d">cooling water, direct-to-chip vs evaporative air</div></div>
+      <div class="stat"><div class="n g">&minus;172 MW</div><div class="d">facility load, PUE 1.45 to 1.18 on a 637 MW IT load</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 09 ROBUSTNESS ============================ -->
+<section class="slide">
+  <aside class="notes">Left: one input moves at a time from low to high, everything else at base. For power, the biggest lever is the GPU's own wattage; for water, it is cooling technology. Do not compare bar lengths across colours. Right: 1,000 random draws of seven inputs at once, seed 42. The order never flips. If asked why the Monte Carlo median power (963 MW) exceeds the base (891.8 MW): the random GPU-power range of 650 to 850 W averages 750 W, above the 700 W base.</aside>
+  <div class="kicker">Robustness</div>
+  <h2>The ordering survives every uncertainty we tested</h2>
+  <div class="rob">
+    <div>
+      <div class="sub">One-at-a-time sensitivity, change vs base (%)</div>
+      <div class="sub-s">Low and high bound of each input, other inputs at base</div>
+      <!-- axis -90 to +45 -> 135 span; unit = 100/135 % -->
+      <div class="trow"><div class="lbl">Cooling water use<small>0.20 to 2.50 L/kWh, water</small></div><div class="tt">
+        <i class="neg" style="--w:65.85%;background:var(--blue-l)"></i><i class="pos" style="--w:28.8%;background:var(--blue)"></i>
+        <span class="lab" style="right:calc(33.333% + 65.85% + 8px)">-88.9</span><span class="lab" style="left:calc(66.667% + 28.8% + 8px)">+38.9</span></div></div>
+      <div class="trow"><div class="lbl">Defect density<small>0.06 to 0.12 per cm2, wafers</small></div><div class="tt">
+        <i class="neg" style="--w:11.04%;background:var(--red-l)"></i><i class="pos" style="--w:24.67%;background:var(--red)"></i>
+        <span class="lab" style="right:calc(33.333% + 11.04% + 8px)">-14.9</span><span class="lab" style="left:calc(66.667% + 24.67% + 8px)">+33.3</span></div></div>
+      <div class="trow"><div class="lbl">GPU board power<small>700 to 1,000 W, peak power</small></div><div class="tt">
+        <i class="pos" style="--w:31.78%;background:var(--green)"></i>
+        <span class="lab" style="right:calc(33.333% + 8px)">0.0</span><span class="lab" style="left:calc(66.667% + 31.78% + 8px)">+42.9</span></div></div>
+      <div class="trow"><div class="lbl">Utilisation<small>0.65 to 0.90, energy</small></div><div class="tt">
+        <i class="neg" style="--w:13.85%;background:var(--green-l)"></i><i class="pos" style="--w:9.26%;background:var(--green)"></i>
+        <span class="lab" style="right:calc(33.333% + 13.85% + 8px)">-18.7</span><span class="lab" style="left:calc(66.667% + 9.26% + 8px)">+12.5</span></div></div>
+      <div class="trow"><div class="lbl">Server overhead<small>1.60 to 2.10, peak power</small></div><div class="tt">
+        <i class="neg" style="--w:8.96%;background:var(--green-l)"></i><i class="pos" style="--w:11.4%;background:var(--green)"></i>
+        <span class="lab" style="right:calc(33.333% + 8.96% + 8px)">-12.1</span><span class="lab" style="left:calc(66.667% + 11.4% + 8px)">+15.4</span></div></div>
+      <div class="trow"><div class="lbl">PUE<small>1.25 to 1.55, peak power</small></div><div class="tt">
+        <i class="neg" style="--w:7.93%;background:var(--green-l)"></i><i class="pos" style="--w:7.93%;background:var(--green)"></i>
+        <span class="lab" style="right:calc(33.333% + 7.93% + 8px)">-10.7</span><span class="lab" style="left:calc(66.667% + 7.93% + 8px)">+10.7</span></div></div>
+    </div>
+
+    <div>
+      <div class="sub">Monte Carlo, 1,000 draws, P10 to P90</div>
+      <div class="sub-s">Seven inputs varied together. Bars show the middle 80% of outcomes.</div>
+      <!-- axis 0 to 80 -->
+      <div class="mc-row"><div class="t">Wafers<span>1.4 to 1.9% of TSMC</span></div>
+        <div class="range"><i style="left:1.75%;width:.65%;background:var(--blue)"></i></div></div>
+      <div class="mc-row"><div class="t">CoWoS<span>6.9 to 7.9% of global</span></div>
+        <div class="range"><i style="left:8.6%;width:1.3%;background:var(--blue)"></i></div></div>
+      <div class="mc-row"><div class="t">Facility power<span>51 to 71% of colocation</span></div>
+        <div class="range"><i style="left:64%;width:25%;background:var(--red)"></i></div>
+        <div class="axis">
+          <b style="left:0%">0</b><b style="left:25%">20</b><b style="left:50%">40</b><b style="left:75%">60</b><b style="left:100%">80%</b>
+        </div></div>
+      <div style="font-size:24px;font-weight:600;line-height:1.3;border-top:2px solid var(--ink);padding-top:16px">Packaging always exceeds wafers. Power is always the largest.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 10 ROADMAP ============================ -->
+<section class="slide">
+  <aside class="notes">Logic of the tiers: do what you control first (power, cooling, location), then build with partners (packaging), and manage what you cannot control (foundry, memory). The investment figures are our proposed planning envelopes, not government budgets. Say that out loud.</aside>
+  <div class="kicker">What India should do</div>
+  <h2>Control, partner, manage: three tiers of action</h2>
+  <div class="tiers">
+    <div class="tier t1"><div class="id">Tier 1</div><h3>Build domestically</h3><div class="yr">2026 to 2028</div>
+      <ul><li>Cap Mumbai share below 35% by 2028</li><li>Direct-to-chip cooling as a subsidy condition</li><li>9-month approval window for substations of 50 MW and above</li><li>AI Power Corridors (5 GW)</li></ul></div>
+    <div class="tier t2"><div class="id">Tier 2</div><h3>Develop via partnerships</h3><div class="yr">2028 to 2031</div>
+      <ul><li>Advanced-packaging joint ventures to reduce CoWoS dependence</li><li>Chiplet consortium</li><li>Round-the-clock renewables and small modular reactors</li></ul></div>
+    <div class="tier t3"><div class="id">Tier 3</div><h3>Manage external dependence</h3><div class="yr">2031 to 2035</div>
+      <ul><li>Multi-year wafer reservations (about 1.6% of TSMC output)</li><li>HBM4 advance-purchase agreements</li><li>Export-control contingency playbook</li></ul></div>
+  </div>
+  <div class="fill"></div>
+  <div class="invest">
+    <div class="head"><b>Proposed planning envelope, 2026 to 2035</b><span>Authors' proposal, not a government budget. Total about Rs 3.5 lakh crore.</span></div>
+    <div class="stack"><div style="flex:95.5;background:var(--ink)">Public: Rs 95,500 crore</div><div style="flex:257;background:#8d8b82">Public-private partnership: Rs 2,57,000 crore</div></div>
+  </div>
+</section>
+
+<!-- ============================ 11 TAKEAWAYS ============================ -->
+<section class="slide">
+  <aside class="notes">End strongly, then mention the limits yourself. This is a what-if model, not a forecast. The denominators are market estimates, and the order of the bottlenecks holds even when we randomise everything.</aside>
+  <div class="kicker">Take-aways</div>
+  <h2>Where India's AI infrastructure will actually be constrained</h2>
+  <div class="take">
+    <div class="tk b"><div class="n b">1.60%</div><h3>Wafers are not the constraint</h3><p>Silicon for 500,000 GPUs is a small, purchasable share of TSMC output.</p></div>
+    <div class="tk r"><div class="n r">7.41%</div><h3>Packaging and power are</h3><p>CoWoS needs 4.6 times the wafer pressure. Power reaches 56.62% of today's capacity.</p></div>
+    <div class="tk g"><div class="n g">&minus;94.6%</div><h3>Cooling is the lever</h3><p>Direct-to-chip cooling cuts water by 94.6% and facility load by 172 MW.</p></div>
+  </div>
+  <div class="limits"><b>Limits.</b> A what-if model, not a forecast. Capacity denominators are market estimates. The model counts GPUs, not performance per watt. Export rules sit outside the model.</div>
+</section>
+
+<!-- ============================ 12 Q&A ============================ -->
+<section class="slide">
+  <aside class="notes">Invite questions. Backup slides follow after this slide: scenarios, wafer arithmetic, chokepoint table, Monte Carlo, parameters, investment, limitations. Press End to jump to the last slide, or advance normally.</aside>
+  <div class="qa">
+    <div>
+      <div class="kicker">Questions</div>
+      <h1>Thank you</h1>
+      <div class="cover-sub" style="margin-top:28px">Sovereign by Design: A Five-Pillar Framework for India's Strategic Compute and AI Infrastructure</div>
+    </div>
+    <div class="repro">
+      <span>Reproduce every number</span><br>
+      python model/demand_cascade.py<br>
+      python model/tests/test_demand_cascade.py <span>&nbsp;10 of 10 tests pass</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ BACKUP ============================ -->
+<section class="slide backup divider">
+  <aside class="notes">Backup section. Open only if asked.</aside>
+  <div class="kicker">Appendix</div>
+  <h1>Backup</h1>
+  <div class="cover-sub" style="margin-top:28px">Scenarios, arithmetic, chokepoints, Monte Carlo, parameters, investment, limitations</div>
+</section>
+
+<section class="slide backup">
+  <aside class="notes">Base rows of Table II. Everything scales linearly with N. At one million GPUs the facility needs more than India's whole colocation industry today. Worst case (1M, High): 3,255 MW, 2.07 times present capacity.</aside>
+  <div class="kicker">Backup 1</div>
+  <h2 style="font-size:46px">Scenario results, base case</h2>
+  <table>
+    <tr><th>Metric</th><th class="n">200,000 GPUs</th><th class="n">500,000 GPUs</th><th class="n">1,000,000 GPUs</th></tr>
+    <tr><td>IT electrical load (MW)</td><td class="n">254.8</td><td class="n hl">637.0</td><td class="n">1,274.0</td></tr>
+    <tr><td>Facility peak power (MW)</td><td class="n">356.7</td><td class="n hl">891.8</td><td class="n">1,783.6</td></tr>
+    <tr><td>Share of India colocation capacity</td><td class="n">22.65%</td><td class="n hl">56.62%</td><td class="n">113.24%</td></tr>
+    <tr><td>Annual electricity (TWh)</td><td class="n">2.50</td><td class="n hl">6.25</td><td class="n">12.50</td></tr>
+    <tr><td>Annual cooling water (ML)</td><td class="n">4,499.8</td><td class="n hl">11,249.5</td><td class="n">22,499.0</td></tr>
+    <tr><td>Logic wafer starts</td><td class="n">5,000</td><td class="n hl">12,500</td><td class="n">25,000</td></tr>
+    <tr><td>Share of TSMC sub-5 nm output</td><td class="n">0.64%</td><td class="n hl">1.60%</td><td class="n">3.21%</td></tr>
+    <tr><td>CoWoS interposer wafers</td><td class="n">13,334</td><td class="n hl">33,334</td><td class="n">66,667</td></tr>
+    <tr><td>Share of global CoWoS</td><td class="n">2.96%</td><td class="n hl">7.41%</td><td class="n">14.81%</td></tr>
+    <tr><td>HBM3e stacks</td><td class="n">1,200,000</td><td class="n hl">3,000,000</td><td class="n">6,000,000</td></tr>
+    <tr><td>Share of global HBM output</td><td class="n">2.00%</td><td class="n hl">5.00%</td><td class="n">10.00%</td></tr>
+  </table>
+</section>
+
+<section class="slide backup">
+  <aside class="notes">Wafer arithmetic. Gross dies per wafer: pi r squared over die area, minus an edge-loss term. Murphy yield 0.540, multiplied by 1.2 for binning gives 0.648. 63 x 0.648 = 40.8, rounded down to 40. 500,000 / 40 = 12,500. CoWoS: 500,000 / 15 = 33,333.3, rounded up to 33,334. HBM: 500,000 x 6.</aside>
+  <div class="kicker">Backup 2</div>
+  <h2 style="font-size:46px">Layers 4 to 6: from GPUs to wafers, packaging and memory</h2>
+  <div class="flow" style="margin-bottom:56px">
+    <div class="fl r"><div class="k">Dies per 300 mm wafer</div><div class="v">63</div><div class="d">814 mm2 die, edge loss subtracted</div></div>
+    <div class="fl r"><div class="k">Murphy yield, D0 0.08</div><div class="v">0.540</div><div class="d">Defects land randomly; large dies suffer</div></div>
+    <div class="fl r"><div class="k">With binning x 1.2</div><div class="v">0.648</div><div class="d">Partly flawed dies sold as lower spec</div></div>
+    <div class="fl r"><div class="k">Good dies per wafer</div><div class="v">40</div><div class="d">63 x 0.648 = 40.8, rounded down</div></div>
+    <div class="fl r"><div class="k">Wafer starts</div><div class="v">12,500</div><div class="d">500,000 / 40 = 1.60% of TSMC</div></div>
+  </div>
+  <div class="flow">
+    <div class="fl r" style="flex:2.5"><div class="k">CoWoS interposer wafers</div><div class="v">33,334</div><div class="d">15 packages per interposer wafer. 500,000 / 15, rounded up. 7.41% of ~450,000 global wafers per year.</div></div>
+    <div class="fl r" style="flex:2.5"><div class="k">HBM3e stacks</div><div class="v">3,000,000</div><div class="d">6 stacks per H100/H200-class card. 5.00% of ~60 million stacks per year. B200-class (8 stacks) gives 6.67%.</div></div>
+  </div>
+</section>
+
+<section class="slide backup">
+  <aside class="notes">HHI = sum of squared market shares. HBM: 57 squared + 38 squared + 5 squared = 4,718. CoWoS: 90 squared = 8,100. ASML: 100 squared = 10,000. India's share of the global chip steps is zero, so India is a pure buyer there. Lead times are indicative; do not quote them as sourced numbers.</aside>
+  <div class="kicker">Backup 3</div>
+  <h2 style="font-size:46px">Structural chokepoint hierarchy</h2>
+  <table>
+    <tr><th>Layer</th><th>Concentration (HHI, of 10,000)</th><th class="n">India's share</th><th class="n">Demand, 500,000 GPUs</th></tr>
+    <tr><td>EUV lithography (ASML)</td><td><div style="display:flex;align-items:center;gap:14px"><div class="bar c-k" style="width:300px;height:18px"><i style="--w:100%"></i></div>10,000</div></td><td class="n">0%</td><td class="n">upstream</td></tr>
+    <tr><td>CoWoS packaging (TSMC)</td><td><div style="display:flex;align-items:center;gap:14px"><div class="bar c-k" style="width:300px;height:18px"><i style="--w:81%"></i></div>8,100</div></td><td class="n">0%</td><td class="n hl">7.41%</td></tr>
+    <tr><td>HBM3e (SK Hynix, Samsung, Micron)</td><td><div style="display:flex;align-items:center;gap:14px"><div class="bar c-k" style="width:300px;height:18px"><i style="--w:47.18%"></i></div>4,718</div></td><td class="n">0%</td><td class="n hl">5.00%</td></tr>
+    <tr><td>Sub-5 nm logic (TSMC)</td><td class="mute">not computed</td><td class="n">0%</td><td class="n hl">1.60%</td></tr>
+    <tr><td>Colocation power (India)</td><td class="mute">not applicable</td><td class="n">100%</td><td class="n hl">56.62%</td></tr>
+    <tr><td>Municipal water rights</td><td class="mute">not applicable</td><td class="n">100%</td><td class="n">11,250 ML</td></tr>
+  </table>
+</section>
+
+<section class="slide backup">
+  <aside class="notes">Monte Carlo draws seven inputs at once: GPU power 650 to 850 W, host ratio 1.65 to 2.05, PUE 1.25 to 1.55, utilisation 0.70 to 0.90, WUE 0.30 to 2.20, D0 0.06 to 0.11, 14/15/16 packages per wafer. Seed 42 so results repeat. P10/P50/P90: 80 percent of outcomes fall between P10 and P90.</aside>
+  <div class="kicker">Backup 4</div>
+  <h2 style="font-size:46px">Monte Carlo, 500,000 GPUs, 1,000 draws, seed 42</h2>
+  <table>
+    <tr><th>Output</th><th class="n">P10</th><th class="n">P50</th><th class="n">P90</th></tr>
+    <tr><td>Facility power (MW)</td><td class="n">809.2</td><td class="n hl">963.1</td><td class="n">1,114.4</td></tr>
+    <tr><td>Annual energy (TWh)</td><td class="n">5.69</td><td class="n hl">6.79</td><td class="n">8.24</td></tr>
+    <tr><td>Cooling water (ML)</td><td class="n">3,515.5</td><td class="n hl">8,186.0</td><td class="n">13,570.9</td></tr>
+    <tr><td>Wafer starts</td><td class="n">11,112</td><td class="n hl">12,821</td><td class="n">14,706</td></tr>
+    <tr><td>CoWoS wafers</td><td class="n">31,250</td><td class="n hl">33,334</td><td class="n">35,715</td></tr>
+  </table>
+  <div class="mute" style="font-size:22px;margin-top:26px;line-height:1.45;max-width:1200px">The median power (963 MW) exceeds the base case (891.8 MW) because the random GPU-power range of 650 to 850 W averages 750 W, above the 700 W base.</div>
+</section>
+
+<section class="slide backup">
+  <aside class="notes">Where each baseline input comes from. 1.82 = 10.2 kW / 5.6 kW from the DGX H100. The paper's text names only GPU power and PUE for the variants; the code changes all of the listed parameters.</aside>
+  <div class="kicker">Backup 5</div>
+  <h2 style="font-size:46px">Parameters: low, base and high cases</h2>
+  <table>
+    <tr><th>Parameter</th><th class="n">Low</th><th class="n">Base</th><th class="n">High</th><th>Basis for base value</th></tr>
+    <tr><td>GPU board power (W)</td><td class="n">700</td><td class="n hl">700</td><td class="n">1,000</td><td><small>NVIDIA H100 datasheet</small></td></tr>
+    <tr><td>Server overhead ratio</td><td class="n">1.60</td><td class="n hl">1.82</td><td class="n">2.10</td><td><small>DGX H100: 10.2 kW / 5.6 kW</small></td></tr>
+    <tr><td>PUE</td><td class="n">1.25</td><td class="n hl">1.40</td><td class="n">1.55</td><td><small>Modern build; India average 1.55</small></td></tr>
+    <tr><td>Utilisation</td><td class="n">0.65</td><td class="n hl">0.80</td><td class="n">0.90</td><td><small>Share of year at load</small></td></tr>
+    <tr><td>Water intensity (L/kWh)</td><td class="n">0.20</td><td class="n hl">1.80</td><td class="n">2.50</td><td><small>IEA, evaporative cooling</small></td></tr>
+    <tr><td>Defect density (per cm2)</td><td class="n">0.06</td><td class="n hl">0.08</td><td class="n">0.12</td><td><small>Published typical value</small></td></tr>
+    <tr><td>CoWoS packages per wafer</td><td class="n">18</td><td class="n hl">15</td><td class="n">12</td><td><small>Industry estimate</small></td></tr>
+    <tr><td>HBM stacks per GPU</td><td class="n">6</td><td class="n hl">6</td><td class="n">8</td><td><small>H100/H200 class; B200 class is 8</small></td></tr>
+  </table>
+</section>
+
+<section class="slide backup">
+  <aside class="notes">Be honest: these are the authors' proposed planning envelopes, not government budgets. The paper says so explicitly. Total Rs 3,52,500 crore.</aside>
+  <div class="kicker">Backup 6</div>
+  <h2 style="font-size:46px">Investment architecture, 2026 to 2035 (authors' proposal)</h2>
+  <table>
+    <tr><th>Area</th><th class="n">Public (Rs crore)</th><th class="n">PPP (Rs crore)</th><th>Lead agencies</th></tr>
+    <tr><td>AI Infrastructure Zones and AICA</td><td class="n">2,500</td><td class="n">5,000</td><td><small>DPIIT, MeitY</small></td></tr>
+    <tr><td>Power corridors and BESS</td><td class="n">15,000</td><td class="n">65,000</td><td><small>MoP, SECI</small></td></tr>
+    <tr><td>GPU cluster expansion</td><td class="n">20,000</td><td class="n">80,000</td><td><small>MeitY, IndiaAI</small></td></tr>
+    <tr><td>Packaging joint ventures and gallium</td><td class="n">10,000</td><td class="n">40,000</td><td><small>ISM, CSIR</small></td></tr>
+    <tr><td>SMR and nuclear baseload</td><td class="n">25,000</td><td class="n">50,000</td><td><small>DAE, NPCIL</small></td></tr>
+    <tr><td>Talent and R&amp;D</td><td class="n">15,000</td><td class="n">5,000</td><td><small>MoE, DST</small></td></tr>
+    <tr class="sep"><td>Connectivity and security</td><td class="n">8,000</td><td class="n">12,000</td><td><small>DoT, NCIIPC</small></td></tr>
+    <tr><td class="hl">Total</td><td class="n hl">95,500</td><td class="n hl">2,57,000</td><td><small>Rs 3,52,500 crore combined</small></td></tr>
+  </table>
+</section>
+
+<section class="slide backup">
+  <aside class="notes">Say these first and you look confident. Weakest backing: the lead-time column of the chokepoint table, the 135 L per person per day assumption, the 120,000 VLSI engineer figure, and the specific Rs amounts, which are proposals.</aside>
+  <div class="kicker">Backup 7</div>
+  <h2 style="font-size:46px">Limitations</h2>
+  <ol class="list-n">
+    <li><span><b>Fixed 80% utilisation.</b> Real loads vary through the day, with peaks of 20 to 40% above average.</span></li>
+    <li><span><b>Defect density is a published typical value.</b> Moving it from 0.06 to 0.12 changes wafer needs by -14.9% to +33.3%.</span></li>
+    <li><span><b>Export rules and diplomacy sit outside the model.</b> EAR and iCET are not represented.</span></li>
+    <li><span><b>Capacity denominators are market estimates.</b> 780,000 wafers, 450,000 CoWoS and 60 million HBM stacks shift every year.</span></li>
+    <li><span><b>The model counts GPUs, not performance.</b> Newer chips do more work per watt.</span></li>
+    <li><span><b>Baseline uses H100-class numbers.</b> Blackwell-class cases appear only in the high variant.</span></li>
+  </ol>
+</section>
+</div>
+
+<div id="notes"></div>
+<div id="help">Arrows or Space: navigate &nbsp;|&nbsp; F: fullscreen &nbsp;|&nbsp; N: notes &nbsp;|&nbsp; T: timer &nbsp;|&nbsp; Home / End</div>
+
+<script>
+(function(){
+  var stage = document.getElementById('stage');
+  var notesEl = document.getElementById('notes');
+  var counter = document.getElementById('counter');
+  var progress = document.getElementById('progress');
+  var timerEl = document.getElementById('timer');
+  var helpEl = document.getElementById('help');
+  var slides = [], idx = 0, step = 0, startTime = null;
+
+  function fit(){
+    var s = Math.min(window.innerWidth / 1600, window.innerHeight / 900);
+    stage.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
+  }
+  window.addEventListener('resize', fit); fit();
+
+  function maxStep(el){
+    var m = 0;
+    el.querySelectorAll('[data-f]').forEach(function(n){ m = Math.max(m, +n.getAttribute('data-f')); });
+    return m;
+  }
+
+  function render(){
+    var cur = slides[idx];
+    slides.forEach(function(s, i){ s.classList.toggle('active', i === idx); });
+    cur.querySelectorAll('[data-f]').forEach(function(n){
+      n.classList.toggle('on', +n.getAttribute('data-f') <= step);
+    });
+    stage.classList.toggle('cover', cur.hasAttribute('data-cover'));
+
+    var mainTotal = slides.filter(function(s){ return !s.classList.contains('backup'); }).length;
+    if (cur.classList.contains('backup')) counter.textContent = 'Backup';
+    else counter.textContent = pad(idx + 1) + ' / ' + pad(mainTotal);
+    progress.style.width = (Math.min(idx + 1, mainTotal) / mainTotal * 100) + '%';
+
+    var n = cur.querySelector('.notes');
+    notesEl.textContent = n ? n.textContent : '';
+    history.replaceState(null, '', '#' + (idx + 1));
+  }
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+
+  function next(){
+    if (startTime === null) startTime = Date.now();
+    if (step < maxStep(slides[idx])) { step++; }
+    else if (idx < slides.length - 1) { idx++; step = 0; }
+    render();
+  }
+  function prev(){
+    if (step > 0) { step--; }
+    else if (idx > 0) { idx--; step = maxStep(slides[idx]); }
+    render();
+  }
+  function go(i){ idx = Math.max(0, Math.min(slides.length - 1, i)); step = 0; render(); }
+
+  document.addEventListener('keydown', function(e){
+    var k = e.key;
+    if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown' || k === ' ' || k === 'Enter'){ e.preventDefault(); next(); }
+    else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp' || k === 'Backspace'){ e.preventDefault(); prev(); }
+    else if (k === 'Home'){ go(0); }
+    else if (k === 'End'){ go(slides.length - 1); }
+    else if (k === 'f' || k === 'F'){
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+    else if (k === 'n' || k === 'N'){ notesEl.classList.toggle('on'); }
+    else if (k === 't' || k === 'T'){ timerEl.classList.toggle('on'); }
+    else if (k === 'r' || k === 'R'){ startTime = null; timerEl.textContent = '00:00'; }
+  });
+  document.addEventListener('click', function(e){
+    if (e.clientX > window.innerWidth * 0.3) next(); else prev();
+  });
+  var tx = null;
+  document.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    if (tx === null) return;
+    var dx = e.changedTouches[0].clientX - tx; tx = null;
+    if (Math.abs(dx) > 50){ e.preventDefault && 0; if (dx < 0) next(); else prev(); }
+  });
+
+  setInterval(function(){
+    if (startTime === null) { timerEl.textContent = '00:00'; return; }
+    var s = Math.floor((Date.now() - startTime) / 1000);
+    timerEl.textContent = pad(Math.floor(s / 60)) + ':' + pad(s % 60);
+  }, 500);
+
+  function start(){
+    slides = Array.prototype.slice.call(stage.querySelectorAll('.slide'));
+    var h = parseInt(location.hash.replace('#', ''), 10);
+    if (h && h >= 1 && h <= slides.length) idx = h - 1;
+    if (/all/.test(location.search)) step = maxStep(slides[idx]);
+    render();
+    helpEl.classList.add('on');
+    setTimeout(function(){ helpEl.classList.remove('on'); }, 4500);
+  }
+
+  /* Optional: if the organisers' cover page is saved beside this file as
+     organizer_cover.png / .jpg, it is inserted automatically as slide 1. */
+  var candidates = ['organizer_cover.png', 'organizer_cover.jpg', 'organizer_cover.jpeg'];
+  function tryCover(i){
+    if (i >= candidates.length) { start(); return; }
+    var img = new Image();
+    img.onload = function(){
+      var sec = document.createElement('section');
+      sec.className = 'slide cover-img';
+      sec.setAttribute('data-cover', '1');
+      sec.appendChild(img);
+      var first = stage.querySelector('.slide');
+      stage.insertBefore(sec, first);
+      var n = document.createElement('aside'); n.className = 'notes';
+      n.textContent = 'Organisers\' cover page.'; sec.appendChild(n);
+      start();
+    };
+    img.onerror = function(){ tryCover(i + 1); };
+    img.src = candidates[i];
+  }
+  tryCover(0);
+})();
+</script>
+</body>
+</html>
