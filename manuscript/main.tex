@@ -28,58 +28,60 @@
 
 \begin{document}
 
-\title{\fontsize{14pt}{17pt}\selectfont\textbf{Sovereign by Design: An Integrated Five-Pillar Framework for India's Strategic Compute and Artificial Intelligence Infrastructure}}
+\title{\fontsize{17pt}{21pt}\selectfont Sovereign by Design: A Five-Pillar Framework\\for India's Strategic Compute and AI Infrastructure}
 
-% Custom 2-row author layout:
-%   Row 1: Parikshit (left) | Adarsh (right)
-%   Row 2: Anamidi (left) | Dr. Madhavi Dhingra (centre/faculty) | Sourav (right)
+% Author layout:
+%   Row 1: Dr. Madhavi Dhingra (Faculty, centered)
+%   Row 2: Adarsh Singh | Parikshit Singh Bais | Anamidi Shrivastava | Sourav (4 columns)
 \author{
-% ---- ROW 1: two students ----
-\parbox{0.46\linewidth}{\centering
-  Parikshit Singh Bais\\[2pt]
-  {\normalsize
+% ---- ROW 1: Faculty (centered) ----
+\parbox{0.7\linewidth}{\centering
+  {\small Dr. Madhavi Dhingra}\\[1pt]
+  {\footnotesize
   \textit{Dept. of Computer Science and Engineering}\\
-  Amity School of Engineering and Technology (ASET)\\
-  Amity University Madhya Pradesh (AUMP)\\
+  Amity School of Engineering and Technology\\
+  Amity University Madhya Pradesh, Gwalior, India\\
+  e-mail: madhavi.dhingra@gmail.com}
+}
+\\[12pt]
+% ---- ROW 2: Four students (4 columns) ----
+\parbox{0.235\linewidth}{\centering
+  {\small Adarsh Singh}\\[1pt]
+  {\footnotesize
+  \textit{Dept. of Computer Science}\\
+  \textit{and Engineering}\\
+  Amity School of Engg. \& Tech.\\
+  Amity University MP\\
+  Gwalior, India\\
+  officialadarsh.in@gmail.com}
+}\hfil
+\parbox{0.235\linewidth}{\centering
+  {\small Parikshit Singh Bais}\\[1pt]
+  {\footnotesize
+  \textit{Dept. of Computer Science}\\
+  \textit{and Engineering}\\
+  Amity School of Engg. \& Tech.\\
+  Amity University MP\\
   Gwalior, India\\
   sillypari@gmail.com}
 }\hfil
-\parbox{0.46\linewidth}{\centering
-  Adarsh Singh\\[2pt]
-  {\normalsize
-  \textit{Dept. of Computer Science and Engineering}\\
-  Amity School of Engineering and Technology (ASET)\\
-  Amity University Madhya Pradesh (AUMP)\\
-  Gwalior, India\\
-  officialadarsh.in@gmail.com}
-}
-\\[12pt]
-% ---- ROW 2: student | faculty | student ----
-\parbox{0.31\linewidth}{\centering
-  Anamidi Shrivastava\\[2pt]
-  {\normalsize
-  \textit{Dept. of Computer Science and Engineering}\\
-  Amity School of Engineering and Technology (ASET)\\
-  Amity University Madhya Pradesh (AUMP)\\
+\parbox{0.235\linewidth}{\centering
+  {\small Anamidi Shrivastava}\\[1pt]
+  {\footnotesize
+  \textit{Dept. of Computer Science}\\
+  \textit{and Engineering}\\
+  Amity School of Engg. \& Tech.\\
+  Amity University MP\\
   Gwalior, India\\
   anamidishrivastava@gmail.com}
 }\hfil
-\parbox{0.34\linewidth}{\centering
-  Dr. Madhavi Dhingra\\[2pt]
-  {\normalsize
-  \textit{Associate Professor}\\
-  \textit{Dept. of Computer Science and Engineering}\\
-  Amity School of Engineering and Technology (ASET)\\
-  Amity University Madhya Pradesh (AUMP)\\
-  Gwalior, India\\
-  madhavi.dhingra@gmail.com}
-}\hfil
-\parbox{0.29\linewidth}{\centering
-  Sourav\\[2pt]
-  {\normalsize
-  \textit{Dept. of Computer Science and Engineering}\\
-  Amity School of Engineering and Technology (ASET)\\
-  Amity University Madhya Pradesh (AUMP)\\
+\parbox{0.235\linewidth}{\centering
+  {\small Sourav}\\[1pt]
+  {\footnotesize
+  \textit{Dept. of Computer Science}\\
+  \textit{and Engineering}\\
+  Amity School of Engg. \& Tech.\\
+  Amity University MP\\
   Gwalior, India\\
   Souravsingh1024@gmail.com}
 }
@@ -159,8 +161,8 @@ Four systemic feedback loops constrain the framework: \textbf{Loop~A} (Power-Com
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.82\textwidth]{figures/fig1_demand_cascade_architecture.pdf}\vspace{-3mm}
-\caption{Six-layer demand-cascade architecture: from national compute policy targets through server electrical load, facility power, cooling thermodynamics, silicon wafer starts, and advanced packaging chokepoints.}
+\includegraphics[width=0.94\textwidth]{figures/fig1_demand_cascade_architecture.pdf}\vspace{-2mm}
+\caption{Six-layer Demand-Cascade Model with 500{,}000-GPU baseline outputs. Inputs from \cite{nvidia2024h100,lbnl2024datacenter,sbicap2025datacentre,iea2024aienergy,trendforce2026foundry,tsmc2025annual}; values computed by model v2.0.}
 \label{fig:cascade}
 \end{figure*}
 
@@ -242,7 +244,7 @@ Global HBM3e output is $\approx$60M stacks/yr; India has zero domestic productio
 
 \subsection{Scenario Simulation Results}
 
-Table~\ref{tab:scenarios} presents DCM output across three deployment scenarios and three sensitivity variants. Low variant: $P_{\text{gpu}}=700$~W, PUE~=~1.25; Base variant: $P_{\text{gpu}}=700$~W, PUE~=~1.40; High variant: $P_{\text{gpu}}=1{,}200$~W, PUE~=~1.55. In the baseline 500{,}000-GPU scenario, active IT load reaches 637.0~MW and peak facility power escalates to \textbf{891.8~MW}---equivalent to \textbf{56.62\%} of India's entire mid-2026 colocation capacity \cite{jll2026indiadc}. Annual electricity consumption totals \textbf{6.25~TWh/year}, generating 4.47~Mt~CO$_2$, and evaporative water demand reaches \textbf{11{,}249.5~ML/year}. The 1M-GPU high scenario generates 3{,}255~MW, exceeding India's current capacity by 2.07$\times$. The tornado sensitivity profile in Fig.~\ref{fig:sensitivity} confirms that facility cooling PUE and server host overhead ratios account for the largest deviations in peak power draw.
+Table~\ref{tab:scenarios} presents DCM output across three deployment scenarios and three sensitivity variants. Low variant: $P_{\text{gpu}}=700$~W, PUE~=~1.25; Base variant: $P_{\text{gpu}}=700$~W, PUE~=~1.40; High variant: $P_{\text{gpu}}=1{,}200$~W, PUE~=~1.55. In the baseline 500{,}000-GPU scenario, active IT load reaches 637.0~MW and peak facility power escalates to \textbf{891.8~MW}---equivalent to \textbf{56.62\%} of India's entire mid-2026 colocation capacity \cite{jll2026indiadc}. Annual electricity consumption totals \textbf{6.25~TWh/year}, generating 4.47~Mt~CO$_2$, and evaporative water demand reaches \textbf{11{,}249.5~ML/year}. The 1M-GPU high scenario generates 3{,}255~MW, exceeding India's current capacity by 2.07$\times$. The tornado profile in Fig.~\ref{fig:sensitivity} shows that GPU board power ($+42.9\%$ at 1{,}000~W) causes the largest deviation in peak power, followed by host overhead ($-12.1\%$ to $+15.4\%$) and PUE ($\pm10.7\%$), while cooling WUE drives water demand ($-88.9\%$ to $+38.9\%$).
 
 \begin{table*}[t]
 \centering
@@ -282,7 +284,7 @@ While silicon lithography is abundant relative to demand, Table~\ref{tab:chokepo
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figures/fig2_structural_chokepoint_inversion.pdf}\vspace{-2mm}
-\caption{Structural chokepoint inversion (500{,}000-GPU baseline): advanced packaging (7.41\%) and colocation capacity (56.62\%) far outstrip logic wafer requirements (1.60\%).}
+\caption{Structural chokepoint inversion at the 500{,}000-GPU baseline: packaging (7.41\%) and colocation power (56.62\%) far outstrip logic wafer demand (1.60\%). Denominators from \cite{tsmc2025annual,trendforce2026foundry,counterpoint2025hbm,jll2026indiadc}.}
 \label{fig:inversion}
 \end{figure}
 
@@ -333,7 +335,7 @@ Benchmarking India's aggregated sovereign capacity ($\approx$34{,}000--45{,}000 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figures/fig5_sensitivity_tornado_montecarlo.pdf}\vspace{-2mm}
-\caption{One-at-a-time sensitivity tornado: cooling efficiency and host power overhead dominate peak grid demand across 500k GPU scenarios.}
+\caption{One-at-a-time sensitivity of model outputs at 500k GPUs; bounds as in Table~\ref{tab:scenarios} \cite{nvidia2024h100,lbnl2024datacenter,iea2024aienergy}. GPU power dominates peak load; WUE dominates water use.}
 \label{fig:sensitivity}
 \end{figure}
 
