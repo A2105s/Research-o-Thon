@@ -95,14 +95,80 @@ p{font-size:29px;line-height:1.4}
 .tn.ai .nm{font-size:34px}
 .rise{transform:translateY(26px);transition:opacity .55s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
 .rise.on{transform:none}
-.rband{display:grid;grid-template-columns:1fr 1fr;column-gap:56px}
+.rband{display:grid;grid-template-columns:.9fr 1.1fr;column-gap:48px}
 .rband .a{border-top:6px solid var(--ink);padding-top:20px}
 .rband .a .k,.rband .b2 .k{font-size:17px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--mute);margin-bottom:10px}
-.rband .a .v{font-size:31px;line-height:1.3;font-weight:600;letter-spacing:-.01em}
+.rband .a .v{font-size:25px;line-height:1.3;font-weight:600;letter-spacing:-.01em}
 .rband .b2{background:var(--ink);color:#fff;padding:26px 34px 28px}
 .rband .b2 .k{color:#bdbbb2}
-.rband .b2 .v{font-size:31px;line-height:1.3;font-weight:600;letter-spacing:-.01em}
+.rband .b2 .v{font-size:25px;line-height:1.3;font-weight:600;letter-spacing:-.01em}
 .rband .b2 .v span{font-weight:400;color:#d6d4cc}
+
+/* ---------------- Timeline (svg) ---------------- */
+.race-svg{margin-top:4px}
+svg .cap{font-size:16px;font-weight:600;letter-spacing:.16em;fill:var(--mute)}
+svg .tk{font-size:16px;fill:var(--mute)}
+svg .yr{font-size:17px;font-weight:600;letter-spacing:.14em;fill:var(--mute)}
+svg .nm{font-size:26px;font-weight:600;fill:var(--ink);letter-spacing:-.01em}
+svg .nm.sm{font-size:22px;font-weight:500}
+svg .nm.big{font-size:30px}
+svg .nm.big2{font-size:28px;font-weight:700}
+.draw{stroke-dasharray:var(--L);stroke-dashoffset:var(--L);transition:stroke-dashoffset 1.3s cubic-bezier(.3,.7,.2,1) .15s}
+.on .draw{stroke-dashoffset:0}
+.ring{transform-box:fill-box;transform-origin:center;animation:ring 2.2s ease-out infinite}
+.rband .v{font-size:24px}
+.rband .a,.rband .b2{min-height:0}
+.rband .b2{padding:18px 28px 20px}
+.rband .a{padding-top:14px}
+
+/* ---------------- Reveal helpers ---------------- */
+[data-f].stagger{opacity:1}
+.stagger>*{opacity:0;transform:translateY(22px);transition:opacity .5s ease,transform .65s cubic-bezier(.2,.7,.2,1)}
+.stagger.on>*{opacity:1;transform:none}
+.stagger.on>*:nth-child(2){transition-delay:.12s}
+.stagger.on>*:nth-child(3){transition-delay:.24s}
+.stagger.on>*:nth-child(4){transition-delay:.36s}
+.stagger.on>*:nth-child(5){transition-delay:.48s}
+
+/* Auto entrance on every slide */
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.slide.active .kicker{animation:up .5s ease both}
+.slide.active h1{animation:up .8s ease both}
+.slide.active h2{animation:up .6s ease .08s both}
+.slide.active .cover-sub{animation:up .8s ease .2s both}
+.slide.active .authors,.slide.active .event{animation:up .8s ease .35s both}
+.slide.active .cover-r div{animation:grow 1.1s cubic-bezier(.2,.7,.2,1) both}
+.slide.active .cover-r div:nth-child(2){animation-delay:.1s}
+.slide.active .cover-r div:nth-child(3){animation-delay:.2s}
+.slide.active .cover-r div:nth-child(4){animation-delay:.3s}
+.slide.active .cover-r div:nth-child(5){animation-delay:.4s}
+.slide.active .cover-r div:nth-child(6){animation-delay:.5s}
+@keyframes grow{from{transform:scaleX(0);transform-origin:right}to{transform:scaleX(1);transform-origin:right}}
+.slide.active .qa>div{animation:up .8s ease both}
+.slide.active .qa>div:nth-child(2){animation-delay:.3s}
+.slide.active table tr{animation:up .5s ease both}
+.slide.active table tr:nth-child(2){animation-delay:.08s}
+.slide.active table tr:nth-child(3){animation-delay:.16s}
+.slide.active table tr:nth-child(4){animation-delay:.24s}
+.slide.active table tr:nth-child(5){animation-delay:.32s}
+.slide.active table tr:nth-child(6){animation-delay:.4s}
+.slide.active table tr:nth-child(7){animation-delay:.48s}
+.slide.active table tr:nth-child(8){animation-delay:.56s}
+.slide.active table tr:nth-child(9){animation-delay:.64s}
+.slide.active table tr:nth-child(10){animation-delay:.72s}
+.slide.active table tr:nth-child(11){animation-delay:.8s}
+.slide.active table tr:nth-child(12){animation-delay:.88s}
+.slide.active .flow .fl{animation:up .6s ease both}
+.slide.active .flow .fl:nth-child(2){animation-delay:.15s}
+.slide.active .flow .fl:nth-child(3){animation-delay:.3s}
+.slide.active .flow .fl:nth-child(4){animation-delay:.45s}
+.slide.active .flow .fl:nth-child(5){animation-delay:.6s}
+.slide.active .list-n li{animation:up .55s ease both}
+.slide.active .list-n li:nth-child(2){animation-delay:.12s}
+.slide.active .list-n li:nth-child(3){animation-delay:.24s}
+.slide.active .list-n li:nth-child(4){animation-delay:.36s}
+.slide.active .list-n li:nth-child(5){animation-delay:.48s}
+.slide.active .list-n li:nth-child(6){animation-delay:.6s}
 
 /* ---------------- Problem ---------------- */
 .scale-row{display:grid;grid-template-columns:330px 1fr 210px;align-items:center;column-gap:24px;height:56px;white-space:nowrap}
@@ -203,6 +269,7 @@ svg text{font-family:var(--font)}
 .tt i.neg{right:33.333%}
 .tt i.pos{left:66.667%}
 .slide.active .tt i{width:var(--w)}
+.slide.active [data-f]:not(.on) .tt i{width:0}
 .tt .lab{position:absolute;top:50%;transform:translateY(-50%);font-size:18px;font-weight:600;white-space:nowrap}
 .mc-row{margin-bottom:34px}
 .mc-row .t{font-size:22px;font-weight:600;margin-bottom:10px;display:flex;justify-content:space-between}
@@ -283,6 +350,10 @@ tr.sep td{border-bottom:2px solid var(--ink)}
   [data-f]{opacity:1 !important}
   .bar i,.tt i{width:var(--w) !important;transition:none}
   .tn .seg{width:100% !important;transition:none}
+  .draw{stroke-dashoffset:0 !important;transition:none}
+  .ring{display:none}
+  *{animation:none !important}
+  .stagger>*{opacity:1 !important;transform:none !important;transition:none}
   .rise{transform:none !important}
   .tn.ai::after{animation:none;display:none}
   .chrome,.progress,#timer,#notes,#help{display:none !important}
@@ -300,14 +371,14 @@ tr.sep td{border-bottom:2px solid var(--ink)}
   <aside class="notes">Opening. One sentence: we asked what India's AI chip plans physically require. If the organisers' cover page is available, save it as organizer_cover.png beside this file and it will appear as the first slide automatically.</aside>
   <div class="cover-wrap">
     <div class="cover-l">
-      <div class="event">ResearchThon 2026<br>IEEE Student Branch, ASET &nbsp;|&nbsp; Amity University Madhya Pradesh</div>
+      <div class="event">ResearchThon 2026<br>Amity University Madhya Pradesh</div>
       <div>
         <h1>Sovereign<br>by Design</h1>
         <div class="cover-sub">A Five-Pillar Framework for India's Strategic Compute and AI Infrastructure</div>
       </div>
       <div class="authors">
-        Dr. Madhavi Dhingra, Adarsh Singh, Parikshit Singh Bais, Anamidi Shrivastava, Sourav<br>
-        <span class="mute">Department of Computer Science and Engineering, Amity School of Engineering and Technology, Gwalior<br>Track: AI Infrastructure, Semiconductor Sovereignty and Strategic Computing</span>
+        Adarsh Singh, Parikshit Singh Bais, Anamidi Shrivastava, Sourav<br>
+        <span class="mute">Department of Computer Science and Engineering, Amity School of Engineering and Technology, Gwalior</span>
       </div>
     </div>
     <div class="cover-r" aria-hidden="true">
@@ -323,20 +394,91 @@ tr.sep td{border-bottom:2px solid var(--ink)}
 
 <!-- ============================ 02 WHY IT MATTERS ============================ -->
 <section class="slide">
-  <aside class="notes">Click through the timeline. Every strategic technology has split the world into those who built it and those who bought it. Nuclear weapons gave deterrence and a voice in world order. Jet fighters and engines gave air power, and the engine is still the hardest part to master. Rockets gave launch, navigation and surveillance. 5G and 6G decide who controls the standards and networks everyone else runs on. AI is the next one on this line. India has been here before: it built its nuclear and space programmes while others restricted access. AI is the next test, and unlike the others it needs physical infrastructure at enormous scale. That is what this paper measures.</aside>
+  <aside class="notes">Click through the timeline, it is drawn to scale by year. Top row, the leaders: the first jet fighters (1944) and the first nuclear weapon (1945), then Sputnik and the space age (1957), then 5th-generation stealth fighters (2005), and generative AI breaking out in 2022. 6th-generation fighters are in development in the 2030s. Each time, a handful of countries got there first, wrote the rules and became powers. Bottom row, India: nuclear tests in 1974 and 1998, the Aryabhata satellite in 1975, Chandrayaan-3 in 2023. India built these against restrictions and is still closing the gap in fighters and engines. AI is the next test, and unlike the others it needs physical infrastructure at national scale. That is what this paper measures.</aside>
   <div class="kicker">Why this matters</div>
   <h2>Technology races decide who sets the rules</h2>
-  <div class="race">
-    <div class="tn" data-f="1"><div class="seg"></div><div class="yr">1945</div><div class="nm">Nuclear weapons</div><div class="gv">Deterrence, and a voice in world order</div></div>
-    <div class="tn" data-f="2"><div class="seg"></div><div class="yr">1940s</div><div class="nm">Fighters and jet engines</div><div class="gv">Air power. The engine is still the hardest part</div></div>
-    <div class="tn" data-f="3"><div class="seg"></div><div class="yr">1957</div><div class="nm">Rockets and space</div><div class="gv">Launch, navigation, surveillance</div></div>
-    <div class="tn" data-f="4"><div class="seg"></div><div class="yr">2019</div><div class="nm">5G, then 6G</div><div class="gv">Control of standards and networks</div></div>
-    <div class="tn ai" data-f="5"><div class="seg"></div><div class="yr">NOW</div><div class="nm">Artificial intelligence</div><div class="gv">Economy, defence, information</div></div>
+  <div class="race-svg">
+  <svg viewBox="0 0 1380 376" width="1380" height="376" role="img" aria-label="Timeline of strategic technology races, 1940 to 2040, for the world and for India">
+    <!-- The AI window -->
+    <g data-f="4"><rect x="1155.4" y="0" width="224.6" height="376" fill="#ECEAE3"/></g>
+
+    <!-- World track -->
+    <g data-f="1">
+      <text class="cap" x="0" y="36">LEADERS</text>
+      <line class="draw" style="--L:1380" x1="0" y1="206" x2="1380" y2="206" stroke="#121212" stroke-width="2"/>
+      <g stroke="#121212" stroke-width="1.5">
+        <line x1="134.5" y1="206" x2="134.5" y2="215"/><line x1="259" y1="206" x2="259" y2="215"/><line x1="383.5" y1="206" x2="383.5" y2="215"/><line x1="508" y1="206" x2="508" y2="215"/><line x1="632.5" y1="206" x2="632.5" y2="215"/><line x1="757" y1="206" x2="757" y2="215"/><line x1="881.5" y1="206" x2="881.5" y2="215"/><line x1="1006" y1="206" x2="1006" y2="215"/><line x1="1130.5" y1="206" x2="1130.5" y2="215"/><line x1="1255" y1="206" x2="1255" y2="215"/><line x1="1378.5" y1="206" x2="1378.5" y2="215"/>
+      </g>
+      <g class="tk" text-anchor="middle">
+        <text x="134.5" y="236">1940</text><text x="259" y="236">1950</text><text x="383.5" y="236">1960</text><text x="508" y="236">1970</text><text x="632.5" y="236">1980</text><text x="757" y="236">1990</text><text x="881.5" y="236">2000</text><text x="1006" y="236">2010</text><text x="1130.5" y="236">2020</text><text x="1255" y="236">2030</text><text x="1380" y="236" text-anchor="end">2040</text>
+      </g>
+      <!-- 1944 jet fighters (label left of stem) -->
+      <line class="draw" style="--L:102" x1="184.3" y1="206" x2="184.3" y2="104" stroke="#121212" stroke-width="1.5"/>
+      <circle cx="184.3" cy="206" r="8" fill="#121212"/>
+      <g text-anchor="end"><text class="yr" x="172" y="122">1944</text><text class="nm" x="172" y="150">Jet fighters</text><text class="nm" x="172" y="178">and engines</text></g>
+      <!-- 1945 nuclear -->
+      <line class="draw" style="--L:102" x1="196.8" y1="206" x2="196.8" y2="104" stroke="#121212" stroke-width="1.5"/>
+      <circle cx="196.8" cy="206" r="8" fill="#121212"/>
+      <text class="yr" x="210" y="122">1945</text><text class="nm" x="210" y="150">Nuclear</text><text class="nm" x="210" y="178">weapons</text>
+    </g>
+
+    <g data-f="2">
+      <line class="draw" style="--L:102" x1="346.2" y1="206" x2="346.2" y2="104" stroke="#121212" stroke-width="1.5"/>
+      <circle cx="346.2" cy="206" r="8" fill="#121212"/>
+      <text class="yr" x="359" y="122">1957</text><text class="nm" x="359" y="150">Rockets</text><text class="nm" x="359" y="178">and space</text>
+    </g>
+
+    <g data-f="3">
+      <line class="draw" style="--L:102" x1="943.8" y1="206" x2="943.8" y2="104" stroke="#121212" stroke-width="1.5"/>
+      <circle cx="943.8" cy="206" r="8" fill="#121212"/>
+      <text class="yr" x="957" y="122">2005</text><text class="nm" x="957" y="150">5th-gen</text><text class="nm" x="957" y="178">stealth fighters</text>
+    </g>
+
+    <g data-f="4">
+      <line class="draw" style="--L:190" x1="1155.4" y1="206" x2="1155.4" y2="16" stroke="#121212" stroke-width="2"/>
+      <circle class="ring" cx="1155.4" cy="206" r="12" fill="none" stroke="#121212" stroke-width="2"/>
+      <circle cx="1155.4" cy="206" r="12" fill="#121212"/>
+      <text class="yr" x="1169" y="30">2022</text><text class="nm big" x="1169" y="58">Artificial</text><text class="nm big" x="1169" y="88">intelligence</text>
+      <!-- 6th generation: in development -->
+      <line x1="1317.2" y1="206" x2="1317.2" y2="104" stroke="#121212" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <circle cx="1317.2" cy="206" r="8" fill="#F7F6F2" stroke="#121212" stroke-width="2"/>
+      <g text-anchor="end"><text class="yr" x="1304" y="122">2030s</text><text class="nm" x="1304" y="150">6th-gen</text><text class="nm" x="1304" y="178">fighters</text></g>
+    </g>
+
+    <!-- India track -->
+    <g data-f="5">
+      <text class="cap" x="0" y="280">INDIA</text>
+      <line class="draw" style="--L:1168" x1="0" y1="290" x2="1167.9" y2="290" stroke="#8d8b82" stroke-width="2"/>
+      <!-- 1974 -->
+      <line x1="557.8" y1="290" x2="557.8" y2="366" stroke="#8d8b82" stroke-width="1.5"/>
+      <circle cx="557.8" cy="290" r="7" fill="#121212"/>
+      <g text-anchor="end"><text class="yr" x="546" y="314">1974</text><text class="nm sm" x="546" y="340">First nuclear</text><text class="nm sm" x="546" y="364">test</text></g>
+      <!-- 1975 -->
+      <line x1="570.3" y1="290" x2="570.3" y2="366" stroke="#8d8b82" stroke-width="1.5"/>
+      <circle cx="570.3" cy="290" r="7" fill="#121212"/>
+      <text class="yr" x="583" y="314">1975</text><text class="nm sm" x="583" y="340">Aryabhata</text><text class="nm sm" x="583" y="364">satellite</text>
+      <!-- 1998 -->
+      <line x1="856.6" y1="290" x2="856.6" y2="366" stroke="#8d8b82" stroke-width="1.5"/>
+      <circle cx="856.6" cy="290" r="7" fill="#121212"/>
+      <text class="yr" x="869" y="314">1998</text><text class="nm sm" x="869" y="340">Pokhran-II</text><text class="nm sm" x="869" y="364">tests</text>
+      <!-- 2023 -->
+      <line x1="1167.9" y1="290" x2="1167.9" y2="366" stroke="#8d8b82" stroke-width="1.5"/>
+      <circle cx="1167.9" cy="290" r="7" fill="#121212"/>
+      <g text-anchor="end"><text class="yr" x="1156" y="314">2023</text><text class="nm sm" x="1156" y="340">Chandrayaan-3</text><text class="nm sm" x="1156" y="364">lunar landing</text></g>
+    </g>
+
+    <g data-f="6">
+      <line x1="1167.9" y1="290" x2="1380" y2="290" stroke="#121212" stroke-width="2" stroke-dasharray="3 7"/>
+      <line x1="1205" y1="290" x2="1205" y2="366" stroke="#121212" stroke-width="1.5"/>
+      <circle class="ring" cx="1205" cy="290" r="10" fill="none" stroke="#121212" stroke-width="2"/>
+      <circle cx="1205" cy="290" r="10" fill="#121212"/>
+      <text class="yr" x="1218" y="314">NOW</text><text class="nm big2" x="1218" y="342">India and AI</text><text class="nm sm" x="1218" y="366">The next test</text>
+    </g>  </svg>
   </div>
   <div class="fill"></div>
   <div class="rband">
     <div class="a rise" data-f="6"><div class="k">The pattern</div><div class="v">A handful of countries got there first, wrote the rules and became powers. Everyone else became a buyer.</div></div>
-    <div class="b2 rise" data-f="7"><div class="k">India's position</div><div class="v">India built its nuclear and space programmes against restrictions. <span>AI is the next test, and it needs physical infrastructure at national scale.</span></div></div>
+    <div class="b2 rise" data-f="6"><div class="k">India's position</div><div class="v">India built nuclear and space capability against restrictions, and is still closing the gap in fighters and engines. <span>AI is the next test.</span></div></div>
   </div>
 </section>
 
@@ -346,6 +488,7 @@ tr.sep td{border-bottom:2px solid var(--ink)}
   <div class="kicker">The problem</div>
   <h2>Buying GPUs is the easy part</h2>
 
+  <div data-f="1">
   <div class="sub">Scale of the baseline scenario</div>
   <div style="margin:10px 0 56px">
     <div class="scale-row">
@@ -360,9 +503,10 @@ tr.sep td{border-bottom:2px solid var(--ink)}
     </div>
     <div class="mute" style="font-size:22px;margin-top:10px">The baseline is 11 to 15 times today's shared pool (34,000 to 45,000 GPUs).</div>
   </div>
+  </div>
 
   <div class="fill"></div>
-  <div class="chain">
+  <div class="chain stagger" data-f="2">
     <div class="st"><div class="n">01</div><div class="t">GPU target</div><div class="d">The number everyone counts</div></div>
     <div class="st g"><div class="n">02</div><div class="t">Electricity</div><div class="d">Substations, transmission, grid stability</div></div>
     <div class="st b"><div class="n">03</div><div class="t">Cooling water</div><div class="d">Heat and water stress</div></div>
@@ -376,7 +520,7 @@ tr.sep td{border-bottom:2px solid var(--ink)}
   <aside class="notes">Existing studies each cover one piece. The paper calls this disciplinary siloing and lists five specific gaps, RG-01 to RG-05. Safe claim: none of the studies we reviewed combines GPU targets, power, cooling and chip supply in one model. Do not say first ever.</aside>
   <div class="kicker">The gap</div>
   <h2>Each field sees one piece of the chain</h2>
-  <div class="silos">
+  <div class="silos stagger" data-f="1">
     <div class="silo r">
       <h3>Semiconductor analysts</h3>
       <div class="s">Study who makes the chips and how concentrated supply is.</div>
@@ -394,11 +538,11 @@ tr.sep td{border-bottom:2px solid var(--ink)}
     </div>
   </div>
   <div class="fill"></div>
-  <div class="bridge">
+  <div class="bridge rise" data-f="2">
     <div><div class="k">Contribution 1: the map</div><div class="v">IAIRF 2.0 <span>&nbsp;Five-pillar conceptual framework</span></div></div>
     <div><div class="k">Contribution 2: the calculator</div><div class="v">Demand-Cascade Model <span>&nbsp;Six layers, deterministic</span></div></div>
   </div>
-  <div class="mute" style="font-size:20px;margin-top:16px">Five gaps addressed (RG-01 to RG-05): siloing, no cascade, the silicon wafer fallacy, tropical cooling, and the operationalisation deficit.</div>
+  <div class="mute rise" data-f="2" style="font-size:20px;margin-top:16px">Five gaps addressed (RG-01 to RG-05): siloing, no cascade, the silicon wafer fallacy, tropical cooling, and the operationalisation deficit.</div>
 </section>
 
 <!-- ============================ 04 PILLARS ============================ -->
@@ -406,7 +550,7 @@ tr.sep td{border-bottom:2px solid var(--ink)}
   <aside class="notes">One line per pillar. Give one loop as the example: Loop A, the power-compute deadlock. You cannot install GPUs without power, and you cannot get power without proving you will use it. These loops are why the pillars cannot be fixed one at a time.</aside>
   <div class="kicker">The framework</div>
   <h2>Five pillars, coupled by four feedback loops</h2>
-  <div class="pillars">
+  <div class="pillars stagger" data-f="1">
     <div class="pil r"><div class="id">P1</div><h3>Compute and Semiconductor Sovereignty</h3><p>GPUs, packaging, critical minerals</p></div>
     <div class="pil g"><div class="id">P2</div><h3>Energy and Grid Readiness</h3><p>Supply, transmission, connection queues</p></div>
     <div class="pil b"><div class="id">P3</div><h3>Physical Resources and Data Centres</h3><p>Buildings, cooling, water, location</p></div>
@@ -414,7 +558,7 @@ tr.sep td{border-bottom:2px solid var(--ink)}
     <div class="pil"><div class="id">P5</div><h3>Governance, Investment, Indigenous Capability</h3><p>Missions, capital, talent, models</p></div>
   </div>
   <div class="fill"></div>
-  <div class="loops">
+  <div class="loops stagger" data-f="2">
     <div class="loop"><div class="id">Loop A</div><h3>Power-Compute deadlock</h3><p>No GPUs without power, no power without proof of use.</p></div>
     <div class="loop"><div class="id">Loop B</div><h3>Packaging-Memory co-constraint</h3><p>One export rule can cut both at once.</p></div>
     <div class="loop"><div class="id">Loop C</div><h3>Data-Connectivity tension</h3><p>Localisation raises cost and deters investors.</p></div>
@@ -506,7 +650,7 @@ tr.sep td{border-bottom:2px solid var(--ink)}
   <div class="kicker">Result 1: the power wall</div>
   <h2>One programme equals half of India's capacity</h2>
   <div class="wall">
-    <div>
+    <div data-f="1">
       <div class="huge">891.8<small>MW</small></div>
       <div class="mute" style="font-size:26px;margin-top:14px">peak facility draw, 500,000 GPUs</div>
       <div class="eq">
@@ -515,7 +659,7 @@ tr.sep td{border-bottom:2px solid var(--ink)}
         <div><b>Annual energy at 80% use</b><span>6.25 TWh</span></div>
       </div>
     </div>
-    <div class="share">
+    <div class="share" data-f="2">
       <div class="cap">Share of India's colocation capacity today (1,575 MW)</div>
       <div style="position:relative">
         <!-- scale 0 to 120% across track; 100% line at 83.33% -->
@@ -567,7 +711,7 @@ tr.sep td{border-bottom:2px solid var(--ink)}
   <div class="kicker">Result 3: the cooling lever</div>
   <h2>Cooling is the largest single policy lever</h2>
   <div class="cool">
-    <div>
+    <div data-f="1">
       <div class="sub">Annual cooling water, 500,000 GPUs (megalitres)</div>
       <div class="sub-s">Annual PUE shown under each system</div>
       <!-- scale 0 to 12,000 -->
@@ -577,7 +721,7 @@ tr.sep td{border-bottom:2px solid var(--ink)}
       <div class="crow2"><div class="lbl">Single-phase immersion<small>PUE 1.12</small></div><div class="track"><div class="bar c-bl"><i style="--w:1.25%"></i></div><div class="v" style="left:calc(1.25% + 16px);font-size:28px">150</div></div></div>
       <div class="mute" style="font-size:21px;margin-top:26px;line-height:1.4;max-width:780px">Direct-to-chip is the practical balance. Immersion is better on paper but harder to deploy. Policy link: condition IndiaAI subsidies on PUE of 1.25 or lower and closed-loop heat rejection.</div>
     </div>
-    <div>
+    <div class="stagger" data-f="2">
       <div class="stat"><div class="n b">&minus;94.6%</div><div class="d">cooling water, direct-to-chip vs evaporative air</div></div>
       <div class="stat"><div class="n g">&minus;172 MW</div><div class="d">facility load, PUE 1.45 to 1.18 on a 637 MW IT load</div></div>
     </div>
@@ -590,7 +734,7 @@ tr.sep td{border-bottom:2px solid var(--ink)}
   <div class="kicker">Robustness</div>
   <h2>The ordering survives every uncertainty we tested</h2>
   <div class="rob">
-    <div>
+    <div data-f="1">
       <div class="sub">One-at-a-time sensitivity, change vs base (%)</div>
       <div class="sub-s">Low and high bound of each input, other inputs at base</div>
       <!-- axis -90 to +45 -> 135 span; unit = 100/135 % -->
@@ -614,7 +758,7 @@ tr.sep td{border-bottom:2px solid var(--ink)}
         <span class="lab" style="right:calc(33.333% + 7.93% + 8px)">-10.7</span><span class="lab" style="left:calc(66.667% + 7.93% + 8px)">+10.7</span></div></div>
     </div>
 
-    <div>
+    <div data-f="2">
       <div class="sub">Monte Carlo, 1,000 draws, P10 to P90</div>
       <div class="sub-s">Seven inputs varied together. Bars show the middle 80% of outcomes.</div>
       <!-- axis 0 to 80 -->
@@ -638,15 +782,15 @@ tr.sep td{border-bottom:2px solid var(--ink)}
   <div class="kicker">What India should do</div>
   <h2>Control, partner, manage: three tiers of action</h2>
   <div class="tiers">
-    <div class="tier t1"><div class="id">Tier 1</div><h3>Build domestically</h3><div class="yr">2026 to 2028</div>
+    <div class="tier t1 rise" data-f="1"><div class="id">Tier 1</div><h3>Build domestically</h3><div class="yr">2026 to 2028</div>
       <ul><li>Cap Mumbai share below 35% by 2028</li><li>Direct-to-chip cooling as a subsidy condition</li><li>9-month approval window for substations of 50 MW and above</li><li>AI Power Corridors (5 GW)</li></ul></div>
-    <div class="tier t2"><div class="id">Tier 2</div><h3>Develop via partnerships</h3><div class="yr">2028 to 2031</div>
+    <div class="tier t2 rise" data-f="2"><div class="id">Tier 2</div><h3>Develop via partnerships</h3><div class="yr">2028 to 2031</div>
       <ul><li>Advanced-packaging joint ventures to reduce CoWoS dependence</li><li>Chiplet consortium</li><li>Round-the-clock renewables and small modular reactors</li></ul></div>
-    <div class="tier t3"><div class="id">Tier 3</div><h3>Manage external dependence</h3><div class="yr">2031 to 2035</div>
+    <div class="tier t3 rise" data-f="3"><div class="id">Tier 3</div><h3>Manage external dependence</h3><div class="yr">2031 to 2035</div>
       <ul><li>Multi-year wafer reservations (about 1.6% of TSMC output)</li><li>HBM4 advance-purchase agreements</li><li>Export-control contingency playbook</li></ul></div>
   </div>
   <div class="fill"></div>
-  <div class="invest">
+  <div class="invest rise" data-f="4">
     <div class="head"><b>Proposed planning envelope, 2026 to 2035</b><span>Authors' proposal, not a government budget. Total about Rs 3.5 lakh crore.</span></div>
     <div class="stack"><div style="flex:95.5;background:var(--ink)">Public: Rs 95,500 crore</div><div style="flex:257;background:#8d8b82">Public-private partnership: Rs 2,57,000 crore</div></div>
   </div>
@@ -658,11 +802,11 @@ tr.sep td{border-bottom:2px solid var(--ink)}
   <div class="kicker">Take-aways</div>
   <h2>Where India's AI infrastructure will actually be constrained</h2>
   <div class="take">
-    <div class="tk b"><div class="n b">1.60%</div><h3>Wafers are not the constraint</h3><p>Silicon for 500,000 GPUs is a small, purchasable share of TSMC output.</p></div>
-    <div class="tk r"><div class="n r">7.41%</div><h3>Packaging and power are</h3><p>CoWoS needs 4.6 times the wafer pressure. Power reaches 56.62% of today's capacity.</p></div>
-    <div class="tk g"><div class="n g">&minus;94.6%</div><h3>Cooling is the lever</h3><p>Direct-to-chip cooling cuts water by 94.6% and facility load by 172 MW.</p></div>
+    <div class="tk b rise" data-f="1"><div class="n b">1.60%</div><h3>Wafers are not the constraint</h3><p>Silicon for 500,000 GPUs is a small, purchasable share of TSMC output.</p></div>
+    <div class="tk r rise" data-f="2"><div class="n r">7.41%</div><h3>Packaging and power are</h3><p>CoWoS needs 4.6 times the wafer pressure. Power reaches 56.62% of today's capacity.</p></div>
+    <div class="tk g rise" data-f="3"><div class="n g">&minus;94.6%</div><h3>Cooling is the lever</h3><p>Direct-to-chip cooling cuts water by 94.6% and facility load by 172 MW.</p></div>
   </div>
-  <div class="limits"><b>Limits.</b> A what-if model, not a forecast. Capacity denominators are market estimates. The model counts GPUs, not performance per watt. Export rules sit outside the model.</div>
+  <div class="limits rise" data-f="4"><b>Limits.</b> A what-if model, not a forecast. Capacity denominators are market estimates. The model counts GPUs, not performance per watt. Export rules sit outside the model.</div>
 </section>
 
 <!-- ============================ 12 Q&A ============================ -->
